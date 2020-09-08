@@ -1,0 +1,11 @@
+{
+  "tabulous.defaultTerminals": [{
+    "name": "watch:dev",
+    "directory": "./",
+    "command": "npm run watch:dev",
+    "executeCommand": true
+  }, {
+    "name": "Working Section",
+    "directory": "./"
+  }]
+}
