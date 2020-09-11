@@ -8,7 +8,6 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 
 var _user = _interopRequireDefault(require("./user.service"));
 
-// const logger = require('../../services/logger.service')
 function getUser(_x, _x2) {
   return _getUser.apply(this, arguments);
 }
@@ -54,7 +53,6 @@ function _getUsers() {
 
           case 3:
             users = _context2.sent;
-            // logger.debug(users);
             res.send(users);
 
           case 5:
@@ -81,7 +79,9 @@ function _deleteUser() {
             return _user["default"].remove(req.params.id);
 
           case 2:
-            res.end();
+            return _context3.abrupt("return", res.send({
+              message: 'Account has been successfully deleted!'
+            }));
 
           case 3:
           case "end":

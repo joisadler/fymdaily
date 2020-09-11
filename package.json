@@ -27,6 +27,7 @@
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "express": "~4.16.1",
+    "fatsecret": "^1.0.2",
     "helmet": "^4.1.0",
     "http-errors": "^1.8.0",
     "mongoose": "^5.10.3",

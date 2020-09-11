@@ -15,9 +15,6 @@ var _express = _interopRequireDefault(require("express"));
 
 var _food = _interopRequireDefault(require("../models/food"));
 
-/* eslint-disable no-param-reassign */
-
-/* eslint-disable no-underscore-dangle */
 var router = _express["default"].Router();
 
 var _default = function _default() {

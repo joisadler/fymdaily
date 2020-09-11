@@ -54,8 +54,8 @@ connection.once('open', function () {
   console.log('MongoDB database connection established successfully');
 });
 var app = (0, _express["default"])();
-app.use((0, _morgan["default"])('dev')); // app.use(express.static(path.join(__dirname, '../public')));
-
+app.use((0, _morgan["default"])('dev'));
+app.use(_express["default"]["static"](_path["default"].join(__dirname, '../public')));
 app.set('views', _path["default"].join(__dirname, '../views'));
 app.set('view engine', 'pug');
 app.use(_express["default"].urlencoded({
@@ -100,10 +100,10 @@ app.use((0, _compression["default"])({
 app.use('/auth/login', (0, _login["default"])(_passport["default"]));
 app.use('auth/signup', (0, _signup["default"])(_passport["default"]));
 app.use('auth/logout', (0, _logout["default"])());
-app.use('/user', _user["default"]); // app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../public', 'index.html'));
-// });
-// catch 404 and forward to error handler
+app.use('/user', _user["default"]);
+app.get('/', function (req, res) {
+  res.sendFile(_path["default"].join(__dirname, '../public', 'index.html'));
+}); // catch 404 and forward to error handler
 
 app.use(function (req, res, next) {
   next((0, _httpErrors["default"])(404));
