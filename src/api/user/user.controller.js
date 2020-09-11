@@ -1,5 +1,4 @@
 import userService from './user.service';
-// const logger = require('../../services/logger.service')
 
 async function getUser(req, res) {
   const user = await userService.getById(req.params.id);
@@ -9,13 +8,14 @@ async function getUser(req, res) {
 async function getUsers(req, res) {
   console.log('req.query:', req.query);
   const users = await userService.query(req.query);
-  // logger.debug(users);
   res.send(users);
 }
 
 async function deleteUser(req, res) {
   await userService.remove(req.params.id);
-  res.end();
+  return res.send({
+    message: 'Account has been successfully deleted!',
+  });
 }
 
 async function updateUser(req, res) {
