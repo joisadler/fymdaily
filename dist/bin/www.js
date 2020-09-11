@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 var _http = _interopRequireDefault(require("http"));
 
 var _debug = _interopRequireDefault(require("debug"));
@@ -7,8 +9,6 @@ var _debug = _interopRequireDefault(require("debug"));
 var _pingmydyno = _interopRequireDefault(require("pingmydyno"));
 
 var _app = _interopRequireDefault(require("../app"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 /* eslint-disable no-restricted-globals */
 var debug = (0, _debug["default"])('fymdaily:server');

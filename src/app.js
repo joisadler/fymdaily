@@ -16,6 +16,7 @@ import initPassport from './api/auth/passport/init';
 import loginRouter from './api/auth/login';
 import signupRouter from './api/auth/signup';
 import logoutRouter from './api/auth/logout';
+import userRouter from './api/user/user.router';
 
 mongoose.connect(dbConfig.url, {
   useNewUrlParser: true,
@@ -28,7 +29,7 @@ connection.once('open', () => {
 
 const app = express();
 app.use(logger('dev'));
-app.use(express.static(path.join(__dirname, '../public')));
+// app.use(express.static(path.join(__dirname, '../public')));
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'pug');
 app.use(express.urlencoded({ extended: true }));
@@ -59,9 +60,9 @@ app.use(cors({
   origin: [
     'http://127.0.0.1:8080',
     'http://localhost:8080',
-    'http://127.0.0.1:4000',
-    'http://localhost:4000',
-    'http://192.168.0.15:4000',
+    'http://127.0.0.1:3000',
+    'http://localhost:3000',
+    'http://192.168.0.15:3000',
   ],
   credentials: true,
 }));
@@ -74,12 +75,13 @@ const shouldCompress = (req, res) => {
 };
 app.use(compression({ filter: shouldCompress }));
 
-app.use('/login', loginRouter(passport));
-app.use('/signup', signupRouter(passport));
-app.use('/logout', logoutRouter());
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public', 'index.html'));
-});
+app.use('/auth/login', loginRouter(passport));
+app.use('auth/signup', signupRouter(passport));
+app.use('auth/logout', logoutRouter());
+app.use('/user', userRouter);
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../public', 'index.html'));
+// });
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

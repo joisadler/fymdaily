@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -11,16 +13,14 @@ var _signup = _interopRequireDefault(require("./signup"));
 
 var _user = _interopRequireDefault(require("../../../models/user"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
 var _default = function _default(passport) {
   passport.serializeUser(function (user, done) {
-    console.log('serializing user: ');
+    // console.log('serializing user: ');
     done(null, user._id);
   });
   passport.deserializeUser(function (id, done) {
     _user["default"].findById(id, function (err, user) {
-      console.log('deserializing user:', user);
+      // console.log('deserializing user:', user);
       done(err, user);
     });
   });

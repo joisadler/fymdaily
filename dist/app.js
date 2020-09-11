@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -39,7 +41,7 @@ var _signup = _interopRequireDefault(require("./api/auth/signup"));
 
 var _logout = _interopRequireDefault(require("./api/auth/logout"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var _user = _interopRequireDefault(require("./api/user/user.router"));
 
 // api routes
 _mongoose["default"].connect(_db["default"].url, {
@@ -52,8 +54,8 @@ connection.once('open', function () {
   console.log('MongoDB database connection established successfully');
 });
 var app = (0, _express["default"])();
-app.use((0, _morgan["default"])('dev'));
-app.use(_express["default"]["static"](_path["default"].join(__dirname, '../public')));
+app.use((0, _morgan["default"])('dev')); // app.use(express.static(path.join(__dirname, '../public')));
+
 app.set('views', _path["default"].join(__dirname, '../views'));
 app.set('view engine', 'pug');
 app.use(_express["default"].urlencoded({
@@ -80,7 +82,7 @@ app.use((0, _helmet["default"])({
   }
 }));
 app.use((0, _cors["default"])({
-  origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:4000', 'http://localhost:4000', 'http://192.168.0.15:4000'],
+  origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000', 'http://192.168.0.15:3000'],
   credentials: true
 }));
 
@@ -95,12 +97,13 @@ var shouldCompress = function shouldCompress(req, res) {
 app.use((0, _compression["default"])({
   filter: shouldCompress
 }));
-app.use('/login', (0, _login["default"])(_passport["default"]));
-app.use('/signup', (0, _signup["default"])(_passport["default"]));
-app.use('/logout', (0, _logout["default"])());
-app.get('/', function (req, res) {
-  res.sendFile(_path["default"].join(__dirname, '../public', 'index.html'));
-}); // catch 404 and forward to error handler
+app.use('/auth/login', (0, _login["default"])(_passport["default"]));
+app.use('auth/signup', (0, _signup["default"])(_passport["default"]));
+app.use('auth/logout', (0, _logout["default"])());
+app.use('/user', _user["default"]); // app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../public', 'index.html'));
+// });
+// catch 404 and forward to error handler
 
 app.use(function (req, res, next) {
   next((0, _httpErrors["default"])(404));

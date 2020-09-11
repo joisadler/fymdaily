@@ -4,13 +4,13 @@ import User from '../../../models/user';
 
 export default (passport) => {
   passport.serializeUser((user, done) => {
-    console.log('serializing user: ');
+    // console.log('serializing user: ');
     done(null, user._id);
   });
 
   passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => {
-      console.log('deserializing user:', user);
+      // console.log('deserializing user:', user);
       done(err, user);
     });
   });
