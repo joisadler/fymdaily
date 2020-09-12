@@ -41,7 +41,7 @@ var FoodSchema = new _mongoose["default"].Schema({
     required: true
   }
 });
-FoodSchema.plugin(findOrCreate);
+FoodSchema.plugin(findOrCreate); // FoodSchema.findByIdAndRemove({}, (err, doc) => {})
 
 var _default = _mongoose["default"].model('Food', FoodSchema);
 

@@ -28,12 +28,12 @@ const _getInfo = async (params) => {
 };
 
 async function query(search_expression = '', max_results = 50) {
-  const foods = await _searchFoods({
+  const foodIDs = await _searchFoods({
     search_expression,
     max_results,
   });
-  if (foods === []) return [];
-  const productPromises = foods.map(async (food_id) => {
+  if (foodIDs === []) return [];
+  const foodPromises = foodIDs.map(async (food_id) => {
     const info = await _getInfo({ food_id });
     const nutriments = Array.isArray(info.food.servings.serving)
       ? info.food.servings.serving[0]
@@ -56,7 +56,7 @@ async function query(search_expression = '', max_results = 50) {
       || isNaN(carbs)) {
       return;
     }
-    const product = {
+    const food = {
       name,
       brand,
       calories,
@@ -64,10 +64,10 @@ async function query(search_expression = '', max_results = 50) {
       fats,
       carbs,
     };
-    return product;
+    return food;
   });
-  const products = await Promise.all(productPromises);
-  return products;
+  const foods = await Promise.all(foodPromises);
+  return foods;
 }
 
 export default {

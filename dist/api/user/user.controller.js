@@ -47,15 +47,14 @@ function _getUsers() {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            console.log('req.query:', req.query);
-            _context2.next = 3;
+            _context2.next = 2;
             return _user["default"].query(req.query);
 
-          case 3:
+          case 2:
             users = _context2.sent;
             res.send(users);
 
-          case 5:
+          case 4:
           case "end":
             return _context2.stop();
         }

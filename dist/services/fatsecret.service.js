@@ -14,79 +14,6 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 var _fatsecret = _interopRequireDefault(require("fatsecret"));
 
 /* eslint-disable max-len */
-// /* eslint-disable no-restricted-globals */
-// import express from 'express';
-// import { isArray } from 'util';
-// import FatsecretAPI from 'fatsecret';
-// const router = express.Router();
-// const { FATSECRET_KEY, FATSECRET_SECRET } = process.env;
-// const API = new FatsecretAPI(FATSECRET_KEY, FATSECRET_SECRET);
-// const searchFoods = params => API.method('foods.search', params);
-// const getFood = params => API.method('food.get', params);
-// export default () => {
-//   router.get('/', async (req, res) => {
-//     try {
-//     // eslint-disable-next-line camelcase
-//       const { search_expression, language, region } = req.query;
-//       const results = await searchFoods({
-//         search_expression,
-//         language,
-//         region,
-//         max_results: 10,
-//       });
-//       const response = {};
-//       if (!results.foods.food) {
-//         res.json(response);
-//       } else {
-//         let key = 0;
-//         results.foods.food.map(async (food, i) => {
-//           const product = await getFood({
-//             food_id: food.food_id
-//           });
-//           const nutriments = Array.isArray(product.food.servings.serving)
-//             ? product.food.servings.serving[0]
-//             : product.food.servings.serving;
-//           const name = product.food.food_name;
-//           const brand = product.food.brand_name || '';
-//           let calories = (nutriments.calories * 100)
-//           / nutriments.metric_serving_amount;
-//           let proteins = (nutriments.protein * 100)
-//           / nutriments.metric_serving_amount;
-//           let fats = (nutriments.fat * 100)
-//           / nutriments.metric_serving_amount;
-//           let carbs = (nutriments.sugar * 100)
-//           / nutriments.metric_serving_amount;
-//           if (nutriments.metric_serving_unit === 'oz') {
-//             calories /= 29.574;
-//             proteins /= 29.574;
-//             fats /= 29.574;
-//             carbs /= 29.574;
-//           }
-//           if (!isNaN(calories)
-//           && !isNaN(proteins)
-//           && !isNaN(fats)
-//           && !isNaN(carbs)) {
-//             response[key] = {
-//               name,
-//               brand,
-//               calories,
-//               proteins,
-//               fats,
-//               carbs
-//             };
-//             key += 1;
-//           }
-//           if (i === results.foods.food.length - 1) {
-//             res.json(response);
-//           }
-//         });
-//       }
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   });
-//   return router;
-// };
 var _process$env = process.env,
     FATSECRET_KEY = _process$env.FATSECRET_KEY,
     FATSECRET_SECRET = _process$env.FATSECRET_SECRET;
@@ -105,7 +32,6 @@ var _searchFoods = /*#__PURE__*/function () {
 
           case 3:
             response = _context.sent;
-            // console.log(response)
             foods = response.foods.food;
 
             if (foods) {
@@ -185,9 +111,9 @@ function _query() {
   _query = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4() {
     var search_expression,
         max_results,
+        foodIDs,
+        foodPromises,
         foods,
-        productPromises,
-        products,
         _args4 = arguments;
     return _regenerator["default"].wrap(function _callee4$(_context4) {
       while (1) {
@@ -202,9 +128,9 @@ function _query() {
             });
 
           case 4:
-            foods = _context4.sent;
+            foodIDs = _context4.sent;
 
-            if (!(foods === [])) {
+            if (!(foodIDs === [])) {
               _context4.next = 7;
               break;
             }
@@ -212,9 +138,9 @@ function _query() {
             return _context4.abrupt("return", []);
 
           case 7:
-            productPromises = foods.map( /*#__PURE__*/function () {
+            foodPromises = foodIDs.map( /*#__PURE__*/function () {
               var _ref3 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(food_id) {
-                var info, nutriments, name, brand, calories, proteins, fats, carbs, product;
+                var info, nutriments, name, brand, calories, proteins, fats, carbs, food;
                 return _regenerator["default"].wrap(function _callee3$(_context3) {
                   while (1) {
                     switch (_context3.prev = _context3.next) {
@@ -249,7 +175,7 @@ function _query() {
                         return _context3.abrupt("return");
 
                       case 13:
-                        product = {
+                        food = {
                           name: name,
                           brand: brand,
                           calories: calories,
@@ -257,7 +183,7 @@ function _query() {
                           fats: fats,
                           carbs: carbs
                         };
-                        return _context3.abrupt("return", product);
+                        return _context3.abrupt("return", food);
 
                       case 15:
                       case "end":
@@ -272,11 +198,11 @@ function _query() {
               };
             }());
             _context4.next = 10;
-            return Promise.all(productPromises);
+            return Promise.all(foodPromises);
 
           case 10:
-            products = _context4.sent;
-            return _context4.abrupt("return", products);
+            foods = _context4.sent;
+            return _context4.abrupt("return", foods);
 
           case 12:
           case "end":
@@ -288,9 +214,6 @@ function _query() {
   return _query.apply(this, arguments);
 }
 
-query('apple', 2).then(function (data) {
-  return console.log(data);
-});
 var _default = {
   query: query
 };

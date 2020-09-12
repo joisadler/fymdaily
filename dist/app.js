@@ -43,6 +43,8 @@ var _logout = _interopRequireDefault(require("./api/auth/logout"));
 
 var _user = _interopRequireDefault(require("./api/user/user.router"));
 
+var _food = _interopRequireDefault(require("./api/food/food.router"));
+
 // api routes
 _mongoose["default"].connect(_db["default"].url, {
   useNewUrlParser: true,
@@ -97,10 +99,11 @@ var shouldCompress = function shouldCompress(req, res) {
 app.use((0, _compression["default"])({
   filter: shouldCompress
 }));
-app.use('/auth/login', (0, _login["default"])(_passport["default"]));
-app.use('auth/signup', (0, _signup["default"])(_passport["default"]));
-app.use('auth/logout', (0, _logout["default"])());
-app.use('/user', _user["default"]);
+app.use('/api/login', (0, _login["default"])(_passport["default"]));
+app.use('/api/signup', (0, _signup["default"])(_passport["default"]));
+app.use('/api/logout', (0, _logout["default"])());
+app.use('/api/user', _user["default"]);
+app.use('/api/food', _food["default"]);
 app.get('/', function (req, res) {
   res.sendFile(_path["default"].join(__dirname, '../public', 'index.html'));
 }); // catch 404 and forward to error handler

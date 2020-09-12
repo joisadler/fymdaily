@@ -17,6 +17,7 @@ import loginRouter from './api/auth/login';
 import signupRouter from './api/auth/signup';
 import logoutRouter from './api/auth/logout';
 import userRouter from './api/user/user.router';
+import foodRouter from './api/food/food.router';
 
 mongoose.connect(dbConfig.url, {
   useNewUrlParser: true,
@@ -75,10 +76,12 @@ const shouldCompress = (req, res) => {
 };
 app.use(compression({ filter: shouldCompress }));
 
-app.use('/auth/login', loginRouter(passport));
-app.use('auth/signup', signupRouter(passport));
-app.use('auth/logout', logoutRouter());
-app.use('/user', userRouter);
+app.use('/api/login', loginRouter(passport));
+app.use('/api/signup', signupRouter(passport));
+app.use('/api/logout', logoutRouter());
+app.use('/api/user', userRouter);
+app.use('/api/food', foodRouter);
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
