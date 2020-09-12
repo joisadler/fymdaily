@@ -45,10 +45,14 @@ var _user = _interopRequireDefault(require("./api/user/user.router"));
 
 var _food = _interopRequireDefault(require("./api/food/food.router"));
 
+var _history = _interopRequireDefault(require("./api/history/history.router"));
+
 // api routes
 _mongoose["default"].connect(_db["default"].url, {
   useNewUrlParser: true,
-  useFindAndModify: false
+  useFindAndModify: false,
+  useUnifiedTopology: true,
+  useCreateIndex: true
 });
 
 var connection = _mongoose["default"].connection;
@@ -104,6 +108,7 @@ app.use('/api/signup', (0, _signup["default"])(_passport["default"]));
 app.use('/api/logout', (0, _logout["default"])());
 app.use('/api/user', _user["default"]);
 app.use('/api/food', _food["default"]);
+app.use('/api/history', _history["default"]);
 app.get('/', function (req, res) {
   res.sendFile(_path["default"].join(__dirname, '../public', 'index.html'));
 }); // catch 404 and forward to error handler

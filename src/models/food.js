@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const findOrCreate = require('mongoose-find-or-create');
+const findOrCreate = require('mongoose-findorcreate');
 
 const FoodSchema = new mongoose.Schema({
   createdBy: { type: String, required: true },

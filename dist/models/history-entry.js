@@ -9,13 +9,12 @@ exports["default"] = void 0;
 
 var _mongoose = _interopRequireDefault(require("mongoose"));
 
-var findOrCreate = require('mongoose-find-or-create');
+var findOrCreate = require('mongoose-findorcreate');
 
 var HistoryEntrySchema = new _mongoose["default"].Schema({
   userId: String,
   date: String,
-  products: [{
-    _id: false,
+  eaten_foods: [{
     name: String,
     brand: String,
     weight: Number,

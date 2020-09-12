@@ -9,7 +9,7 @@ exports["default"] = void 0;
 
 var _mongoose = _interopRequireDefault(require("mongoose"));
 
-var findOrCreate = require('mongoose-find-or-create');
+var findOrCreate = require('mongoose-findorcreate');
 
 var FoodSchema = new _mongoose["default"].Schema({
   createdBy: {
@@ -41,7 +41,7 @@ var FoodSchema = new _mongoose["default"].Schema({
     required: true
   }
 });
-FoodSchema.plugin(findOrCreate); // FoodSchema.findByIdAndRemove({}, (err, doc) => {})
+FoodSchema.plugin(findOrCreate);
 
 var _default = _mongoose["default"].model('Food', FoodSchema);
 

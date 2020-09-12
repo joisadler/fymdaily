@@ -154,7 +154,8 @@ function _query() {
 
 function update(_x4) {
   return _update.apply(this, arguments);
-}
+} // Delete
+
 
 function _update() {
   _update = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(food) {
@@ -200,16 +201,7 @@ function _update() {
 
 function remove(_x5) {
   return _remove.apply(this, arguments);
-} // {
-//   "name": "Apples",
-//   "brand": "",
-//   "calories": 52,
-//   "proteins": 0.256,
-//   "fats": 0.168,
-//   "carbs": 10.392
-// }
-// 5f5cbb517f23b978744dc093
-
+}
 
 function _remove() {
   _remove = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee5(id) {
@@ -218,25 +210,24 @@ function _remove() {
         switch (_context5.prev = _context5.next) {
           case 0:
             _context5.prev = 0;
-            console.log('IIIIIIIDDDDDDDDDDDD: ', id);
-            _context5.next = 4;
+            _context5.next = 3;
             return _food["default"].findByIdAndRemove(id);
 
-          case 4:
-            _context5.next = 9;
+          case 3:
+            _context5.next = 8;
             break;
 
-          case 6:
-            _context5.prev = 6;
+          case 5:
+            _context5.prev = 5;
             _context5.t0 = _context5["catch"](0);
             console.error(_context5.t0);
 
-          case 9:
+          case 8:
           case "end":
             return _context5.stop();
         }
       }
-    }, _callee5, null, [[0, 6]]);
+    }, _callee5, null, [[0, 5]]);
   }));
   return _remove.apply(this, arguments);
 }

@@ -1,13 +1,12 @@
 import mongoose from 'mongoose';
 
-const findOrCreate = require('mongoose-find-or-create');
+const findOrCreate = require('mongoose-findorcreate');
 
 const HistoryEntrySchema = new mongoose.Schema({
   userId: String,
   date: String,
-  products: [
+  eaten_foods: [
     {
-      _id: false,
       name: String,
       brand: String,
       weight: Number,

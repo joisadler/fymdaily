@@ -14,45 +14,46 @@ const isAuthenticated = (req, res, next) => {
 
 export default () => {
   // eslint-disable-next-line no-unused-vars
-  router.get('/', (req, res) => {
-    const id = req.user._id;
-    const { today } = req.query;
-    HistoryEntry.findOrCreate({ userId: id, date: today }, (error, entry) => {
-      if (error) throw error;
-      res.send(entry);
-      res.end();
-    });
-  });
+  // router.get('/', (req, res) => {
+  //   const id = req.user._id;
+  //   const { today } = req.query;
+  //   HistoryEntry.findOrCreate({ userId: id, date: today }, (error, entry) => {
+  //     if (error) throw error;
+  //     res.send(entry);
+  //     res.end();
+  //   });
+  // });
 
-  router.post('/', isAuthenticated, (req, res) => {
-    const id = req.user._id;
-    const { today } = req.query;
-    const newProduct = req.body;
+  // router.post('/', isAuthenticated, (req, res) => {
+  //   const id = req.user._id;
+  //   const { today } = req.query;
+  //   const newProduct = req.body;
 
-    HistoryEntry.findOrCreate({ userId: id, date: today }, (error, entry) => {
-      if (error) throw error;
-      entry.products.push(newProduct);
-      entry.save();
-      res.end();
-    });
-  });
+  //   HistoryEntry.findOrCreate({ userId: id, date: today }, (error, entry) => {
+  //     if (error) throw error;
+  //     entry.products.push(newProduct);
+  //     entry.save();
+  //     res.end();
+  //   });
+  // });
 
-  router.post('/info', isAuthenticated, async (req, res) => {
-    const id = req.user._id;
-    const { today } = req.query;
-    const info = req.body;
+  // router.post('/info', isAuthenticated, async (req, res) => {
+  //   const id = req.user._id;
+  //   const { today } = req.query;
+  //   const info = req.body;
 
-    await HistoryEntry
-      .findOrCreate({ userId: id, date: today }, (error, entry) => {
-        if (error) throw error;
-        entry.info = info;
-        entry.save();
-      });
-    await User.findOneAndUpdate({ _id: id }, info);
-    res.status(204);
-    res.end();
-  });
+  //   await HistoryEntry
+  //     .findOrCreate({ userId: id, date: today }, (error, entry) => {
+  //       if (error) throw error;
+  //       entry.info = info;
+  //       entry.save();
+  //     });
+  //   await User.findOneAndUpdate({ _id: id }, info);
+  //   res.status(204);
+  //   res.end();
+  // });
 
+  // update eaten food
   router.put('/', async (req, res) => {
     const id = req.user._id;
     const { today } = req.query;
@@ -77,6 +78,7 @@ export default () => {
     res.end();
   });
 
+  // delete eaten food
   router.delete('/', async (req, res) => {
     const id = req.user._id;
     const { today } = req.query;
