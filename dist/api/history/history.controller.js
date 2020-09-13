@@ -8,11 +8,9 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 
 var _history = _interopRequireDefault(require("./history.service"));
 
-// Create
 function createHistoryEntry(_x, _x2) {
   return _createHistoryEntry.apply(this, arguments);
-} // Read
-
+}
 
 function _createHistoryEntry() {
   _createHistoryEntry = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
@@ -40,8 +38,7 @@ function _createHistoryEntry() {
 
 function getHistoryEntry(_x3, _x4) {
   return _getHistoryEntry.apply(this, arguments);
-} // Update (add eaten food)
-
+}
 
 function _getHistoryEntry() {
   _getHistoryEntry = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(req, res) {
@@ -67,80 +64,66 @@ function _getHistoryEntry() {
   return _getHistoryEntry.apply(this, arguments);
 }
 
-function addEatenFood(_x5, _x6) {
-  return _addEatenFood.apply(this, arguments);
-} // List
+function getHistoryEntries(_x5, _x6) {
+  return _getHistoryEntries.apply(this, arguments);
+}
 
-
-function _addEatenFood() {
-  _addEatenFood = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(req, res) {
-    var entry;
+function _getHistoryEntries() {
+  _getHistoryEntries = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(req, res) {
+    var createdBy, entries;
     return _regenerator["default"].wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
-            _context3.next = 2;
-            return _history["default"].addFood(req.user._id, req.body.date, req.body.food);
+            createdBy = req.user._id;
+            _context3.next = 3;
+            return _history["default"].query(createdBy);
 
-          case 2:
-            entry = _context3.sent;
-            res.send(entry);
+          case 3:
+            entries = _context3.sent;
+            res.send(entries);
 
-          case 4:
+          case 5:
           case "end":
             return _context3.stop();
         }
       }
     }, _callee3);
   }));
-  return _addEatenFood.apply(this, arguments);
-}
-
-function getHistoryEntries(_x7, _x8) {
   return _getHistoryEntries.apply(this, arguments);
 }
 
-function _getHistoryEntries() {
-  _getHistoryEntries = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(req, res) {
-    var createdBy, entries;
+function addEatenFood(_x7, _x8) {
+  return _addEatenFood.apply(this, arguments);
+}
+
+function _addEatenFood() {
+  _addEatenFood = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(req, res) {
+    var entry;
     return _regenerator["default"].wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
-            createdBy = req.user._id;
-            _context4.next = 3;
-            return _history["default"].query(createdBy);
+            _context4.next = 2;
+            return _history["default"].addFood(req.user._id, req.body.date, req.body.food);
 
-          case 3:
-            entries = _context4.sent;
-            res.send(entries);
+          case 2:
+            entry = _context4.sent;
+            res.send(entry);
 
-          case 5:
+          case 4:
           case "end":
             return _context4.stop();
         }
       }
     }, _callee4);
   }));
-  return _getHistoryEntries.apply(this, arguments);
+  return _addEatenFood.apply(this, arguments);
 }
 
 function updateUserInfo(_x9, _x10) {
   return _updateUserInfo.apply(this, arguments);
-} // // Update
-// async function updateHistoryEntry(req, res) {
-//   const entry = req.body;
-//   await historyService.update(entry);
-//   res.send(entry);
-// }
-// // Delete
-// async function deleteHistoryEntry(req, res) {
-//   await historyService.remove(req.params.id);
-//   return res.send({
-//     message: 'HistoryEntry has been successfully deleted!',
-//   });
-// }
-
+}
 
 function _updateUserInfo() {
   _updateUserInfo = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee5(req, res) {
@@ -166,12 +149,68 @@ function _updateUserInfo() {
   return _updateUserInfo.apply(this, arguments);
 }
 
+function updateEatenFood(_x11, _x12) {
+  return _updateEatenFood.apply(this, arguments);
+}
+
+function _updateEatenFood() {
+  _updateEatenFood = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee6(req, res) {
+    var entry;
+    return _regenerator["default"].wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _context6.next = 2;
+            return _history["default"].updateFood(req.user._id, req.body.date, req.body.food);
+
+          case 2:
+            entry = _context6.sent;
+            res.send(entry);
+
+          case 4:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6);
+  }));
+  return _updateEatenFood.apply(this, arguments);
+}
+
+function deleteEatenFood(_x13, _x14) {
+  return _deleteEatenFood.apply(this, arguments);
+}
+
+function _deleteEatenFood() {
+  _deleteEatenFood = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(req, res) {
+    var entry;
+    return _regenerator["default"].wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            _context7.next = 2;
+            return _history["default"].deleteFood(req.user._id, req.body.date, req.body.food);
+
+          case 2:
+            entry = _context7.sent;
+            res.send(entry);
+
+          case 4:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7);
+  }));
+  return _deleteEatenFood.apply(this, arguments);
+}
+
 module.exports = {
   createHistoryEntry: createHistoryEntry,
   getHistoryEntry: getHistoryEntry,
   getHistoryEntries: getHistoryEntries,
   addEatenFood: addEatenFood,
-  updateUserInfo: updateUserInfo // updateEatenFood,
-  // deleteEatenFood,
-
+  updateUserInfo: updateUserInfo,
+  updateEatenFood: updateEatenFood,
+  deleteEatenFood: deleteEatenFood
 };

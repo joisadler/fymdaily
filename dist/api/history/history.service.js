@@ -15,10 +15,10 @@ var _historyEntry = _interopRequireDefault(require("../../models/history-entry")
 
 var _user = _interopRequireDefault(require("../../models/user"));
 
-// Create
+// Create history entry
 function create(_x) {
   return _create.apply(this, arguments);
-} // Read
+} // Read users history entry by date
 
 
 function _create() {
@@ -93,7 +93,7 @@ function _getById() {
 
 function addFood(_x4, _x5, _x6) {
   return _addFood.apply(this, arguments);
-} // Update (update user info)
+} // Update user info
 
 
 function _addFood() {
@@ -134,21 +134,7 @@ function _addFood() {
 
 function updateInfo(_x7, _x8, _x9) {
   return _updateInfo.apply(this, arguments);
-} // router.post('/info', isAuthenticated, async (req, res) => {
-//   const id = req.user._id;
-//   const { today } = req.query;
-//   const info = req.body;
-//   await HistoryEntry
-//     .findOrCreate({ userId: id, date: today }, (error, entry) => {
-//       if (error) throw error;
-//       entry.info = info;
-//       entry.save();
-//     });
-//   await User.findOneAndUpdate({ _id: id }, info);
-//   res.status(204);
-//   res.end();
-// });
-// List
+} // Update eaten food
 
 
 function _updateInfo() {
@@ -175,57 +161,142 @@ function _updateInfo() {
             }, info);
 
           case 8:
-            console.log('ENTRY:', entry);
             return _context4.abrupt("return", entry);
 
-          case 12:
-            _context4.prev = 12;
+          case 11:
+            _context4.prev = 11;
             _context4.t0 = _context4["catch"](0);
             console.log('ERROR: while updating info');
             throw _context4.t0;
 
-          case 16:
+          case 15:
           case "end":
             return _context4.stop();
         }
       }
-    }, _callee4, null, [[0, 12]]);
+    }, _callee4, null, [[0, 11]]);
   }));
   return _updateInfo.apply(this, arguments);
 }
 
-function query(_x10) {
-  return _query.apply(this, arguments);
-}
+function updateFood(_x10, _x11, _x12) {
+  return _updateFood.apply(this, arguments);
+} // Delete eaten food
 
-function _query() {
-  _query = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee5(userId) {
-    var entries;
+
+function _updateFood() {
+  _updateFood = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee5(userId, date, food) {
+    var weight, _id, entry, eaten_foods, updatedFoods;
+
     return _regenerator["default"].wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
-            _context5.prev = 0;
+            weight = food.weight, _id = food._id;
             _context5.next = 3;
-            return _historyEntry["default"].find({
-              userId: userId
+            return _historyEntry["default"].findOne({
+              userId: userId,
+              date: date
             });
 
           case 3:
-            entries = _context5.sent;
-            return _context5.abrupt("return", entries);
-
-          case 7:
-            _context5.prev = 7;
-            _context5.t0 = _context5["catch"](0);
-            console.log("ERROR: while finding entries of user ".concat(userId));
+            entry = _context5.sent;
+            eaten_foods = entry.eaten_foods;
+            updatedFoods = eaten_foods.slice();
+            updatedFoods.forEach(function (f) {
+              if (String(f._id) === _id) {
+                f.weight = weight;
+              }
+            });
+            entry.eaten_foods = updatedFoods;
+            entry.save();
+            return _context5.abrupt("return", entry);
 
           case 10:
           case "end":
             return _context5.stop();
         }
       }
-    }, _callee5, null, [[0, 7]]);
+    }, _callee5);
+  }));
+  return _updateFood.apply(this, arguments);
+}
+
+function deleteFood(_x13, _x14, _x15) {
+  return _deleteFood.apply(this, arguments);
+} // List of all history entries of the user
+
+
+function _deleteFood() {
+  _deleteFood = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee6(userId, date, food) {
+    var _id, entry, eaten_foods, updatedFoods;
+
+    return _regenerator["default"].wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            _id = food._id;
+            _context6.next = 3;
+            return _historyEntry["default"].findOne({
+              userId: userId,
+              date: date
+            });
+
+          case 3:
+            entry = _context6.sent;
+            eaten_foods = entry.eaten_foods;
+            updatedFoods = eaten_foods.slice();
+            updatedFoods.forEach(function (f, i, arr) {
+              if (String(f._id) === _id) {
+                arr.splice(i, 1);
+              }
+            });
+            entry.eaten_foods = updatedFoods;
+            entry.save();
+            return _context6.abrupt("return", entry);
+
+          case 10:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6);
+  }));
+  return _deleteFood.apply(this, arguments);
+}
+
+function query(_x16) {
+  return _query.apply(this, arguments);
+}
+
+function _query() {
+  _query = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee7(userId) {
+    var entries;
+    return _regenerator["default"].wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            _context7.prev = 0;
+            _context7.next = 3;
+            return _historyEntry["default"].find({
+              userId: userId
+            });
+
+          case 3:
+            entries = _context7.sent;
+            return _context7.abrupt("return", entries);
+
+          case 7:
+            _context7.prev = 7;
+            _context7.t0 = _context7["catch"](0);
+            console.log("ERROR: while finding entries of user ".concat(userId));
+
+          case 10:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7, null, [[0, 7]]);
   }));
   return _query.apply(this, arguments);
 }
@@ -235,7 +306,8 @@ var _default = {
   getById: getById,
   addFood: addFood,
   updateInfo: updateInfo,
-  // remove,
+  updateFood: updateFood,
+  deleteFood: deleteFood,
   query: query
 };
 exports["default"] = _default;

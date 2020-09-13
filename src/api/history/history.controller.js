@@ -1,18 +1,21 @@
 import historyService from './history.service';
 
-// Create
 async function createHistoryEntry(req, res) {
   const entry = await historyService.create(req.body);
   res.send(entry);
 }
 
-// Read
 async function getHistoryEntry(req, res) {
   const entry = await historyService.getById(req.params.id, req.body.date);
   res.send(entry);
 }
 
-// Update (add eaten food)
+async function getHistoryEntries(req, res) {
+  const createdBy = req.user._id;
+  const entries = await historyService.query(createdBy);
+  res.send(entries);
+}
+
 async function addEatenFood(req, res) {
   const entry = await historyService.addFood(
     req.user._id,
@@ -20,13 +23,6 @@ async function addEatenFood(req, res) {
     req.body.food,
   );
   res.send(entry);
-}
-
-// List
-async function getHistoryEntries(req, res) {
-  const createdBy = req.user._id;
-  const entries = await historyService.query(createdBy);
-  res.send(entries);
 }
 
 async function updateUserInfo(req, res) {
@@ -38,20 +34,23 @@ async function updateUserInfo(req, res) {
   res.send(entry);
 }
 
-// // Update
-// async function updateHistoryEntry(req, res) {
-//   const entry = req.body;
-//   await historyService.update(entry);
-//   res.send(entry);
-// }
+async function updateEatenFood(req, res) {
+  const entry = await historyService.updateFood(
+    req.user._id,
+    req.body.date,
+    req.body.food,
+  );
+  res.send(entry);
+}
 
-// // Delete
-// async function deleteHistoryEntry(req, res) {
-//   await historyService.remove(req.params.id);
-//   return res.send({
-//     message: 'HistoryEntry has been successfully deleted!',
-//   });
-// }
+async function deleteEatenFood(req, res) {
+  const entry = await historyService.deleteFood(
+    req.user._id,
+    req.body.date,
+    req.body.food,
+  );
+  res.send(entry);
+}
 
 module.exports = {
   createHistoryEntry,
@@ -59,6 +58,6 @@ module.exports = {
   getHistoryEntries,
   addEatenFood,
   updateUserInfo,
-  // updateEatenFood,
-  // deleteEatenFood,
+  updateEatenFood,
+  deleteEatenFood,
 };

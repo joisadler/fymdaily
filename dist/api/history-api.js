@@ -63,10 +63,31 @@ var _default = function _default() {
   //   res.status(204);
   //   res.end();
   // });
-  // update eaten food
-  router.put('/', /*#__PURE__*/function () {
+  // // update eaten food
+  // router.put('/', async (req, res) => {
+  //   const id = req.user._id;
+  //   const { today } = req.query;
+  //   const position = Number(req.query.position);
+  //   const weight = Number(req.query.weight);
+  //   const entry = await HistoryEntry.findOne({ userId: id, date: today });
+  //   const { products } = entry;
+  //   const updatedProducts = products.slice(0);
+  //   updatedProducts.forEach((p, i) => {
+  //     if (i === position) {
+  //       p.weight = weight;
+  //     }
+  //   });
+  //   await HistoryEntry.findOneAndUpdate({
+  //     userId: id,
+  //     date: today
+  //   }, { products: updatedProducts });
+  //   res.status(204);
+  //   res.end();
+  // });
+  // delete eaten food
+  router["delete"]('/', /*#__PURE__*/function () {
     var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
-      var id, today, position, weight, entry, products, updatedProducts;
+      var id, today, position, entry, products, updatedProducts;
       return _regenerator["default"].wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -74,70 +95,20 @@ var _default = function _default() {
               id = req.user._id;
               today = req.query.today;
               position = Number(req.query.position);
-              weight = Number(req.query.weight);
-              _context.next = 6;
-              return _historyEntry["default"].findOne({
-                userId: id,
-                date: today
-              });
-
-            case 6:
-              entry = _context.sent;
-              products = entry.products;
-              updatedProducts = products.slice(0);
-              updatedProducts.forEach(function (p, i) {
-                if (i === position) {
-                  p.weight = weight;
-                }
-              });
-              _context.next = 12;
-              return _historyEntry["default"].findOneAndUpdate({
-                userId: id,
-                date: today
-              }, {
-                products: updatedProducts
-              });
-
-            case 12:
-              res.status(204);
-              res.end();
-
-            case 14:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-
-    return function (_x, _x2) {
-      return _ref.apply(this, arguments);
-    };
-  }());
-  router["delete"]('/', /*#__PURE__*/function () {
-    var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(req, res) {
-      var id, today, position, entry, products, updatedProducts;
-      return _regenerator["default"].wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              id = req.user._id;
-              today = req.query.today;
-              position = Number(req.query.position);
-              _context2.next = 5;
+              _context.next = 5;
               return _historyEntry["default"].findOne({
                 userId: id,
                 date: today
               });
 
             case 5:
-              entry = _context2.sent;
+              entry = _context.sent;
               products = entry.products;
               updatedProducts = products.slice(0);
               updatedProducts.forEach(function (p, i, arr) {
                 if (i === position) arr.splice(i, 1);
               });
-              _context2.next = 11;
+              _context.next = 11;
               return _historyEntry["default"].findOneAndUpdate({
                 userId: id,
                 date: today
@@ -151,14 +122,14 @@ var _default = function _default() {
 
             case 13:
             case "end":
-              return _context2.stop();
+              return _context.stop();
           }
         }
-      }, _callee2);
+      }, _callee);
     }));
 
-    return function (_x3, _x4) {
-      return _ref2.apply(this, arguments);
+    return function (_x, _x2) {
+      return _ref.apply(this, arguments);
     };
   }());
   return router;

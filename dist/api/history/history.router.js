@@ -15,8 +15,8 @@ var isAuthenticated = function isAuthenticated(req, res, next) {
 router.get('/', isAuthenticated, _history.getHistoryEntries);
 router.get('/:id', isAuthenticated, _history.getHistoryEntry);
 router.post('/', isAuthenticated, _history.createHistoryEntry);
-router.put('/food', isAuthenticated, _history.addEatenFood);
-router.put('/info', isAuthenticated, _history.updateUserInfo); // router.put('/', isAuthenticated, updateHistoryEntry);
-// router.delete('/:id', isAuthenticated, deleteHistoryEntry);
-
+router.put('/info', isAuthenticated, _history.updateUserInfo);
+router.post('/food', isAuthenticated, _history.addEatenFood);
+router.put('/food', isAuthenticated, _history.updateEatenFood);
+router["delete"]('/food', isAuthenticated, _history.deleteEatenFood);
 module.exports = router;

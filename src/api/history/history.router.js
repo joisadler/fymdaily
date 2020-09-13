@@ -6,8 +6,8 @@ import {
   getHistoryEntries,
   addEatenFood,
   updateUserInfo,
-  // updateEatenFood,
-  // deleteEatenFood,
+  updateEatenFood,
+  deleteEatenFood,
 } from './history.controller';
 
 const router = express.Router();
@@ -19,9 +19,9 @@ const isAuthenticated = (req, res, next) => {
 router.get('/', isAuthenticated, getHistoryEntries);
 router.get('/:id', isAuthenticated, getHistoryEntry);
 router.post('/', isAuthenticated, createHistoryEntry);
-router.put('/food', isAuthenticated, addEatenFood);
 router.put('/info', isAuthenticated, updateUserInfo);
-// router.put('/', isAuthenticated, updateHistoryEntry);
-// router.delete('/:id', isAuthenticated, deleteHistoryEntry);
+router.post('/food', isAuthenticated, addEatenFood);
+router.put('/food', isAuthenticated, updateEatenFood);
+router.delete('/food', isAuthenticated, deleteEatenFood);
 
 module.exports = router;
