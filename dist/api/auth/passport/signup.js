@@ -39,6 +39,7 @@ var _default = function _default(passport) {
 
         if (user) {
           return done(null, false, {
+            user: null,
             message: 'User with this Email already exists!'
           });
         } // find a user in Mongo with provided username
@@ -84,10 +85,8 @@ var _default = function _default(passport) {
             }
 
             console.log('User Registration succesful!');
-          });
-          return done(null, {
-            user: newUser
-          });
+            return done(null, newUser);
+          }); // return done(null, newUser);
         });
 
         return null;
