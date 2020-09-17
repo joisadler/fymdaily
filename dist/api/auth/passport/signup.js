@@ -39,7 +39,7 @@ var _default = function _default(passport) {
 
         if (user) {
           return done(null, false, {
-            message: 'User with this Email already exists'
+            message: 'User with this Email already exists!'
           });
         } // find a user in Mongo with provided username
 
@@ -55,7 +55,8 @@ var _default = function _default(passport) {
 
           if (usr) {
             return done(null, false, {
-              message: 'This username is already in use'
+              user: null,
+              message: 'This username is already in use!'
             });
           }
 
@@ -63,7 +64,8 @@ var _default = function _default(passport) {
 
           if (confirmPassword !== password) {
             return done(null, false, {
-              message: 'Your password and confirmation password do not match'
+              user: null,
+              message: 'Your password and confirmation password do not match!'
             });
           } // if there is no user with that email and username
           // create the user
@@ -81,9 +83,11 @@ var _default = function _default(passport) {
               throw error;
             }
 
-            console.log('User Registration succesful');
+            console.log('User Registration succesful!');
           });
-          return done(null, newUser);
+          return done(null, {
+            user: newUser
+          });
         });
 
         return null;

@@ -14,23 +14,10 @@ var _nodemailer = _interopRequireDefault(require("nodemailer"));
 var router = _express["default"].Router();
 
 var _default = function _default(passport) {
-  // router.get('/', (req, res) => {
-  //   res.render('signup', { message: req.flash('message') });
-  // });
   router.post('/', function (req, res, next) {
-    // eslint-disable-next-line consistent-return
     passport.authenticate('signup', function (err, user, info) {
       if (err) return next(err);
-      if (info) return res.send(info); // if (!user) {
-      //   return res.render('signup', {
-      //     username: req.body.username,
-      //     email: req.body.email,
-      //     password: req.body.password,
-      //     confirmPassword: req.body.confirmPassword,
-      //     message: req.flash('message'),
-      //   });
-      // }
-
+      if (info) return res.send(info);
       req.logIn(user, function (error) {
         if (error) return next(error);
         var _process$env = process.env,
@@ -61,9 +48,7 @@ var _default = function _default(passport) {
           if (er) {
             r.send(er);
           }
-        }); // return res.redirect('/user-info');
-        // return res.send(user);
-
+        });
         return res.send({
           user: user,
           message: 'User Created Successfully!'

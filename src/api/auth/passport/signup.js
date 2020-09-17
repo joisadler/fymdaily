@@ -28,7 +28,7 @@ export default (passport) => {
             return done(
               null,
               false,
-              { message: 'User with this Email already exists' },
+              { message: 'User with this Email already exists!' },
             );
           }
           // find a user in Mongo with provided username
