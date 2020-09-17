@@ -131,15 +131,14 @@ function _addUser() {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
-            console.log(req.body);
             user = req.body;
-            _context5.next = 4;
+            _context5.next = 3;
             return _user["default"].add(user);
 
-          case 4:
+          case 3:
             res.send(user);
 
-          case 5:
+          case 4:
           case "end":
             return _context5.stop();
         }

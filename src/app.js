@@ -79,9 +79,9 @@ const shouldCompress = (req, res) => {
 };
 app.use(compression({ filter: shouldCompress }));
 
-app.use('/api/login', loginRouter(passport));
-app.use('/api/signup', signupRouter(passport));
-app.use('/api/logout', logoutRouter());
+app.use('/api/auth/login', loginRouter(passport));
+app.use('/api/auth/signup', signupRouter(passport));
+app.use('/api/auth/logout', logoutRouter());
 app.use('/api/user', userRouter);
 app.use('/api/food', foodRouter);
 app.use('/api/history', historyRouter);

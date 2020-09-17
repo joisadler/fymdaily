@@ -42,7 +42,7 @@ export default (passport) => {
               return done(
                 null,
                 false,
-                { message: 'This username is already in use' },
+                { user: null, message: 'This username is already in use' },
               );
             }
             const { confirmPassword } = req.body;
@@ -51,6 +51,7 @@ export default (passport) => {
                 null,
                 false,
                 {
+                  user: null,
                   message:
                   'Your password and confirmation password do not match',
                 },
@@ -71,7 +72,7 @@ export default (passport) => {
               }
               console.log('User Registration succesful');
             });
-            return done(null, newUser);
+            return done(null, { user: newUser });
           });
           return null;
         });

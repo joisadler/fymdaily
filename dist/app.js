@@ -103,9 +103,9 @@ var shouldCompress = function shouldCompress(req, res) {
 app.use((0, _compression["default"])({
   filter: shouldCompress
 }));
-app.use('/api/login', (0, _login["default"])(_passport["default"]));
-app.use('/api/signup', (0, _signup["default"])(_passport["default"]));
-app.use('/api/logout', (0, _logout["default"])());
+app.use('/api/auth/login', (0, _login["default"])(_passport["default"]));
+app.use('/api/auth/signup', (0, _signup["default"])(_passport["default"]));
+app.use('/api/auth/logout', (0, _logout["default"])());
 app.use('/api/user', _user["default"]);
 app.use('/api/food', _food["default"]);
 app.use('/api/history', _history["default"]);
