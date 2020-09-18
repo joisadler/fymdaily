@@ -16,7 +16,7 @@ var _default = function _default() {
     req.logout();
     res.send({
       message: 'Logged Out Succsessfully'
-    }); // res.redirect('/');
+    });
   });
   return router;
 };

@@ -24,7 +24,6 @@ var _default = function _default(passport) {
     passReqToCallback: true,
     usernameField: 'usernameOrEmail'
   }, function (req, usernameOrEmail, password, done) {
-    // console.log(usernameOrEmail, password)
     _user["default"].findOne({
       email: usernameOrEmail
     }, function (error, user) {
@@ -50,6 +49,8 @@ var _default = function _default(passport) {
             });
           }
 
+          usr = usr.toObject();
+          delete usr.password;
           return done(null, usr);
         });
       } else if (!isValidPassword(user, password)) {
@@ -57,9 +58,11 @@ var _default = function _default(passport) {
           user: null,
           message: 'Invalid Password!'
         });
-      } else return done(null, {
-        user: user
-      });
+      } else {
+        user = user.toObject();
+        delete user.password;
+        return done(null, user);
+      }
 
       return null;
     });

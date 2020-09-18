@@ -31,6 +31,8 @@ export default (passport) => {
                 message: 'Invalid Password!',
               });
             }
+            usr = usr.toObject();
+            delete usr.password;
             return done(null, usr);
           });
         } else if (!isValidPassword(user, password)) {
@@ -38,7 +40,11 @@ export default (passport) => {
             user: null,
             message: 'Invalid Password!',
           });
-        } else return done(null, { user });
+        } else {
+          user = user.toObject();
+          delete user.password;
+          return done(null, user);
+        }
         return null;
       });
     },

@@ -71,7 +71,9 @@ export default (passport) => {
                 throw error;
               }
               console.log('User Registration succesful!');
-              return done(null, newUser);
+              const clearUser = newUser.toObject();
+              delete clearUser.password;
+              return done(null, clearUser);
             });
           });
           return null;

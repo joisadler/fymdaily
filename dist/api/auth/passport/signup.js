@@ -85,8 +85,10 @@ var _default = function _default(passport) {
             }
 
             console.log('User Registration succesful!');
-            return done(null, newUser);
-          }); // return done(null, newUser);
+            var clearUser = newUser.toObject();
+            delete clearUser.password;
+            return done(null, clearUser);
+          });
         });
 
         return null;

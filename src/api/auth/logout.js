@@ -6,7 +6,6 @@ export default () => {
   router.get('/', (req, res) => {
     req.logout();
     res.send({ message: 'Logged Out Succsessfully' });
-    // res.redirect('/');
   });
   return router;
 };
