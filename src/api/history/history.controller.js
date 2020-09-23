@@ -6,7 +6,7 @@ async function createHistoryEntry(req, res) {
 }
 
 async function getHistoryEntry(req, res) {
-  const entry = await historyService.getById(req.params.id, req.body.date);
+  const entry = await historyService.getById(req.params.id, req.query.date);
   res.send(entry);
 }
 

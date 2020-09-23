@@ -9,6 +9,8 @@ var _history = require("./history.controller");
 var router = _express["default"].Router();
 
 var isAuthenticated = function isAuthenticated(req, res, next) {
+  // console.log('req.user:', req.user, 'req.isAuthenticated:', req.isAuthenticated())
+  // return next();
   if (req.isAuthenticated()) return next();
 };
 

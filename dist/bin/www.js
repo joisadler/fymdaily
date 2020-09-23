@@ -60,6 +60,7 @@ var onListening = function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string' ? "pipe ".concat(addr) : "port ".concat(addr.port);
   debug("Listening on ".concat(bind));
+  console.log("Listening on ".concat(bind));
 };
 
 console.log("NODE_ENV: ".concat(process.env.NODE_ENV));

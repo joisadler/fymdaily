@@ -13,6 +13,8 @@ import {
 const router = express.Router();
 
 const isAuthenticated = (req, res, next) => {
+  // console.log('req.user:', req.user, 'req.isAuthenticated:', req.isAuthenticated())
+  // return next();
   if (req.isAuthenticated()) return next();
 };
 

@@ -12,7 +12,7 @@ var _express = _interopRequireDefault(require("express"));
 var router = _express["default"].Router();
 
 var _default = function _default() {
-  router.get('/', function (req, res) {
+  router.post('/', function (req, res) {
     req.logout();
     res.send({
       message: 'Logged Out Succsessfully'

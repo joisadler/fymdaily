@@ -47,6 +47,7 @@ var _food = _interopRequireDefault(require("./api/food/food.router"));
 
 var _history = _interopRequireDefault(require("./api/history/history.router"));
 
+// import bodyParser from 'body-parser';
 // api routes
 _mongoose["default"].connect(_db["default"].url, {
   useNewUrlParser: true,
@@ -88,28 +89,24 @@ app.use((0, _helmet["default"])({
   }
 }));
 app.use((0, _cors["default"])({
-  origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000', 'http://192.168.0.15:3000'],
+  origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000', 'http://192.168.0.6:3000'],
   credentials: true
-}));
+})); // const shouldCompress = (req, res) => {
+//   if (req.headers['x-no-compression']) {
+//     return false;
+//   }
+//   return compression.filter(req, res);
+// };
+// app.use(compression({ filter: shouldCompress }));
 
-var shouldCompress = function shouldCompress(req, res) {
-  if (req.headers['x-no-compression']) {
-    return false;
-  }
-
-  return _compression["default"].filter(req, res);
-};
-
-app.use((0, _compression["default"])({
-  filter: shouldCompress
-}));
+app.use((0, _compression["default"])());
 app.use('/api/auth/login', (0, _login["default"])(_passport["default"]));
 app.use('/api/auth/signup', (0, _signup["default"])(_passport["default"]));
 app.use('/api/auth/logout', (0, _logout["default"])());
 app.use('/api/user', _user["default"]);
 app.use('/api/food', _food["default"]);
 app.use('/api/history', _history["default"]);
-app.get('/', function (req, res) {
+app.get('/*', function (req, res) {
   res.sendFile(_path["default"].join(__dirname, '../public', 'index.html'));
 }); // catch 404 and forward to error handler
 

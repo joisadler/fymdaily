@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
+// import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import mongoose from 'mongoose';
@@ -66,18 +67,20 @@ app.use(cors({
     'http://localhost:8080',
     'http://127.0.0.1:3000',
     'http://localhost:3000',
-    'http://192.168.0.15:3000',
+    'http://192.168.0.6:3000',
+
   ],
   credentials: true,
 }));
 
-const shouldCompress = (req, res) => {
-  if (req.headers['x-no-compression']) {
-    return false;
-  }
-  return compression.filter(req, res);
-};
-app.use(compression({ filter: shouldCompress }));
+// const shouldCompress = (req, res) => {
+//   if (req.headers['x-no-compression']) {
+//     return false;
+//   }
+//   return compression.filter(req, res);
+// };
+// app.use(compression({ filter: shouldCompress }));
+app.use(compression());
 
 app.use('/api/auth/login', loginRouter(passport));
 app.use('/api/auth/signup', signupRouter(passport));
@@ -86,7 +89,7 @@ app.use('/api/user', userRouter);
 app.use('/api/food', foodRouter);
 app.use('/api/history', historyRouter);
 
-app.get('/', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
