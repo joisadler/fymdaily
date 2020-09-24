@@ -50,7 +50,7 @@ async function query(createdBy, name = '') {
     const foods = [...foodsCreatedByUser, ...foodsFromFatSecretAPI];
     return foods;
   } catch (err) {
-    console.log('ERROR: cannot find users');
+    console.log('ERROR: cannot find food');
     throw err;
   }
 }

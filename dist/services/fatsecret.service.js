@@ -32,40 +32,43 @@ var _searchFoods = /*#__PURE__*/function () {
 
           case 3:
             response = _context.sent;
-            foods = response.foods.food;
 
-            if (foods) {
+            if (!response.error) {
               _context.next = 7;
               break;
             }
 
+            console.log(response.error);
             return _context.abrupt("return", []);
 
           case 7:
+            foods = response.foods.food;
+
             if (Array.isArray(foods)) {
-              _context.next = 9;
+              _context.next = 10;
               break;
             }
 
             return _context.abrupt("return", [foods.food_id]);
 
-          case 9:
+          case 10:
             return _context.abrupt("return", foods.map(function (food) {
               return food.food_id;
             }));
 
-          case 12:
-            _context.prev = 12;
+          case 13:
+            _context.prev = 13;
             _context.t0 = _context["catch"](0);
             console.log('ERROR: can not search foods');
+            console.error(_context.t0);
             throw _context.t0;
 
-          case 16:
+          case 18:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 12]]);
+    }, _callee, null, [[0, 13]]);
   }));
 
   return function _searchFoods(_x) {
@@ -120,24 +123,25 @@ function _query() {
         switch (_context4.prev = _context4.next) {
           case 0:
             search_expression = _args4.length > 0 && _args4[0] !== undefined ? _args4[0] : '';
-            max_results = _args4.length > 1 && _args4[1] !== undefined ? _args4[1] : 50;
-            _context4.next = 4;
+            max_results = _args4.length > 1 && _args4[1] !== undefined ? _args4[1] : 10;
+            _context4.prev = 2;
+            _context4.next = 5;
             return _searchFoods({
               search_expression: search_expression,
               max_results: max_results
             });
 
-          case 4:
+          case 5:
             foodIDs = _context4.sent;
 
-            if (!(foodIDs === [])) {
-              _context4.next = 7;
+            if (!(!foodIDs || foodIDs === [])) {
+              _context4.next = 8;
               break;
             }
 
-            return _context4.abrupt("return", []);
+            return _context4.abrupt("return", {});
 
-          case 7:
+          case 8:
             foodPromises = foodIDs.map( /*#__PURE__*/function () {
               var _ref3 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(food_id) {
                 var info, nutriments, name, brand, calories, proteins, fats, carbs, food;
@@ -152,6 +156,15 @@ function _query() {
 
                       case 2:
                         info = _context3.sent;
+
+                        if (info.food) {
+                          _context3.next = 5;
+                          break;
+                        }
+
+                        return _context3.abrupt("return", null);
+
+                      case 5:
                         nutriments = Array.isArray(info.food.servings.serving) ? info.food.servings.serving[0] : info.food.servings.serving;
                         name = info.food.food_name;
                         brand = info.food.brand_name || '';
@@ -168,13 +181,13 @@ function _query() {
                         }
 
                         if (!(isNaN(calories) || isNaN(proteins) || isNaN(fats) || isNaN(carbs))) {
-                          _context3.next = 13;
+                          _context3.next = 15;
                           break;
                         }
 
                         return _context3.abrupt("return");
 
-                      case 13:
+                      case 15:
                         food = {
                           name: name,
                           brand: brand,
@@ -185,7 +198,7 @@ function _query() {
                         };
                         return _context3.abrupt("return", food);
 
-                      case 15:
+                      case 17:
                       case "end":
                         return _context3.stop();
                     }
@@ -197,19 +210,27 @@ function _query() {
                 return _ref3.apply(this, arguments);
               };
             }());
-            _context4.next = 10;
+            _context4.next = 11;
             return Promise.all(foodPromises);
 
-          case 10:
+          case 11:
             foods = _context4.sent;
-            return _context4.abrupt("return", foods);
+            return _context4.abrupt("return", foods.filter(function (food) {
+              return food;
+            }));
 
-          case 12:
+          case 15:
+            _context4.prev = 15;
+            _context4.t0 = _context4["catch"](2);
+            console.log('ERROR: can not query');
+            throw _context4.t0;
+
+          case 19:
           case "end":
             return _context4.stop();
         }
       }
-    }, _callee4);
+    }, _callee4, null, [[2, 15]]);
   }));
   return _query.apply(this, arguments);
 }

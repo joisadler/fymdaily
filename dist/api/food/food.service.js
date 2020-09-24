@@ -139,7 +139,7 @@ function _query() {
           case 13:
             _context3.prev = 13;
             _context3.t0 = _context3["catch"](1);
-            console.log('ERROR: cannot find users');
+            console.log('ERROR: cannot find food');
             throw _context3.t0;
 
           case 17:

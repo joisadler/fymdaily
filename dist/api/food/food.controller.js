@@ -90,7 +90,7 @@ function _getFoods() {
           case 0:
             createdBy = req.user._id;
             _context3.next = 3;
-            return _food["default"].query(createdBy, req.body.name);
+            return _food["default"].query(createdBy, req.query.name);
 
           case 3:
             foods = _context3.sent;
