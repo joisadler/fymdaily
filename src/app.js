@@ -73,13 +73,6 @@ app.use(cors({
   credentials: true,
 }));
 
-// const shouldCompress = (req, res) => {
-//   if (req.headers['x-no-compression']) {
-//     return false;
-//   }
-//   return compression.filter(req, res);
-// };
-// app.use(compression({ filter: shouldCompress }));
 app.use(compression());
 
 app.use('/api/auth/login', loginRouter(passport));

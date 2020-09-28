@@ -91,14 +91,7 @@ app.use((0, _helmet["default"])({
 app.use((0, _cors["default"])({
   origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000', 'http://192.168.0.6:3000'],
   credentials: true
-})); // const shouldCompress = (req, res) => {
-//   if (req.headers['x-no-compression']) {
-//     return false;
-//   }
-//   return compression.filter(req, res);
-// };
-// app.use(compression({ filter: shouldCompress }));
-
+}));
 app.use((0, _compression["default"])());
 app.use('/api/auth/login', (0, _login["default"])(_passport["default"]));
 app.use('/api/auth/signup', (0, _signup["default"])(_passport["default"]));

@@ -13,7 +13,6 @@ var router = _express["default"].Router();
 
 var _default = function _default(passport) {
   router.post('/', function (req, res, next) {
-    console.log('req.body: ', req.body);
     passport.authenticate('login', function (err, user, info) {
       if (err) return next(err);
       if (info) return res.send(info);
