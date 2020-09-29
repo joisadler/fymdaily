@@ -108,6 +108,7 @@ function query(_x3) {
 function _query() {
   _query = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(createdBy) {
     var name,
+        custom,
         queryParams,
         foodsCreatedByUser,
         foodsFromFatSecretAPI,
@@ -118,36 +119,47 @@ function _query() {
         switch (_context3.prev = _context3.next) {
           case 0:
             name = _args3.length > 1 && _args3[1] !== undefined ? _args3[1] : '';
-            _context3.prev = 1;
+            custom = _args3.length > 2 && _args3[2] !== undefined ? _args3[2] : false;
+            console.log(custom);
+            _context3.prev = 3;
             queryParams = {
               createdBy: createdBy,
               name: new RegExp("".concat(name.trim()), 'i')
             };
-            _context3.next = 5;
+            _context3.next = 7;
             return _food["default"].find(queryParams);
 
-          case 5:
+          case 7:
             foodsCreatedByUser = _context3.sent;
-            _context3.next = 8;
+
+            if (!custom) {
+              _context3.next = 10;
+              break;
+            }
+
+            return _context3.abrupt("return", (0, _toConsumableArray2["default"])(foodsCreatedByUser));
+
+          case 10:
+            _context3.next = 12;
             return _fatsecret["default"].query(name);
 
-          case 8:
+          case 12:
             foodsFromFatSecretAPI = _context3.sent;
             foods = [].concat((0, _toConsumableArray2["default"])(foodsCreatedByUser), (0, _toConsumableArray2["default"])(foodsFromFatSecretAPI));
             return _context3.abrupt("return", foods);
 
-          case 13:
-            _context3.prev = 13;
-            _context3.t0 = _context3["catch"](1);
+          case 17:
+            _context3.prev = 17;
+            _context3.t0 = _context3["catch"](3);
             console.log('ERROR: cannot find food');
             throw _context3.t0;
 
-          case 17:
+          case 21:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[1, 13]]);
+    }, _callee3, null, [[3, 17]]);
   }));
   return _query.apply(this, arguments);
 }

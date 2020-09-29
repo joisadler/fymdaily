@@ -39,13 +39,15 @@ async function getById(_id) {
 }
 
 // List
-async function query(createdBy, name = '') {
+async function query(createdBy, name = '', custom = false) {
+  console.log(custom)
   try {
     const queryParams = {
       createdBy,
       name: new RegExp(`${name.trim()}`, 'i'),
     };
     const foodsCreatedByUser = await Food.find(queryParams);
+    if (custom) return [...foodsCreatedByUser];
     const foodsFromFatSecretAPI = await fatsecretService.query(name);
     const foods = [...foodsCreatedByUser, ...foodsFromFatSecretAPI];
     return foods;

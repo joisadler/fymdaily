@@ -20,7 +20,11 @@ async function getFood(req, res) {
 // List
 async function getFoods(req, res) {
   const createdBy = req.user._id;
-  const foods = await foodService.query(createdBy, req.query.name);
+  const foods = await foodService.query(
+    createdBy,
+    req.query.name,
+    req.query.custom,
+  );
   res.send(foods);
 }
 
