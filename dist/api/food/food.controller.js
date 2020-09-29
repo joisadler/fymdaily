@@ -22,7 +22,7 @@ function addFood(_x, _x2) {
 
 function _addFood() {
   _addFood = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
-    var createdBy, food;
+    var createdBy, food, newFood;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -35,9 +35,10 @@ function _addFood() {
             return _food["default"].add(food);
 
           case 4:
-            res.send(food);
+            newFood = _context.sent;
+            res.send(newFood);
 
-          case 5:
+          case 6:
           case "end":
             return _context.stop();
         }

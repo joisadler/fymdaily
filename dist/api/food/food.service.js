@@ -25,7 +25,7 @@ function add(_x) {
 
 function _add() {
   _add = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(food) {
-    var name, brand, createdBy, calories, proteins, fats, carbs;
+    var name, brand, createdBy, calories, proteins, fats, carbs, newFood;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -46,20 +46,20 @@ function _add() {
             });
 
           case 6:
-            _context.next = 11;
-            break;
+            newFood = _context.sent.doc;
+            return _context.abrupt("return", newFood);
 
-          case 8:
-            _context.prev = 8;
+          case 10:
+            _context.prev = 10;
             _context.t0 = _context["catch"](0);
             console.error(_context.t0);
 
-          case 11:
+          case 13:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 8]]);
+    }, _callee, null, [[0, 10]]);
   }));
   return _add.apply(this, arguments);
 }

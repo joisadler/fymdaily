@@ -13,7 +13,7 @@ async function add(food) {
       fats,
       carbs,
     } = food;
-    await Food.findOrCreate({
+    const newFood = (await Food.findOrCreate({
       createdBy,
       name,
       brand,
@@ -21,7 +21,8 @@ async function add(food) {
       proteins,
       fats,
       carbs,
-    });
+    })).doc;
+    return newFood;
   } catch (err) {
     console.error(err);
   }
@@ -40,7 +41,6 @@ async function getById(_id) {
 
 // List
 async function query(createdBy, name = '', custom = false) {
-  console.log(custom)
   try {
     const queryParams = {
       createdBy,

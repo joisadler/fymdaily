@@ -7,8 +7,8 @@ async function addFood(req, res) {
     createdBy,
     ...req.body,
   };
-  await foodService.add(food);
-  res.send(food);
+  const newFood = await foodService.add(food);
+  res.send(newFood);
 }
 
 // Read
