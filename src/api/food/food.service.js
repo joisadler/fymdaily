@@ -47,7 +47,7 @@ async function query(createdBy, name = '', custom = false) {
       name: new RegExp(`${name.trim()}`, 'i'),
     };
     const foodsCreatedByUser = await Food.find(queryParams);
-    if (custom) return [...foodsCreatedByUser];
+    if (custom || name === '') return [...foodsCreatedByUser];
     const foodsFromFatSecretAPI = await fatsecretService.query(name);
     const foods = [...foodsCreatedByUser, ...foodsFromFatSecretAPI];
     return foods;

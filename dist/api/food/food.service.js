@@ -120,46 +120,45 @@ function _query() {
           case 0:
             name = _args3.length > 1 && _args3[1] !== undefined ? _args3[1] : '';
             custom = _args3.length > 2 && _args3[2] !== undefined ? _args3[2] : false;
-            console.log(custom);
-            _context3.prev = 3;
+            _context3.prev = 2;
             queryParams = {
               createdBy: createdBy,
               name: new RegExp("".concat(name.trim()), 'i')
             };
-            _context3.next = 7;
+            _context3.next = 6;
             return _food["default"].find(queryParams);
 
-          case 7:
+          case 6:
             foodsCreatedByUser = _context3.sent;
 
-            if (!custom) {
-              _context3.next = 10;
+            if (!(custom || name === '')) {
+              _context3.next = 9;
               break;
             }
 
             return _context3.abrupt("return", (0, _toConsumableArray2["default"])(foodsCreatedByUser));
 
-          case 10:
-            _context3.next = 12;
+          case 9:
+            _context3.next = 11;
             return _fatsecret["default"].query(name);
 
-          case 12:
+          case 11:
             foodsFromFatSecretAPI = _context3.sent;
             foods = [].concat((0, _toConsumableArray2["default"])(foodsCreatedByUser), (0, _toConsumableArray2["default"])(foodsFromFatSecretAPI));
             return _context3.abrupt("return", foods);
 
-          case 17:
-            _context3.prev = 17;
-            _context3.t0 = _context3["catch"](3);
+          case 16:
+            _context3.prev = 16;
+            _context3.t0 = _context3["catch"](2);
             console.log('ERROR: cannot find food');
             throw _context3.t0;
 
-          case 21:
+          case 20:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[3, 17]]);
+    }, _callee3, null, [[2, 16]]);
   }));
   return _query.apply(this, arguments);
 }
