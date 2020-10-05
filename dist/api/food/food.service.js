@@ -112,7 +112,7 @@ function _query() {
         queryParams,
         foodsCreatedByUser,
         regex,
-        isNotValidForFatsecretApi,
+        nameIsNotValidForFatsecretApi,
         foodsFromFatSecretAPI,
         foods,
         _args3 = arguments;
@@ -134,39 +134,37 @@ function _query() {
             foodsCreatedByUser = _context3.sent;
             regex = /^[A-Za-z0-9]+$/; // name contains only english letters or numbers
 
-            isNotValidForFatsecretApi = !regex.test(name);
-            console.log('isNotValidForFatsecretApi', isNotValidForFatsecretApi);
+            nameIsNotValidForFatsecretApi = !regex.test(name);
+            console.log('isNotValidForFatsecretApi', nameIsNotValidForFatsecretApi);
 
-            if (!(custom || name === '' || isNotValidForFatsecretApi)) {
-              _context3.next = 13;
+            if (!(custom || name === '' || nameIsNotValidForFatsecretApi)) {
+              _context3.next = 12;
               break;
             }
 
-            console.log("name ".concat(name, " is not valid for FatSecret API"));
             return _context3.abrupt("return", (0, _toConsumableArray2["default"])(foodsCreatedByUser));
 
-          case 13:
-            console.log('name', name);
-            _context3.next = 16;
+          case 12:
+            _context3.next = 14;
             return _fatsecret["default"].query(name);
 
-          case 16:
+          case 14:
             foodsFromFatSecretAPI = _context3.sent;
             foods = [].concat((0, _toConsumableArray2["default"])(foodsCreatedByUser), (0, _toConsumableArray2["default"])(foodsFromFatSecretAPI));
             return _context3.abrupt("return", foods);
 
-          case 21:
-            _context3.prev = 21;
+          case 19:
+            _context3.prev = 19;
             _context3.t0 = _context3["catch"](2);
             console.log('ERROR: cannot find food');
             throw _context3.t0;
 
-          case 25:
+          case 23:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[2, 21]]);
+    }, _callee3, null, [[2, 19]]);
   }));
   return _query.apply(this, arguments);
 }
