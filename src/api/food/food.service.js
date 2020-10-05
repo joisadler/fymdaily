@@ -47,7 +47,13 @@ async function query(createdBy, name = '', custom = false) {
       name: new RegExp(`${name.trim()}`, 'i'),
     };
     const foodsCreatedByUser = await Food.find(queryParams);
-    if (custom || name === '') return [...foodsCreatedByUser];
+    const regex = /^[A-Za-z0-9]+$/; // name contains only english letters or numbers
+    const nameIsNotValidForFatsecretApi = !regex.test(name);
+    console.log('isNotValidForFatsecretApi', nameIsNotValidForFatsecretApi);
+    if (custom || name === '' || nameIsNotValidForFatsecretApi) {
+      // console.log(`name '${name}' is not valid for FatSecret API`);
+      return [...foodsCreatedByUser];
+    }
     const foodsFromFatSecretAPI = await fatsecretService.query(name);
     const foods = [...foodsCreatedByUser, ...foodsFromFatSecretAPI];
     return foods;

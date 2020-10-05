@@ -111,6 +111,8 @@ function _query() {
         custom,
         queryParams,
         foodsCreatedByUser,
+        regex,
+        isNotValidForFatsecretApi,
         foodsFromFatSecretAPI,
         foods,
         _args3 = arguments;
@@ -130,35 +132,41 @@ function _query() {
 
           case 6:
             foodsCreatedByUser = _context3.sent;
+            regex = /^[A-Za-z0-9]+$/; // name contains only english letters or numbers
 
-            if (!(custom || name === '')) {
-              _context3.next = 9;
+            isNotValidForFatsecretApi = !regex.test(name);
+            console.log('isNotValidForFatsecretApi', isNotValidForFatsecretApi);
+
+            if (!(custom || name === '' || isNotValidForFatsecretApi)) {
+              _context3.next = 13;
               break;
             }
 
+            console.log("name ".concat(name, " is not valid for FatSecret API"));
             return _context3.abrupt("return", (0, _toConsumableArray2["default"])(foodsCreatedByUser));
 
-          case 9:
-            _context3.next = 11;
+          case 13:
+            console.log('name', name);
+            _context3.next = 16;
             return _fatsecret["default"].query(name);
 
-          case 11:
+          case 16:
             foodsFromFatSecretAPI = _context3.sent;
             foods = [].concat((0, _toConsumableArray2["default"])(foodsCreatedByUser), (0, _toConsumableArray2["default"])(foodsFromFatSecretAPI));
             return _context3.abrupt("return", foods);
 
-          case 16:
-            _context3.prev = 16;
+          case 21:
+            _context3.prev = 21;
             _context3.t0 = _context3["catch"](2);
             console.log('ERROR: cannot find food');
             throw _context3.t0;
 
-          case 20:
+          case 25:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[2, 16]]);
+    }, _callee3, null, [[2, 21]]);
   }));
   return _query.apply(this, arguments);
 }
