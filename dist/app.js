@@ -62,7 +62,7 @@ connection.once('open', function () {
 });
 var app = (0, _express["default"])();
 app.use((0, _morgan["default"])('dev'));
-app.use(_express["default"]["static"](_path["default"].join(__dirname, '../public')));
+app.use(_express["default"]["static"](_path["default"].join(__dirname, '../build')));
 app.set('views', _path["default"].join(__dirname, '../views'));
 app.set('view engine', 'pug');
 app.use(_express["default"].urlencoded({
@@ -100,7 +100,7 @@ app.use('/api/user', _user["default"]);
 app.use('/api/food', _food["default"]);
 app.use('/api/history', _history["default"]);
 app.get('/*', function (req, res) {
-  res.sendFile(_path["default"].join(__dirname, '../public', 'index.html'));
+  res.sendFile(_path["default"].join(__dirname, '../build', 'index.html'));
 }); // catch 404 and forward to error handler
 
 app.use(function (req, res, next) {
