@@ -1,0 +1,36 @@
+.eaten-food-card {
+  width: 100%;
+  height: calc((100% / 4) + 1px);
+  min-height: calc((100% / 4) + 1px);
+  padding-block-start: $sm-distance;
+  padding-block-end: $sm-distance;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+
+  @media (min-height: 481px) {
+    height: calc((100% / 6) + 1px);
+    min-height: calc((100% / 6) + 1px);
+  }
+
+  &:not(:nth-last-of-type(2)) {
+    border-block-end: 1px solid black;
+  }
+
+  &-title {
+    width: 100%;
+    font-size: $m-text;
+    line-height: $m-line-height;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &-info {
+    font-size: $sm-text;
+    line-height: $sm-line-height;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,6 @@
+.main-navbar {
+  height: calc(var(--vh, 1vh) * 15);
+  min-height: calc(var(--vh, 1vh) * 15);
+  display: flex;
+  flex-flow: row nowrap;
+}

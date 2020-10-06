@@ -1,0 +1,46 @@
+// Reset CSS
+@import "setup/reset";
+// Setup
+@import "setup/variables";
+@import "setup/functions";
+@import "setup/mixins";
+@import "setup/typography";
+
+// Basics
+@import "basics/helpers";
+@import "basics/layout";
+@import "basics/base";
+@import "basics/links";
+@import "basics/buttons";
+
+// Pages
+@import "../components/AddEatenFood/AddEatenFoodPage/style";
+@import "../components/EatenFood/EatenFoodPage/style";
+@import "../components/Entry/EntryPage/style";
+@import "../components/Home/HomePage/style";
+@import "../components/Settings/UserSettingsPage/style";
+@import "../components/Settings/AccountSettingsPage/style";
+@import "../components/Settings/PreferencesPage/style";
+@import "../components/Settings/StatisticsPage/style";
+@import "../components/CustomFood/CustomFoodPage/style";
+
+// Components
+@import "../components/Navigation/Navbar/style";
+@import "../components/Footer/style";
+@import "../components/Entry/LoginForm/style";
+@import "../components/Entry/SignupForm/style";
+@import "../components/Navigation/NavButton/style";
+@import "../components/Home/CaloriesChart/style";
+@import "../components/Home/CaloriesChartContent/style";
+@import "../components/Home/MacrosContainer/style";
+@import "../components/Home/MacrosLine/style";
+@import "../components/Settings/SettingsMenu/style";
+@import "../components/AddEatenFood/AddEatenFoodCard/style";
+@import "../components/AddEatenFood/AddEatenFoodModal/style";
+@import "../components/CustomFood/CustomFoodCard/style";
+@import "../components/EatenFood/EatenFoodCard/style";
+@import "../components/EatenFood/EditEatenFoodModal/style";
+@import "../components/CustomFood/CreateCustomFoodModal/style";
+@import "../components/CustomFood/EditCustomFoodModal/style";
+@import "../components/ConfirmModal/style";
+@import "../components/Loader/style";

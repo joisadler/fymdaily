@@ -1,0 +1,16 @@
+.nav-button {
+  width: calc(100% / 3);
+  height: 100%;
+  padding: 0;
+  border: none;
+  background-color: #fff;
+
+  &:focus {
+    outline: none;
+  }
+
+  &-icon {
+    width: 25% !important;
+    height: 25% !important;
+  }
+}

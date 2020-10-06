@@ -1,0 +1,11 @@
+{
+  "tabulous.defaultTerminals": [{
+    "name": "start",
+    "directory": "./",
+    "command": "npm start",
+    "executeCommand": true
+  }, {
+    "name": "Working Section",
+    "directory": "./"
+  }]
+}

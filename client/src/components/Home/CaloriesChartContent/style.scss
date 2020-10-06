@@ -1,0 +1,53 @@
+.calories-chart-content,
+.alternative-calories-chart-content {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  font-family: Montserrat, Open Sans, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.calories-number {
+  height: 12vmin;
+  line-height: 12vmin;
+  font-size: 16vmin;
+  margin-block-start: $m-distance;
+  margin-block-end: $m-distance;
+
+  @media (min-width: $tablet) {
+    font-size: 10vmin;
+  }
+}
+
+.calories-headline,
+.calories-subheadline {
+  font-size: 1.8vmin;
+
+  @media (min-width: $tablet) {
+    font-size: 1.2vmin;
+  }
+}
+
+.alternative-calories-chart-content-headline,
+.alternative-calories-chart-content-percent {
+  font-size: 4vmin;
+
+  @media (min-width: $tablet) {
+    font-size: 2.5vmin;
+  }
+}
+
+.alternative-calories-chart-content-number {
+  margin-block-start: $l-distance;
+  margin-block-end: $l-distance;
+  font-size: 9vmin;
+
+  @media (min-width: $tablet) {
+    font-size: 5vmin;
+  }
+}

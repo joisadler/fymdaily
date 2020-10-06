@@ -1,0 +1,74 @@
+.confirm-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70vw;
+  height: 70vw;
+  padding-inline-start: $m-distance;
+  padding-inline-end: $m-distance;
+  border: 1px solid black;
+  border-radius: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #fff;
+  opacity: 1;
+  outline: none;
+  transform: translate(-50%, -50%);
+
+  // @media (min-width: desktop) {
+
+  // }
+
+  &-header {
+    margin-block-end: $sm-distance;
+    font-size: $sm-text;
+    text-align: center;
+  }
+
+  &-title {
+    margin-block-end: $sm-distance;
+    font-weight: 400;
+  }
+
+  &-item-name {
+    p {
+      font-weight: 700;
+    }
+
+    span {
+      font-weight: 400;
+    }
+  }
+
+  &-options {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    height: $input-height;
+  }
+
+  &-no-button {
+    width: 45%;
+    height: 100%;
+    margin-inline-end: $sm-distance;
+    border: 1px solid black;
+    font-size: $m-text;
+    color: white;
+    background-color: green;
+    cursor: pointer;
+  }
+
+  &-yes-button {
+    width: 45%;
+    height: 100%;
+    margin-inline-end: $sm-distance;
+    border: 1px solid black;
+    font-size: $m-text;
+    color: white;
+    background-color: red;
+    cursor: pointer;
+  }
+}

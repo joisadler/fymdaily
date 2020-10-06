@@ -1,0 +1,33 @@
+// Colors
+$color1: #fff;
+$color2: #fff;
+$color3: #fff;
+$color4: #fff;
+$color5: #fff;
+$color6: #fff;
+
+// Breakpoints
+$tablet: 414px;
+$desktop: 1279px;
+
+// Sizes
+$input-height: 1.6rem;
+$sm-distance: 0.5rem;
+$m-distance: 1rem;
+$l-distance: 1.6rem;
+$xl-distance: 2rem;
+
+// Root font-size
+$min-font-size: 16px;
+$max-font-size: 18px;
+$scaler: 2.5vmax;
+$root-font-size: clamp($min-font-size, $scaler, $max-font-size);
+
+// Typography
+$xl-text: 10rem;
+$l-text: 1.6rem;
+$m-text: 1rem;
+$sm-text: 0.8rem;
+$l-line-height: $l-text * 1.5;
+$m-line-height: $m-text * 1.5;
+$sm-line-height: $sm-text * 1.5;

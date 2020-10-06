@@ -1,0 +1,85 @@
+.edit-custom-food {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80vw;
+  height: 80vw;
+  padding-inline-start: $m-distance;
+  padding-inline-end: $m-distance;
+  border: 1px solid black;
+  border-radius: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #fff;
+  opacity: 1;
+  outline: none;
+  transform: translate(-50%, -50%);
+
+  // @media (min-width: desktop) {
+
+  // }
+
+  &-close-button {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    width: $input-height;
+    height: $input-height;
+    background-color: #fff;
+    border: none;
+
+    &:focus {
+      outline: 1px solid green;
+    }
+  }
+
+  &-header {
+    margin-block-end: $sm-distance;
+    font-size: $sm-text;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  &-form {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  &-input {
+    width: 100%;
+    height: $input-height;
+    margin-block-end: $m-distance;
+    font-size: $sm-text;
+
+    &:focus {
+      outline: 1px solid green;
+    }
+  }
+
+  &-proteins-input,
+  &-fats-input,
+  &-carbs-input {
+    width: 30%;
+  }
+
+  &-submit-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &-submit-button {
+    height: $xl-distance;
+    width: calc(100% - #{$input-height});
+    border: 1px solid black;
+    font-size: $m-text;
+    color: white;
+    background-color: green;
+    cursor: pointer;
+  }
+}

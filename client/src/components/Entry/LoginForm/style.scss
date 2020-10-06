@@ -1,0 +1,129 @@
+.login-form {
+  width: 100%;
+
+  input[type=text],
+  input[type=password] {
+    width: 100%;
+    height: $xl-distance;
+    padding: $m-distance;
+    border: 1px solid #000;
+    font-size: $m-text;
+    margin-block-end: $m-distance;
+
+    // @media (min-width: $tablet) and (max-width: $desktop) {
+    //   font-size: 2.5rem;
+    //   height: 6rem;
+    //   padding: $l-distance;
+    //   margin-block-end: $l-distance;
+    // }
+
+    &:active,
+    &:focus {
+      outline: 1px solid green;
+    }
+  }
+
+  input[type=checkbox] {
+    width: $m-distance;
+    height: $m-distance;
+    margin: 0 $sm-distance 0 0;
+    outline: 1px solid #000;
+    outline-offset: -1px;
+
+    // @media (min-width: $tablet) and (max-width: $desktop) {
+    //   width: $l-distance;
+    //   height: $l-distance;
+    //   margin: 0 1rem 0 0;
+    // }
+  }
+
+  label {
+    font-size: $sm-text;
+
+    // @media (min-width: $tablet) and (max-width: $desktop) {
+    //   font-size: $l-text;
+    // }
+  }
+}
+
+.login-message {
+  margin-block-end: $m-distance;
+  color: red;
+  font-size: $sm-text;
+
+  // @media (min-width: $tablet) and (max-width: $desktop) {
+  //   margin-block-end: $l-distance;
+  //   font-size: $l-text;
+  // }
+}
+
+.form-options-section {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.form-submit-section {
+  width: 50%;
+}
+
+.remember-me-section {
+  height: $l-distance;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  // @media (min-width: $tablet) and (max-width: $desktop) {
+  //   height: 4rem;
+  // }
+}
+
+.login-button {
+  height: $xl-distance;
+  width: 100%;
+  border: 1px solid black;
+  font-size: $m-text;
+  color: white;
+  background-color: green;
+  cursor: pointer;
+
+  // @media (min-width: $tablet) and (max-width: $desktop) {
+  //   height: 6rem;
+  //   font-size: 3rem;
+  // }
+}
+
+.other-option-section {
+  width: 50%;
+  padding-inline-start: $m-distance;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  align-self: stretch;
+  font-size: $sm-text;
+  text-align: center;
+
+  // @media (min-width: $tablet) and (max-width: $desktop) {
+  //   font-size: $l-text;
+  // }
+}
+
+.signup-option {
+  border: none;
+  padding: 0;
+  margin-block-start: $sm-distance;
+  background-color: #fff;
+  font-size: $m-text;
+  color: #00ee;
+  cursor: pointer;
+
+  // @media (min-width: $tablet) and (max-width: $desktop) {
+  //   margin-block-start: $m-distance;
+  //   font-size: 3rem;
+  // }
+
+  &:active {
+    outline: 1px solid green;
+  }
+}

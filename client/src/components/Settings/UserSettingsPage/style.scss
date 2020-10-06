@@ -1,0 +1,45 @@
+.user-settings {
+  &-page-subtitle {
+    font-size: $m-text;
+    margin-block-end: $m-distance;
+  }
+
+  &-form {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1;
+  }
+
+  &-input-container {
+    width: 50%;
+    height: fit-content;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+  &-input-label {
+    margin-block-end: $sm-distance;
+    display: inline-block;
+    font-size: $sm-text * 0.8;
+    align-self: start;
+    margin-inline-start: 5%;
+  }
+
+  &-input {
+    width: 90%;
+    height: $input-height;
+    font-size: $sm-text;
+  }
+
+  &-save-button {
+    height: $xl-distance;
+    width: 100%;
+    border: 1px solid black;
+    font-size: $m-text;
+    color: white;
+    background-color: green;
+    cursor: pointer;
+  }
+}

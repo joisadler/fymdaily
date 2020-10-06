@@ -1,0 +1,37 @@
+.eaten-food {
+  &-cards {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  &-total {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    height: calc((100% / 4) + 1px);
+    min-height: calc((100% / 4) + 1px);
+    padding-block-start: $sm-distance;
+    padding-block-end: $sm-distance;
+    border-block-start: 1px solid black;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    background-color: #fff;
+    font-size: $sm-text;
+    line-height: $sm-line-height;
+
+    @media (min-height: 481px) {
+      height: calc((100% / 6) + 1px);
+      min-height: calc((100% / 6) + 1px);
+    }
+  }
+
+  &-total-title {
+    font-size: $m-text;
+    font-weight: 700;
+  }
+}
