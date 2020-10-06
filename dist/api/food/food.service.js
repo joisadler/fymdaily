@@ -139,42 +139,34 @@ function _query() {
 
             nameIsNotValidForFatsecretApi = !regex.test(name);
 
-            if (!(name === '')) {
+            if (!(custom || name === '' || nameIsNotValidForFatsecretApi)) {
               _context3.next = 13;
-              break;
-            }
-
-            return _context3.abrupt("return", []);
-
-          case 13:
-            if (!(custom || name.length < 2 || nameIsNotValidForFatsecretApi)) {
-              _context3.next = 15;
               break;
             }
 
             return _context3.abrupt("return", (0, _toConsumableArray2["default"])(foodsCreatedByUser));
 
-          case 15:
-            _context3.next = 17;
+          case 13:
+            _context3.next = 15;
             return _fatsecret["default"].query(name);
 
-          case 17:
+          case 15:
             foodsFromFatSecretAPI = _context3.sent;
             foods = [].concat((0, _toConsumableArray2["default"])(foodsCreatedByUser), (0, _toConsumableArray2["default"])(foodsFromFatSecretAPI));
             return _context3.abrupt("return", foods);
 
-          case 22:
-            _context3.prev = 22;
+          case 20:
+            _context3.prev = 20;
             _context3.t0 = _context3["catch"](2);
             console.log('ERROR: cannot find food');
             throw _context3.t0;
 
-          case 26:
+          case 24:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[2, 22]]);
+    }, _callee3, null, [[2, 20]]);
   }));
   return _query.apply(this, arguments);
 }
