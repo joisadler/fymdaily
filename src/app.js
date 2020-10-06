@@ -34,7 +34,6 @@ connection.once('open', () => {
 
 const app = express();
 app.use(logger('dev'));
-// app.use(express.static(path.join(__dirname, '../build')));
 app.use(express.static(path.join(__dirname, '../client', 'build')));
 
 app.set('views', path.join(__dirname, '../views'));
@@ -84,9 +83,6 @@ app.use('/api/user', userRouter);
 app.use('/api/food', foodRouter);
 app.use('/api/history', historyRouter);
 
-// app.get('/*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../build', 'index.html'));
-// });
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
 });
