@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en_US" dir="auto">
+  <head>
+    <title>FYMdaily</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="FYMdaily - a simple and minimalistic calorie/macronutrient tracker" />
+    <meta name="robots" content="index, follow" />
+    <!-- Web App Manifest-->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <meta name="theme-color" content="#fff" />
+    <!-- Apple Web App Meta-->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!-- Facebook Open Graph-->
+    <meta property="og:url" content="https://fymdaily.herokuapp.com" />
+    <meta property="og:title" content="FYMdaily" />
+    <meta property="og:description" content="FYMdaily - a simple and minimalistic calorie/macronutrient tracker" />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" type="image/x-icon" />
+    <!-- Set dinamic --vh custom property -->
+    <script>
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      window.addEventListener('resize', () => {
+        vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Noscript styles-->
+    <style type="text/css">
+      .noscript {
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: 99999;
+          height: 10%;
+          width: 100%;
+          background-color: #000000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+
+      .noscript p {
+          margin: 0;
+          color: #ffffff;
+          font-weight: bold;
+      }
+    </style>
+    <noscript>
+      <div class="noscript">
+        <p>
+          JavaScript is not enabled. To continue please enable JavaScript in your browser settings!
+        </p>
+      </div>
+    </noscript>
+    <div id="root"></div>
+  </body>
+</html>
