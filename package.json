@@ -68,5 +68,8 @@
   },
   "jest": {
     "testEnvironment": "node"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }
