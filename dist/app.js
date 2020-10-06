@@ -61,8 +61,7 @@ connection.once('open', function () {
   console.log('MongoDB database connection established successfully');
 });
 var app = (0, _express["default"])();
-app.use((0, _morgan["default"])('dev')); // app.use(express.static(path.join(__dirname, '../build')));
-
+app.use((0, _morgan["default"])('dev'));
 app.use(_express["default"]["static"](_path["default"].join(__dirname, '../client', 'build')));
 app.set('views', _path["default"].join(__dirname, '../views'));
 app.set('view engine', 'pug');
@@ -99,10 +98,7 @@ app.use('/api/auth/signup', (0, _signup["default"])(_passport["default"]));
 app.use('/api/auth/logout', (0, _logout["default"])());
 app.use('/api/user', _user["default"]);
 app.use('/api/food', _food["default"]);
-app.use('/api/history', _history["default"]); // app.get('/*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../build', 'index.html'));
-// });
-
+app.use('/api/history', _history["default"]);
 app.get('*', function (req, res) {
   res.sendFile(_path["default"].resolve(__dirname, '../client', 'build', 'index.html'));
 }); // catch 404 and forward to error handler
