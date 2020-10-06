@@ -35,7 +35,7 @@ connection.once('open', () => {
 const app = express();
 app.use(logger('dev'));
 // app.use(express.static(path.join(__dirname, '../build')));
-app.use(express.static(path.join(__dirname, 'client', 'build')));
+app.use(express.static(path.join(__dirname, '../client', 'build')));
 
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'pug');
@@ -88,7 +88,7 @@ app.use('/api/history', historyRouter);
 //   res.sendFile(path.join(__dirname, '../build', 'index.html'));
 // });
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '../client', 'build', 'index.html'));
 });
 
 // catch 404 and forward to error handler
