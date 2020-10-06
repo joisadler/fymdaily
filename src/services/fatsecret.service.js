@@ -7,13 +7,15 @@ const API = new FatsecretAPI(FATSECRET_KEY, FATSECRET_SECRET);
 const _searchFoods = async (params) => {
   try {
     const response = await API.method('foods.search', params);
-    if (response.error) {
+    // console.log('response:', response)
+    const foods = response.foods.food || response.foods;
+    // console.log('foods: ', foods)
+    if (response.error || !foods) {
       console.log(response.error);
       return [];
     }
-    const foods = response.foods.food;
     if (!Array.isArray(foods)) return [foods.food_id];
-    return foods.map(food => food.food_id);
+    return foods.map(f => f.food_id);
   } catch (err) {
     console.log('ERROR: can not search foods');
     console.error(err);
@@ -33,10 +35,12 @@ const _getInfo = async (params) => {
 
 async function query(search_expression = '', max_results = 10) {
   try {
+    var start1 = new Date();
     const foodIDs = await _searchFoods({
       search_expression,
       max_results,
     });
+    console.log('Request to Fatsecret API for food IDs took:', new Date() - start1, 'ms');
     if (!foodIDs || foodIDs === []) return {};
     const foodPromises = foodIDs.map(async (food_id) => {
       const info = await _getInfo({ food_id });
@@ -72,7 +76,9 @@ async function query(search_expression = '', max_results = 10) {
       };
       return food;
     });
+    const start2 = new Date();
     const foods = await Promise.all(foodPromises);
+    console.log('Request to Fatsecret API for foods info took:', new Date() - start2, 'ms');
     return foods.filter(food => food);
   } catch (err) {
     console.log('ERROR: can not query');

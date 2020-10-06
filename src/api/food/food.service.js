@@ -46,10 +46,13 @@ async function query(createdBy, name = '', custom = false) {
       createdBy,
       name: new RegExp(`${name.trim()}`, 'i'),
     };
+    const start = new Date();
     const foodsCreatedByUser = await Food.find(queryParams);
+    console.log('Request to MongoDB for foods took:', new Date() - start, 'ms');
     const regex = /^[A-Za-z0-9]+$/; // name contains only english letters or numbers
     const nameIsNotValidForFatsecretApi = !regex.test(name);
-    if (custom || name === '' || nameIsNotValidForFatsecretApi) {
+    if (name === '') return [];
+    if (custom || nameIsNotValidForFatsecretApi) {
       return [...foodsCreatedByUser];
     }
     const foodsFromFatSecretAPI = await fatsecretService.query(name);

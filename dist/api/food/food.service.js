@@ -110,6 +110,7 @@ function _query() {
     var name,
         custom,
         queryParams,
+        start,
         foodsCreatedByUser,
         regex,
         nameIsNotValidForFatsecretApi,
@@ -127,44 +128,53 @@ function _query() {
               createdBy: createdBy,
               name: new RegExp("".concat(name.trim()), 'i')
             };
-            _context3.next = 6;
+            start = new Date();
+            _context3.next = 7;
             return _food["default"].find(queryParams);
 
-          case 6:
+          case 7:
             foodsCreatedByUser = _context3.sent;
+            console.log('Request to MongoDB for foods took:', new Date() - start, 'ms');
             regex = /^[A-Za-z0-9]+$/; // name contains only english letters or numbers
 
             nameIsNotValidForFatsecretApi = !regex.test(name);
-            console.log('isNotValidForFatsecretApi', nameIsNotValidForFatsecretApi);
 
-            if (!(custom || name === '' || nameIsNotValidForFatsecretApi)) {
-              _context3.next = 12;
+            if (!(name === '')) {
+              _context3.next = 13;
+              break;
+            }
+
+            return _context3.abrupt("return", []);
+
+          case 13:
+            if (!(custom || name.length < 2 || nameIsNotValidForFatsecretApi)) {
+              _context3.next = 15;
               break;
             }
 
             return _context3.abrupt("return", (0, _toConsumableArray2["default"])(foodsCreatedByUser));
 
-          case 12:
-            _context3.next = 14;
+          case 15:
+            _context3.next = 17;
             return _fatsecret["default"].query(name);
 
-          case 14:
+          case 17:
             foodsFromFatSecretAPI = _context3.sent;
             foods = [].concat((0, _toConsumableArray2["default"])(foodsCreatedByUser), (0, _toConsumableArray2["default"])(foodsFromFatSecretAPI));
             return _context3.abrupt("return", foods);
 
-          case 19:
-            _context3.prev = 19;
+          case 22:
+            _context3.prev = 22;
             _context3.t0 = _context3["catch"](2);
             console.log('ERROR: cannot find food');
             throw _context3.t0;
 
-          case 23:
+          case 26:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[2, 19]]);
+    }, _callee3, null, [[2, 22]]);
   }));
   return _query.apply(this, arguments);
 }
