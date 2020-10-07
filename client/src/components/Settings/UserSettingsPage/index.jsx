@@ -81,9 +81,9 @@ const UserSettingsPage = () => {
 
   const dispatch = useDispatch();
   const saveUserSettings = useAsyncCallback(async () => {
-    const updatedUser = {
-      _id,
-      username,
+    const newData = {
+      // _id,
+      // username,
       height,
       bodyWeight,
       gender,
@@ -93,7 +93,7 @@ const UserSettingsPage = () => {
       physicalActivityLevel,
       goal,
     };
-    dispatch(updateUser(updatedUser));
+    dispatch(updateUser(user, newData));
   });
 
   const onSaveUserSettings = (e) => {

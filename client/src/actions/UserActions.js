@@ -22,12 +22,11 @@ export function loadUser() {
   };
 }
 
-export function updateUser(newData) {
+export function updateUser(loggedInUser, newData) {
   return async (dispatch) => {
     try {
-      const localLoggedinUser = JSON.parse(localStorage.user);
       const userData = {
-        ...localLoggedinUser,
+        ...loggedInUser,
         ...newData,
       };
       const user = await userService.update(userData);
