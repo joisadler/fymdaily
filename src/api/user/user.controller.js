@@ -1,8 +1,16 @@
 import userService from './user.service';
 
+// async function getUserById(req, res) {
+//   // const user = await userService.getById(req.params.id);
+//   // res.send(user);
+// }
+
 async function getUser(req, res) {
-  const user = await userService.getById(req.params.id);
-  res.send(user);
+  if (!req.user) {
+    return res.send(401);
+  }
+  res.status(200)
+    .send(req.user);
 }
 
 async function getUsers(req, res) {

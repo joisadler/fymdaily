@@ -4,6 +4,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import menuActions from '../../../actions/SettingsMenuActions';
 import { logout } from '../../../actions/UserActions';
 import Footer from '../../Footer';
+import useLoadUser from '../../../hooks/useLoadUser';
 
 const SettingsMenu = () => {
   const isShown = useSelector(state => state.settingsMenu.isShown);

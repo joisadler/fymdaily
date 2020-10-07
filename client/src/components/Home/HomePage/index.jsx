@@ -6,6 +6,7 @@ import CaloriesChart from '../CaloriesChart';
 import Loader from '../../Loader';
 import Navbar from '../../Navigation/Navbar';
 import MacrosContainer from '../MacrosContainer';
+import useLoadUser from '../../../hooks/useLoadUser';
 
 const HomePage = () => {
   const [isAlternateContentShown, setIsAlternateContentShown] = useState(false);
@@ -13,7 +14,7 @@ const HomePage = () => {
     setIsAlternateContentShown(!isAlternateContentShown);
   };
 
-  const user = useSelector(state => state.user.loggedInUser);
+  const user = useLoadUser();
   const eatenFoods = useSelector(state => state.history.eatenFoods);
   const isLoading = useSelector(state => state.system.isLoading);
 

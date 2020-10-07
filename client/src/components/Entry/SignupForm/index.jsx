@@ -10,7 +10,6 @@ const SignupForm = ({ setCurrentForm }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [isRememberMeChecked, setIsRememberMeChecked] = useState(false);
   const message = useSelector(state => state.message.message);
   const dispatch = useDispatch();
   const setMessage = msg => dispatch(MessageActions.setMessage(msg));
@@ -31,15 +30,11 @@ const SignupForm = ({ setCurrentForm }) => {
       password,
       confirmPassword,
     };
-    doSignup(userCreds, isRememberMeChecked);
+    doSignup(userCreds);
     setUsername('');
     setEmail('');
     setPassword('');
     setConfirmPassword('');
-  };
-
-  const handleRememberMeChange = () => {
-    setIsRememberMeChecked(!isRememberMeChecked);
   };
 
   return (
@@ -85,18 +80,6 @@ const SignupForm = ({ setCurrentForm }) => {
       </fieldset>
       <section className="form-options-section">
         <section className="form-submit-section">
-          <section className="remember-me-section">
-            <input
-              type="checkbox"
-              id="remember-me"
-              defaultChecked={isRememberMeChecked}
-              onChange={handleRememberMeChange}
-            />
-            <label htmlFor="remember-me">
-              Remember Me
-            </label>
-          </section>
-          <br />
           <button type="submit" className="signup-button">Sign Up</button>
         </section>
         <section className="other-option-section">

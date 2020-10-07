@@ -10,10 +10,11 @@ var router = _express["default"].Router();
 
 var isAuthenticated = function isAuthenticated(req, res, next) {
   if (req.isAuthenticated()) return next();
-};
+}; // router.get('/', getUsers);
+// router.get('/:id', getUser);
 
-router.get('/', _user.getUsers);
-router.get('/:id', _user.getUser);
+
+router.get('/', _user.getUser);
 router.post('/', _user.addUser);
 router.put('/:id', isAuthenticated, _user.updateUser);
 router["delete"]('/:id', isAuthenticated, _user.deleteUser);

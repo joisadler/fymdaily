@@ -16,7 +16,6 @@ import {
   faFolderOpen,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
-
 import history from './history';
 import App from './App';
 import * as serviceWorker from './serviceWorker';

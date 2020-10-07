@@ -5,9 +5,10 @@ import { loadEatenFoods } from '../../../actions/HistoryActions';
 import Navbar from '../../Navigation/Navbar';
 import EatenFoodCard from '../EatenFoodCard';
 import Loader from '../../Loader';
+import useLoadUser from '../../../hooks/useLoadUser';
 
 const EatenFoodPage = () => {
-  const user = useSelector(state => state.user.loggedInUser);
+  const user = useLoadUser();
   const eatenFoods = useSelector(state => state.history.eatenFoods);
   const isLoading = useSelector(state => state.system.isLoading);
 

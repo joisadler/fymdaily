@@ -8,7 +8,6 @@ import MessageActions from '../../../actions/MessageActions';
 const LoginForm = ({ setCurrentForm }) => {
   const [usernameOrEmail, setUsernameOrEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isRememberMeChecked, setIsRememberMeChecked] = useState(false);
   const message = useSelector(state => state.message.message);
   const dispatch = useDispatch();
   const setMessage = msg => dispatch(MessageActions.setMessage(msg));
@@ -20,13 +19,9 @@ const LoginForm = ({ setCurrentForm }) => {
       return setMessage('Please enter username/password!');
     }
     const userCreds = { usernameOrEmail, password };
-    doLogin(userCreds, isRememberMeChecked);
+    doLogin(userCreds);
     setUsernameOrEmail('');
     setPassword('');
-  };
-
-  const handleRememberMeChange = () => {
-    setIsRememberMeChecked(!isRememberMeChecked);
   };
 
   return (
@@ -55,18 +50,6 @@ const LoginForm = ({ setCurrentForm }) => {
       </fieldset>
       <section className="form-options-section">
         <section className="form-submit-section">
-          <section className="remember-me-section">
-            <input
-              type="checkbox"
-              id="remember-me"
-              defaultChecked={isRememberMeChecked}
-              onChange={handleRememberMeChange}
-            />
-            <label htmlFor="remember-me">
-              Remember Me
-            </label>
-          </section>
-          <br />
           <button type="submit" className="login-button">Log In</button>
         </section>
         <section className="other-option-section">

@@ -66,18 +66,6 @@
   width: 50%;
 }
 
-.remember-me-section {
-  height: $l-distance;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-start;
-  align-items: center;
-
-  // @media (min-width: $tablet) and (max-width: $desktop) {
-  //   height: 4rem;
-  // }
-}
-
 .login-button {
   height: $xl-distance;
   width: 100%;

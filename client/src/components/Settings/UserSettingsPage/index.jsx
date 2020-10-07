@@ -1,18 +1,14 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useAsyncCallback } from 'react-async-hook';
-import { loadUser, updateUser } from '../../../actions/UserActions';
+import { updateUser } from '../../../actions/UserActions';
 import Navbar from '../../Navigation/Navbar';
+import useLoadUser from '../../../hooks/useLoadUser';
 
 const UserSettingsPage = () => {
-  const user = useSelector(state => state.user.loggedInUser);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadUser(user._id));
-  }, [user._id, dispatch]);
-
+  const user = useLoadUser();
   const {
     _id,
     username,
@@ -34,6 +30,26 @@ const UserSettingsPage = () => {
   const [neckCircumference, setNeckCircumference] = useState(currentNeckCircumference);
   const [physicalActivityLevel, setPhysicalActivityLevel] = useState(currentPhysicalActivityLevel);
   const [goal, setGoal] = useState(currentGoal);
+
+  useEffect(() => {
+    setHeight(currentHeight);
+    setBodyWeight(currentBodyWeight);
+    setGender(currentGender);
+    setHipCircumference(currentHipCircumference);
+    setWaistCircumference(currrentWaistCircumference);
+    setNeckCircumference(currentNeckCircumference);
+    setPhysicalActivityLevel(currentPhysicalActivityLevel);
+    setGoal(currentGoal);
+  }, [
+    currentHeight,
+    currentBodyWeight,
+    currentGender,
+    currentHipCircumference,
+    currrentWaistCircumference,
+    currentNeckCircumference,
+    currentPhysicalActivityLevel,
+    currentGoal,
+  ]);
 
   const set = (name) => {
     switch (name) {
@@ -63,6 +79,7 @@ const UserSettingsPage = () => {
     set(name)(value);
   };
 
+  const dispatch = useDispatch();
   const saveUserSettings = useAsyncCallback(async () => {
     const updatedUser = {
       _id,

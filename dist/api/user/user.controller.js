@@ -8,25 +8,31 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 
 var _user = _interopRequireDefault(require("./user.service"));
 
+// async function getUserById(req, res) {
+//   // const user = await userService.getById(req.params.id);
+//   // res.send(user);
+// }
 function getUser(_x, _x2) {
   return _getUser.apply(this, arguments);
 }
 
 function _getUser() {
   _getUser = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
-    var user;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
-            return _user["default"].getById(req.params.id);
+            if (req.user) {
+              _context.next = 2;
+              break;
+            }
+
+            return _context.abrupt("return", res.send(401));
 
           case 2:
-            user = _context.sent;
-            res.send(user);
+            res.status(200).send(req.user);
 
-          case 4:
+          case 3:
           case "end":
             return _context.stop();
         }

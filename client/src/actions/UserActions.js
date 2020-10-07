@@ -11,10 +11,10 @@ export function _setUser(user) {
   };
 }
 
-export function loadUser(userId) {
+export function loadUser() {
   return async (dispatch) => {
     try {
-      const user = await userService.getById(userId);
+      const user = await userService.getUser();
       dispatch(_setUser(user));
     } catch (err) {
       console.log('UserActions: err in loadUser', err);
@@ -25,7 +25,7 @@ export function loadUser(userId) {
 export function updateUser(newData) {
   return async (dispatch) => {
     try {
-      const localLoggedinUser = JSON.parse(sessionStorage.user);
+      const localLoggedinUser = JSON.parse(localStorage.user);
       const userData = {
         ...localLoggedinUser,
         ...newData,
@@ -39,9 +39,9 @@ export function updateUser(newData) {
   };
 }
 
-export function login(userCreds, isRememberMeChecked) {
+export function login(userCreds) {
   return async (dispatch) => {
-    const res = await userService.login(userCreds, isRememberMeChecked);
+    const res = await userService.login(userCreds);
     const { user, message } = res;
     if (!user) dispatch(setMessage(message));
     else {
@@ -52,9 +52,9 @@ export function login(userCreds, isRememberMeChecked) {
   };
 }
 
-export function signup(userCreds, isRememberMeChecked) {
+export function signup(userCreds) {
   return async (dispatch) => {
-    const res = await userService.signup(userCreds, isRememberMeChecked);
+    const res = await userService.signup(userCreds);
     const { user, message } = res;
     if (!user) dispatch(setMessage(message));
     else {
