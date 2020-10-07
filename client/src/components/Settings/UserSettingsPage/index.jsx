@@ -9,10 +9,7 @@ import useLoadUser from '../../../hooks/useLoadUser';
 
 const UserSettingsPage = () => {
   const user = useLoadUser();
-  const {
-    _id,
-    username,
-  } = user;
+  const { username } = user;
   const currentHeight = user.height || '';
   const currentBodyWeight = user.bodyWeight || '';
   const currentGender = user.gender || 'male';
@@ -82,8 +79,6 @@ const UserSettingsPage = () => {
   const dispatch = useDispatch();
   const saveUserSettings = useAsyncCallback(async () => {
     const newData = {
-      // _id,
-      // username,
       height,
       bodyWeight,
       gender,
