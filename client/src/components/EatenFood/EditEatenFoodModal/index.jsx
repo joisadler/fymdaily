@@ -99,6 +99,7 @@ const EditEatenFoodModal = ({
         className="edit-eaten-food-modal-close-button"
         type="button"
         onClick={e => closeModal(e)}
+        title="Close"
       >
         &times;
       </button>
@@ -140,6 +141,7 @@ const EditEatenFoodModal = ({
               type="button"
               className="edit-eaten-food-modal-weight-dec-button"
               onClick={decreaseWeight}
+              title="Decrease weight"
             >
               -
             </button>
@@ -157,6 +159,7 @@ const EditEatenFoodModal = ({
               type="button"
               className="edit-eaten-food-modal-weight-inc-button"
               onClick={increaseWeight}
+              title="Increase weight"
             >
               +
             </button>
@@ -176,6 +179,7 @@ const EditEatenFoodModal = ({
           aria-label="Delete eaten food"
           className="edit-eaten-food-modal-delete-button"
           onClick={onRemoveFood}
+          title={`Delete "${name}" from eaten foods history`}
         >
           <FontAwesomeIcon
             icon={['fas', 'trash']}

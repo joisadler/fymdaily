@@ -6,7 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MenuActions from '../../../actions/SettingsMenuActions';
 import CreateCustomFoodModal from '../../CustomFood/CreateCustomFoodModal';
 
-const NavButton = ({ to, icon, labelText }) => {
+const NavButton = ({
+  to,
+  icon,
+  labelText,
+}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -32,13 +36,14 @@ const NavButton = ({ to, icon, labelText }) => {
     history.push(to);
   };
   return (
-    <>
+    <div className="nav-button-container">
       <button
         type="button"
         aria-label={labelText}
         title={labelText}
         className="nav-button"
         onClick={handleClick}
+        tabIndex={0}
       >
         <FontAwesomeIcon icon={icon} className="nav-button-icon" />
       </button>
@@ -48,7 +53,7 @@ const NavButton = ({ to, icon, labelText }) => {
           closeModal={closeCreateFoodModal}
         />
       )}
-    </>
+    </div>
   );
 };
 

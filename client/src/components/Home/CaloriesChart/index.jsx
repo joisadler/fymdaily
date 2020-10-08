@@ -97,15 +97,14 @@ const CaloriesChart = ({
   };
 
   return (
-    <article
+    <div
       className="calories-container"
       ref={chartRef}
       onClick={toggleAlternateContent}
       onKeyDown={(e) => { handleKeyDown(e); }}
-      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
       role="switch"
       aria-checked="false"
-      tabIndex="0"
+      tabIndex={0}
     >
       <Doughnut
         className="calories-chart"
@@ -125,7 +124,7 @@ const CaloriesChart = ({
           toggleAlternateContent={toggleAlternateContent}
         />
       </div>
-    </article>
+    </div>
   );
 };
 

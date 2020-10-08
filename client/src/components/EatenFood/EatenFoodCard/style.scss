@@ -1,21 +1,27 @@
 .eaten-food-card {
+  &-container {
+    width: 100%;
+    height: calc((100% / 4) + 1px);
+    min-height: calc((100% / 4) + 1px);
+
+    @media (min-height: 481px) {
+      height: calc((100% / 6) + 1px);
+      min-height: calc((100% / 6) + 1px);
+    }
+
+    &:not(:nth-last-of-type(2)) {
+      border-block-end: 1px solid black;
+    }
+  }
+
   width: 100%;
-  height: calc((100% / 4) + 1px);
-  min-height: calc((100% / 4) + 1px);
+  height: 100%;
   padding-block-start: $sm-distance;
   padding-block-end: $sm-distance;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
-
-  @media (min-height: 481px) {
-    height: calc((100% / 6) + 1px);
-    min-height: calc((100% / 6) + 1px);
-  }
-
-  &:not(:nth-last-of-type(2)) {
-    border-block-end: 1px solid black;
-  }
+  cursor: pointer;
 
   &-title {
     width: 100%;

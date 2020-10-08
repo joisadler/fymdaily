@@ -32,22 +32,24 @@ const CustomFoodCard = ({ food }) => {
   };
 
   return (
-    <li
-      className="custom-food-card"
-      onClick={openModal}
-      onKeyDown={(e) => { handleKeyDown(e); }}
-      role="option"
-      aria-selected="false"
-    >
-      <h2 className="custom-food-card-title">
-        {`${name}${brand !== '' ? `, ${brand}` : ''}`}
-      </h2>
-      <p className="custom-food-card-info">
-        {`Calories: ${calories}`}
-        <br />
-        {`Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
-      </p>
-      {isModalOpen && (
+    <li className="custom-food-card-container">
+      <div
+        className="custom-food-card"
+        onClick={openModal}
+        onKeyDown={(e) => { handleKeyDown(e); }}
+        role="button"
+        title={`Edit "${name}"`}
+        tabIndex={0}
+      >
+        <h2 className="custom-food-card-title">
+          {`${name}${brand !== '' ? `, ${brand}` : ''}`}
+        </h2>
+        <p className="custom-food-card-info">
+          {`Calories: ${calories}`}
+          <br />
+          {`Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
+        </p>
+        {isModalOpen && (
         <EditCustomFoodModal
           isModalOpen={isModalOpen}
           closeModal={closeModal}
@@ -59,7 +61,8 @@ const CustomFoodCard = ({ food }) => {
           prevFats={fats}
           prevCarbs={carbs}
         />
-      )}
+        )}
+      </div>
     </li>
   );
 };

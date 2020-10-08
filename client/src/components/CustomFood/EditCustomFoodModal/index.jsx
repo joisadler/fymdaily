@@ -84,6 +84,7 @@ const EditCustomFoodModal = ({
         className="edit-custom-food-close-button"
         type="button"
         onClick={e => closeModal(e)}
+        title="Close"
       >
         &times;
       </button>
@@ -172,6 +173,7 @@ const EditCustomFoodModal = ({
             aria-label="Delete eaten food"
             className="edit-eaten-food-modal-delete-button"
             onClick={onRemoveFood}
+            title={`Delete "${name}" from custom foods`}
           >
             <FontAwesomeIcon
               icon={['fas', 'trash']}

@@ -32,7 +32,8 @@ const SettingsMenu = () => {
           className="settings-menu-logout-button"
           type="button"
           onClick={onLogOut}
-          aria-label="Log out"
+          title="Log Out"
+          aria-label="Log Out"
         />
       </header>
       <nav className="settings-menu-nav">

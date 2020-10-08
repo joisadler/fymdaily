@@ -1,17 +1,28 @@
 .nav-button {
-  width: calc(100% / 3);
-  height: 100%;
+  width: $input-height;
+  height: $input-height;
   padding: 0;
   border: none;
   background-color: #fff;
   cursor: pointer;
 
+  &-container {
+    width: calc(100% / 3);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &:focus {
-    outline: none;
+    outline: green;
+    border: 1px solid green;
   }
 
   &-icon {
-    width: 25% !important;
-    height: 25% !important;
+    // width: 25% !important;
+    // height: 25% !important;
+    width: 100% !important;
+    height: 100% !important;
   }
 }

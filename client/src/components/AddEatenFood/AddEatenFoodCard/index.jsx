@@ -31,22 +31,24 @@ const AddEatenFoodCard = ({ food }) => {
   };
 
   return (
-    <li
-      className="add-eaten-food-card"
-      onClick={openModal}
-      onKeyDown={(e) => { handleKeyDown(e); }}
-      role="option"
-      aria-selected="false"
-    >
-      <h2 className="add-eaten-food-card-title">
-        {`${name}${brand !== '' ? `, ${brand}` : ''}`}
-      </h2>
-      <p className="add-eaten-food-card-info">
-        {`Calories: ${calories}`}
-        <br />
-        {`Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
-      </p>
-      {isModalOpen && (
+    <li className="add-eaten-food-card-container">
+      <div
+        className="add-eaten-food-card"
+        onClick={openModal}
+        onKeyDown={(e) => { handleKeyDown(e); }}
+        role="button"
+        title={`Add "${name}" to eaten foods`}
+        tabIndex={0}
+      >
+        <h2 className="add-eaten-food-card-title">
+          {`${name}${brand !== '' ? `, ${brand}` : ''}`}
+        </h2>
+        <p className="add-eaten-food-card-info">
+          {`Calories: ${calories}`}
+          <br />
+          {`Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
+        </p>
+        {isModalOpen && (
         <AddEatenFoodModal
           isModalOpen={isModalOpen}
           closeModal={closeModal}
@@ -57,7 +59,8 @@ const AddEatenFoodCard = ({ food }) => {
           fats={fats}
           carbs={carbs}
         />
-      )}
+        )}
+      </div>
     </li>
   );
 };

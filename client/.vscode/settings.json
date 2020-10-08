@@ -2,8 +2,18 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "tabulous.defaultTerminals": [
     {
-      "name": "Working Section",
+      "name": "Start",
+      "directory": "./",
+      "command": "npm start",
+      "executeCommand": false,
+    },
+    {
+      "name": "Working Terminal (Backend directory)",
       "directory": "../"
+    },
+    {
+      "name": "Working Terminal (Client directory)",
+      "directory": "./"
     }
   ]
 }

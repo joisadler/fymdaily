@@ -48,6 +48,7 @@ const CreateCustomFoodModal = ({
         className="create-custom-food-close-button"
         type="button"
         onClick={e => closeModal(e)}
+        title="Close"
       >
         &times;
       </button>

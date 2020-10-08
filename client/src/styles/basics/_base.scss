@@ -1,23 +1,20 @@
 * {
   box-sizing: border-box;
+
+  &:focus {
+    outline: green;
+    border: 1px solid green;
+  }
 }
 
 html,
 body,
 #root {
-  // --minFontSize: 16px;
-  // --maxFontSize: 24px;
-  // // --scaler: 0.835vmax;
-  // --scaler: 2.5vmax;
-
   height: calc(var(--vh, 1vh) * 100);
   min-height: calc(var(--vh, 1vh) * 100);
   margin: 0;
   font-family: Montserrat, sans-serif;
-  // font-size: 16px;
-  // font-size: 2.5vmax;
   font-size: $root-font-size;
-  // font-size: clamp(var(--minFontSize), var(--scaler), var(--maxFontSize));
 
   @media (orientation: landscape) and (max-width: $desktop) {
     height: 100vw;

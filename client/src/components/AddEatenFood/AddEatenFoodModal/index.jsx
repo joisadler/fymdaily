@@ -65,6 +65,7 @@ const AddEatenFoodModal = ({
         className="add-eaten-food-modal-close-button"
         type="button"
         onClick={e => closeModal(e)}
+        title="Close"
       >
         &times;
       </button>
@@ -106,6 +107,7 @@ const AddEatenFoodModal = ({
               type="button"
               className="add-eaten-food-modal-weight-dec-button"
               onClick={decreaseWeight}
+              title="Decrease weight"
             >
               -
             </button>
@@ -123,6 +125,7 @@ const AddEatenFoodModal = ({
               type="button"
               className="add-eaten-food-modal-weight-inc-button"
               onClick={increaseWeight}
+              title="Increase weight"
             >
               +
             </button>
