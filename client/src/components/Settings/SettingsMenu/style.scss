@@ -9,9 +9,30 @@
   justify-content: flex-start;
   align-items: center;
   background-color: #fff;
-  transform: scaleY(0);
   transform-origin: top;
   transition: transform 0.3s;
+
+  /* This fires as soon as the element enters the DOM */
+  &-enter,
+  &-appear {
+    transform: scaleY(0);
+    // transition: transform 0.3s;
+  }
+
+  /* This is where we can add the transition */
+  &-enter-done,
+  &-appear-done {
+    transform: scaleY(1);
+  }
+  // /* This fires as soon as isShown is false */
+  // &-exit {
+  //   transform: scaleY(0);
+  // }
+
+  /* fires as element leaves the DOM */
+  &-exit-active {
+    transform: scaleY(0);
+  }
 
   &-header {
     width: 100%;
@@ -61,8 +82,4 @@
     text-transform: uppercase;
     text-decoration: none;
   }
-}
-
-.settings-menu-shown {
-  transform: scaleY(1);
 }
