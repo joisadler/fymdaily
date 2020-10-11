@@ -4,7 +4,8 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MenuActions from '../../../actions/SettingsMenuActions';
-import CreateCustomFoodModal from '../../CustomFood/CreateCustomFoodModal';
+import CreateCustomFoodModal from '../../Custom/CreateCustomFoodModal';
+import CreateCustomRecipeModal from '../../Custom/CreateCustomRecipeModal';
 
 const NavButton = ({
   to,
@@ -15,14 +16,24 @@ const NavButton = ({
   const history = useHistory();
 
   const [isCreateFoodModalOpen, setIsCreateFoodModalOpen] = useState(false);
+  const [isCreateRecipeModalOpen, setIsCreateRecipeModalOpen] = useState(false);
 
   const openCreateFoodModal = () => {
     setIsCreateFoodModalOpen(true);
   };
 
+  const openCreateRecipeModal = () => {
+    setIsCreateRecipeModalOpen(true);
+  };
+
   const closeCreateFoodModal = (e) => {
     if (e) e.stopPropagation();
     setIsCreateFoodModalOpen(false);
+  };
+
+  const closeCreateRecipeModal = (e) => {
+    if (e) e.stopPropagation();
+    setIsCreateRecipeModalOpen(false);
   };
 
   const handleClick = () => {
@@ -31,6 +42,9 @@ const NavButton = ({
     }
     if (to === '/create-custom-food') {
       return openCreateFoodModal();
+    }
+    if (to === '/create-custom-recipe') {
+      return openCreateRecipeModal();
     }
     dispatch(MenuActions.hideMenu());
     history.push(to);
@@ -51,6 +65,12 @@ const NavButton = ({
         <CreateCustomFoodModal
           isModalOpen={isCreateFoodModalOpen}
           closeModal={closeCreateFoodModal}
+        />
+      )}
+      {isCreateRecipeModalOpen && (
+        <CreateCustomRecipeModal
+          isModalOpen={isCreateRecipeModalOpen}
+          closeModal={closeCreateRecipeModal}
         />
       )}
     </div>

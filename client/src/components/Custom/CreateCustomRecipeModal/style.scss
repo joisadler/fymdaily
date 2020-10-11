@@ -1,0 +1,107 @@
+.create-custom-recipe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80vw;
+  height: 85vh;
+  padding-inline-start: $m-distance;
+  padding-inline-end: $input-height;
+  border: 1px solid black;
+  border-radius: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  // justify-content: space-evenly;
+  // align-items: center;
+  background-color: #fff;
+  opacity: 1;
+  outline: none;
+  transform: translate(-50%, -50%);
+
+  &-close-button {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    width: $input-height;
+    height: $input-height;
+    background-color: #fff;
+    border: none;
+
+    &:focus {
+      outline: 1px solid green;
+    }
+  }
+
+  &-header {
+    height: $xl-distance;
+    margin-block-end: $sm-distance;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: $sm-text;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  &-form {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    flex: 1;
+  }
+
+  &-input {
+    width: 100%;
+    height: $input-height;
+    margin-block-end: $m-distance;
+    font-size: $sm-text;
+  }
+
+  &-ingredients {
+    width: 100%;
+    flex: 1;
+    margin-block-end: $sm-distance;
+    overflow-y: scroll;
+
+    &-title {
+      font-size: $sm-text;
+      line-height: $m-line-height;
+      font-weight: 700;
+    }
+  }
+
+  &-info {
+    margin-block-end: $sm-distance;
+
+    &-title,
+    & p {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: $sm-text;
+      line-height: $sm-line-height;
+    }
+
+    &-title {
+      font-weight: 700;
+    }
+  }
+
+  &-submit-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &-submit-button {
+    height: $xl-distance;
+    width: 100%;
+    margin-block-end: $m-distance;
+    border: 1px solid black;
+    font-size: $m-text;
+    color: white;
+    background-color: green;
+    cursor: pointer;
+  }
+}

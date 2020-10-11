@@ -45,6 +45,8 @@ var _user = _interopRequireDefault(require("./api/user/user.router"));
 
 var _food = _interopRequireDefault(require("./api/food/food.router"));
 
+var _recipe = _interopRequireDefault(require("./api/recipe/recipe.router"));
+
 var _history = _interopRequireDefault(require("./api/history/history.router"));
 
 // import bodyParser from 'body-parser';
@@ -98,6 +100,7 @@ app.use('/api/auth/signup', (0, _signup["default"])(_passport["default"]));
 app.use('/api/auth/logout', (0, _logout["default"])());
 app.use('/api/user', _user["default"]);
 app.use('/api/food', _food["default"]);
+app.use('/api/recipe', _recipe["default"]);
 app.use('/api/history', _history["default"]);
 app.get('*', function (req, res) {
   res.sendFile(_path["default"].resolve(__dirname, '../client', 'build', 'index.html'));

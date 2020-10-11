@@ -1,0 +1,15 @@
+.create-custom-recipe {
+  &-ingredient-container {
+    //
+  }
+
+  &-ingredient {
+    width: 100%;
+    font-size: $sm-text;
+    line-height: $m-line-height;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+  }
+}

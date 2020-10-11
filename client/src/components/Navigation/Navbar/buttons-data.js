@@ -46,7 +46,7 @@ const buttonsData = {
   ],
   '/add-eaten-food': [
     {
-      to: '/custom-foods',
+      to: '/custom',
       labelText: 'Custom foods',
       icon: ['fas', 'folder-open'],
       key: 1,
@@ -85,7 +85,7 @@ const buttonsData = {
       key: 3,
     },
   ],
-  '/custom-foods': [
+  '/custom': [
     {
       to: '/create-custom-food',
       labelText: 'Create custom food',

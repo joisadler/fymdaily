@@ -19,6 +19,7 @@ import signupRouter from './api/auth/signup';
 import logoutRouter from './api/auth/logout';
 import userRouter from './api/user/user.router';
 import foodRouter from './api/food/food.router';
+import recipeRouter from './api/recipe/recipe.router';
 import historyRouter from './api/history/history.router';
 
 mongoose.connect(dbConfig.url, {
@@ -81,6 +82,7 @@ app.use('/api/auth/signup', signupRouter(passport));
 app.use('/api/auth/logout', logoutRouter());
 app.use('/api/user', userRouter);
 app.use('/api/food', foodRouter);
+app.use('/api/recipe', recipeRouter);
 app.use('/api/history', historyRouter);
 
 app.get('*', (req, res) => {

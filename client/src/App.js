@@ -5,7 +5,7 @@ import HomePage from './components/Home/HomePage';
 import UserSettingsPage from './components/Settings/UserSettingsPage';
 import EatenFoodPage from './components/EatenFood/EatenFoodPage';
 import AddEatenFoodPage from './components/AddEatenFood/AddEatenFoodPage';
-import CustomFoodPage from './components/CustomFood/CustomFoodPage';
+import CustomPage from './components/Custom/CustomPage';
 import AccountSettingsPage from './components/Settings/AccountSettingsPage';
 import PreferencesPage from './components/Settings/PreferencesPage';
 import StatisticsPage from './components/Settings/StatisticsPage';
@@ -24,7 +24,7 @@ function App() {
         <Route path="/home" component={HomePage} />
         <Route path="/eaten-food" component={EatenFoodPage} />
         <Route path="/add-eaten-food" component={AddEatenFoodPage} />
-        <Route path="/custom-foods" component={CustomFoodPage} />
+        <Route path="/custom" component={CustomPage} />
         <Route path="/user-settings" component={UserSettingsPage} />
         <Route path="/account-settings" component={AccountSettingsPage} />
         <Route path="/preferences" component={PreferencesPage} />

@@ -1,10 +1,16 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import useLoadUser from '../../../hooks/useLoadUser';
 import LoginForm from '../LoginForm';
 import SignupForm from '../SignupForm';
 import Footer from '../../Footer';
 
 export default () => {
+  const user = useLoadUser();
+  const history = useHistory();
+  if (user) history.push('/home');
+
   const [currentForm, setCurrentForm] = useState('login');
 
   return (

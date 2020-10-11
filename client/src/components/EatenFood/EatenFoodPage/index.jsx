@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getRandomStr } from '../../../services/util.servise';
+import { getRandomStr } from '../../../services/util.service';
 import { loadEatenFoods } from '../../../actions/HistoryActions';
 import Navbar from '../../Navigation/Navbar';
 import EatenFoodCard from '../EatenFoodCard';

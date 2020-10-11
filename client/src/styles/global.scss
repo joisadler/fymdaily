@@ -22,7 +22,7 @@
 @import "../components/Settings/AccountSettingsPage/style";
 @import "../components/Settings/PreferencesPage/style";
 @import "../components/Settings/StatisticsPage/style";
-@import "../components/CustomFood/CustomFoodPage/style";
+@import "../components/Custom/CustomPage/style";
 
 // Components
 @import "../components/Navigation/Navbar/style";
@@ -37,10 +37,14 @@
 @import "../components/Settings/SettingsMenu/style";
 @import "../components/AddEatenFood/AddEatenFoodCard/style";
 @import "../components/AddEatenFood/AddEatenFoodModal/style";
-@import "../components/CustomFood/CustomFoodCard/style";
+@import "../components/Custom/CustomFoodCard/style";
+@import "../components/Custom/CustomRecipeCard/style";
 @import "../components/EatenFood/EatenFoodCard/style";
 @import "../components/EatenFood/EditEatenFoodModal/style";
-@import "../components/CustomFood/CreateCustomFoodModal/style";
-@import "../components/CustomFood/EditCustomFoodModal/style";
+@import "../components/Custom/CreateCustomFoodModal/style";
+@import "../components/Custom/CreateCustomRecipeModal/style";
+@import "../components/Custom/CreateCustomRecipeIngredientCard/style";
+@import "../components/Custom/EditIngredientModal/style";
+@import "../components/Custom/EditCustomFoodModal/style";
 @import "../components/ConfirmModal/style";
 @import "../components/Loader/style";

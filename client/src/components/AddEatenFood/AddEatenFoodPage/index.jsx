@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { DebounceInput } from 'react-debounce-input';
-import useFoodSearch from '../../../hooks/useFoodSearch';
-import { getRandomStr } from '../../../services/util.servise';
+import useSearch from '../../../hooks/useSearch';
+import { getRandomStr } from '../../../services/util.service';
 import Loader from '../../Loader';
 import Navbar from '../../Navigation/Navbar';
 import AddEatenFoodCard from '../AddEatenFoodCard';
@@ -12,7 +12,7 @@ const AddEatenFoodPage = () => {
     inputText,
     setInputText,
     foods,
-  } = useFoodSearch();
+  } = useSearch('food');
 
   const isLoading = useSelector(state => state.system.isLoading);
 

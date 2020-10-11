@@ -40,7 +40,7 @@ export function loadFoods(text, pathname) {
   return async (dispatch) => {
     try {
       dispatch(loading());
-      const foods = pathname === '/custom-foods'
+      const foods = pathname === '/custom'
         ? await getCustomFoods(text)
         : await getFoods(text);
       dispatch(_setFoods(foods));

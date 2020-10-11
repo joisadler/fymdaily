@@ -1,0 +1,48 @@
+.custom-page {
+  &-header {
+    width: 100%;
+    margin-block-end: $sm-distance;
+  }
+
+  &-items-type {
+    width: 8rem;
+    font-size: $l-text;
+    font-weight: 700;
+    border: 1px solid black;
+    background-color: white;
+    outline: green;
+    font-family: Montserrat, sans-serif;
+
+    & option {
+      font-size: $l-text;
+      font-weight: 700;
+      font-family: Montserrat, sans-serif;
+    }
+
+    &:focus {
+      outline: 1px solid green;
+    }
+  }
+
+  &-cards {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  &-search {
+    width: 100%;
+    height: $input-height;
+    border: 1px solid black;
+    border-radius: 0;
+    padding: $sm-distance;
+    font-size: $sm-text;
+
+    &:focus {
+      outline: 1px solid green;
+    }
+  }
+}

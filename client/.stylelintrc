@@ -9,5 +9,6 @@
       "ignoreAtRules": ["function", "if", "each", "include", "mixin", "return"]
     }],
     "value-keyword-case": null
-  }
+  },
+  "ignoreFiles": ["**/*.js", "build"]
 }
