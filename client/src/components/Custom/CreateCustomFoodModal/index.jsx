@@ -75,7 +75,6 @@ const CreateCustomFoodModal = ({
           value={brand}
           placeholder="Brand"
           onChange={e => setBrand(e.target.value)}
-          required
         />
         <input
           type="number"
