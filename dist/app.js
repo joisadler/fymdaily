@@ -91,7 +91,7 @@ app.use((0, _helmet["default"])({
   }
 }));
 app.use((0, _cors["default"])({
-  origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000', 'http://192.168.0.4:3000'],
+  origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000', 'http://192.168.0.5:3000'],
   credentials: true
 }));
 app.use((0, _compression["default"])());

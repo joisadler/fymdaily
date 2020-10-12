@@ -84,26 +84,29 @@ const CreateCustomRecipeModal = ({
     setInfo(ingredients);
   }, [ingredients]);
 
-  // const addIngredient = (
-  //   ingredientName,
-  //   ingredientBrand,
-  //   ingredientWeight,
-  //   ingredientCalories,
-  //   ingredientProteins,
-  //   ingredientFats,
-  //   ingredientCarbs,
-  // ) => {
-  //   const ingredient = {
-  //     name: ingredientName,
-  //     brand: ingredientBrand,
-  //     weight: ingredientWeight,
-  //     calories: ingredientCalories,
-  //     proteins: ingredientProteins,
-  //     fats: ingredientFats,
-  //     carbs: ingredientCarbs,
-  //   };
-  //   setIngredients([...ingredients, ingredient]);
-  // };
+  const addIngredient = (
+    ingredientName,
+    ingredientBrand,
+    ingredientWeight,
+    ingredientCalories,
+    ingredientProteins,
+    ingredientFats,
+    ingredientCarbs,
+  ) => {
+    const ingredient = {
+      name: ingredientName,
+      brand: ingredientBrand,
+      weight: ingredientWeight,
+      calories: ingredientCalories,
+      proteins: ingredientProteins,
+      fats: ingredientFats,
+      carbs: ingredientCarbs,
+    };
+    const updatedIngredients = [...ingredients, ingredient];
+    setIngredients(updatedIngredients);
+    // console.log(updatedIngredients)
+    setInfo(updatedIngredients);
+  };
 
   const updateIngredient = (
     ingredientWeight,
@@ -199,7 +202,7 @@ const CreateCustomRecipeModal = ({
         <button
           type="button"
           className="create-custom-recipe-add-ingredient-button"
-          onClick={openSearchIngredientModal}
+          onClick={() => openSearchIngredientModal()}
         >
           + Add ingredient
         </button>
@@ -207,6 +210,7 @@ const CreateCustomRecipeModal = ({
         <SearchIngredientModal
           isModalOpen={isSearchIngredientModalOpen}
           closeModal={closeSearchIngredientModal}
+          addIngredient={addIngredient}
         />
         )}
         <div

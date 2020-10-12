@@ -7,7 +7,7 @@ import userService from './user.service';
 
 async function getUser(req, res) {
   if (!req.user) {
-    return res.send(401);
+    return res.sendStatus(401);
   }
   res.status(200)
     .send(req.user);

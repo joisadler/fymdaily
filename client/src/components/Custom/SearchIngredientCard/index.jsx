@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-// import AddEatenFoodModal from '../AddEatenFoodModal';
+import AddIngredientModal from '../AddIngredientModal';
 
-const SearchIngredientCard = ({ food }) => {
+const SearchIngredientCard = ({
+  food,
+  addIngredient,
+}) => {
   const {
     name,
     brand,
@@ -31,25 +34,25 @@ const SearchIngredientCard = ({ food }) => {
   };
 
   return (
-    <li className="add-eaten-food-card-container">
+    <li className="search-ingredient-card-container">
       <div
-        className="add-eaten-food-card"
+        className="search-ingredient-card"
         onClick={openModal}
         onKeyDown={(e) => { handleKeyDown(e); }}
         role="button"
         title={`Add "${name}" to eaten foods`}
         tabIndex={0}
       >
-        <h2 className="add-eaten-food-card-title">
+        <h2 className="search-ingredient-card-title">
           {`${name}${brand !== '' ? `, ${brand}` : ''}`}
         </h2>
-        <p className="add-eaten-food-card-info">
+        <p className="search-ingredient-card-info">
           {`Calories: ${calories}`}
           <br />
           {`Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
         </p>
         {isModalOpen && (
-        <AddEatenFoodModal
+        <AddIngredientModal
           isModalOpen={isModalOpen}
           closeModal={closeModal}
           name={name}
@@ -58,6 +61,7 @@ const SearchIngredientCard = ({ food }) => {
           proteins={proteins}
           fats={fats}
           carbs={carbs}
+          addIngredient={addIngredient}
         />
         )}
       </div>
@@ -67,6 +71,7 @@ const SearchIngredientCard = ({ food }) => {
 
 SearchIngredientCard.propTypes = {
   food: PropTypes.objectOf(PropTypes.any).isRequired,
+  addIngredient: PropTypes.func.isRequired,
 };
 
 export default SearchIngredientCard;

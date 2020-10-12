@@ -27,7 +27,7 @@ function _getUser() {
               break;
             }
 
-            return _context.abrupt("return", res.send(401));
+            return _context.abrupt("return", res.sendStatus(401));
 
           case 2:
             res.status(200).send(req.user);
