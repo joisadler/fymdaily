@@ -1,21 +1,23 @@
 .create-custom-recipe {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 80vw;
-  height: 85vh;
-  padding-inline-start: $m-distance;
-  padding-inline-end: $input-height;
-  border: 1px solid black;
-  border-radius: 0;
-  display: flex;
-  flex-flow: column nowrap;
-  // justify-content: space-evenly;
-  // align-items: center;
-  background-color: #fff;
-  opacity: 1;
-  outline: none;
-  transform: translate(-50%, -50%);
+  &-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90vw;
+    height: 90vh;
+    padding-inline-start: $m-distance;
+    padding-inline-end: $input-height;
+    border: 1px solid black;
+    border-radius: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    // justify-content: space-evenly;
+    // align-items: center;
+    background-color: #fff;
+    opacity: 1;
+    outline: none;
+    transform: translate(-50%, -50%);
+  }
 
   &-close-button {
     position: absolute;
@@ -28,7 +30,7 @@
     border: none;
 
     &:focus {
-      outline: 1px solid green;
+      border: 1px solid green;
     }
   }
 
@@ -55,11 +57,17 @@
     width: 100%;
     height: $input-height;
     margin-block-end: $m-distance;
+    border-radius: 0;
     font-size: $sm-text;
+
+    &:focus {
+      border: 1px solid green;
+    }
   }
 
   &-ingredients {
     width: 100%;
+    height: 50px;
     flex: 1;
     margin-block-end: $sm-distance;
     overflow-y: scroll;
@@ -68,6 +76,25 @@
       font-size: $sm-text;
       line-height: $m-line-height;
       font-weight: 700;
+    }
+  }
+
+  &-add-ingredient-button {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    padding: 0;
+    border: none;
+    font-family: Montseratt, sans-serif;
+    font-size: $m-text;
+    line-height: $m-line-height;
+    text-align: start;
+    color: green;
+    background-color: white;
+    cursor: pointer;
+
+    &:focus {
+      border: 1px solid green;
     }
   }
 

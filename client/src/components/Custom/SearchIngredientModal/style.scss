@@ -1,1 +1,86 @@
-//
+.search-ingredient {
+  &-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90vw;
+    height: 90vh;
+    padding-inline-start: $m-distance;
+    padding-inline-end: $input-height;
+    border: 1px solid black;
+    border-radius: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    // justify-content: space-evenly;
+    // align-items: center;
+    background-color: #fff;
+    opacity: 1;
+    outline: none;
+    transform: translate(-50%, -50%);
+  }
+
+  &-close-button {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    width: $input-height;
+    height: $input-height;
+    background-color: #fff;
+    border: none;
+
+    &:focus {
+      border: 1px solid green;
+    }
+  }
+
+  &-search {
+    width: 100%;
+    height: $input-height;
+    border: 1px solid black;
+    border-radius: 0;
+    padding: $sm-distance;
+    font-size: $sm-text;
+
+    &:focus {
+      border: 1px solid green;
+    }
+  }
+
+  &-header {
+    height: $xl-distance;
+    margin-block-end: $sm-distance;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: $sm-text;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  &-cards {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  &-submit-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &-submit-button {
+    height: $xl-distance;
+    width: 100%;
+    margin-block-end: $m-distance;
+    border: 1px solid black;
+    font-size: $m-text;
+    color: white;
+    background-color: green;
+    cursor: pointer;
+  }
+}

@@ -28,6 +28,7 @@ const CustomPage = () => {
   const dispatch = useDispatch();
   const handleItemsTypeChange = ({ value }) => {
     dispatch(setItemsType(value));
+    searchInput.current.focus();
   };
 
   const handleSearchInput = ({ value }) => {

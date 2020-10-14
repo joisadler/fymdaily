@@ -5,6 +5,7 @@ import AddIngredientModal from '../AddIngredientModal';
 const SearchIngredientCard = ({
   food,
   addIngredient,
+  closeSearchModal,
 }) => {
   const {
     name,
@@ -55,6 +56,7 @@ const SearchIngredientCard = ({
         <AddIngredientModal
           isModalOpen={isModalOpen}
           closeModal={closeModal}
+          closeSearchModal={closeSearchModal}
           name={name}
           brand={brand}
           calories={calories}
@@ -72,6 +74,7 @@ const SearchIngredientCard = ({
 SearchIngredientCard.propTypes = {
   food: PropTypes.objectOf(PropTypes.any).isRequired,
   addIngredient: PropTypes.func.isRequired,
+  closeSearchModal: PropTypes.func.isRequired,
 };
 
 export default SearchIngredientCard;

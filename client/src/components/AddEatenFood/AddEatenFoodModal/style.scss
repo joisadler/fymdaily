@@ -28,7 +28,7 @@
     border: none;
 
     &:focus {
-      outline: 1px solid green;
+      border: 1px solid green;
     }
   }
 
@@ -83,7 +83,7 @@
     margin-inline-end: $sm-distance;
 
     &:focus {
-      outline: 1px solid green;
+      border: 1px solid green;
     }
 
   }
@@ -98,7 +98,7 @@
     cursor: pointer;
 
     &:focus {
-      outline: 1px solid green;
+      border: 1px solid green;
     }
   }
 

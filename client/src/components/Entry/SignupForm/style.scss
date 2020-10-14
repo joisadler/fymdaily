@@ -20,7 +20,7 @@
 
     &:active,
     &:focus {
-      outline: 1px solid green;
+      border: 1px solid green;
     }
   }
 
@@ -28,7 +28,7 @@
     width: $m-distance;
     height: $m-distance;
     margin: 0 $sm-distance 0 0;
-    outline: 1px solid #000;
+    outline: 1px solid green;
     outline-offset: -1px;
 
     // @media (min-width: $tablet) and (max-width: $desktop) {
@@ -104,7 +104,7 @@
   margin-block-start: $sm-distance;
   background-color: #fff;
   font-size: $m-text;
-  color: #00ee;
+  color: green;
   cursor: pointer;
 
   // @media (min-width: $tablet) and (max-width: $desktop) {
@@ -112,7 +112,7 @@
   //   font-size: 3rem;
   // }
 
-  &:active {
-    outline: 1px solid green;
+  &:focus {
+    border: 1px solid green;
   }
 }

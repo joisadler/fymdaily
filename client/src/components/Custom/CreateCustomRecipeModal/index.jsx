@@ -74,10 +74,10 @@ const CreateCustomRecipeModal = ({
       .round((totalProteins * 1000) / totalWeight) / 10;
     const recipeFats = Math.round((totalFats * 1000) / totalWeight) / 10;
     const recipeCarbs = Math.round((totalCarbs * 1000) / totalWeight) / 10;
-    setCalories(recipeCalories);
-    setProteins(recipeProteins);
-    setFats(recipeFats);
-    setCarbs(recipeCarbs);
+    setCalories(Number.isNaN(recipeCalories) ? 0 : recipeCalories);
+    setProteins(Number.isNaN(recipeProteins) ? 0 : recipeProteins);
+    setFats(Number.isNaN(recipeFats) ? 0 : recipeFats);
+    setCarbs(Number.isNaN(recipeCarbs) ? 0 : recipeCarbs);
   };
 
   useEffect(() => {
@@ -157,7 +157,7 @@ const CreateCustomRecipeModal = ({
       isOpen={isModalOpen}
       onRequestClose={closeModal}
       contentLabel="Create recipe"
-      className="create-custom-recipe"
+      className="create-custom-recipe-modal"
     >
       <button
         className="create-custom-recipe-close-button"
@@ -182,6 +182,8 @@ const CreateCustomRecipeModal = ({
           placeholder="Recipe name"
           onChange={e => setName(e.target.value)}
           required
+          // eslint-disable-next-line jsx-a11y/no-autofocus
+          autoFocus
         />
         <h3 className="create-custom-recipe-ingredients-title">
           Ingredients:
@@ -198,14 +200,14 @@ const CreateCustomRecipeModal = ({
               removeIngredient={removeIngredient}
             />
           ))}
+          <button
+            type="button"
+            className="create-custom-recipe-add-ingredient-button"
+            onClick={() => openSearchIngredientModal()}
+          >
+            + Add ingredient
+          </button>
         </ul>
-        <button
-          type="button"
-          className="create-custom-recipe-add-ingredient-button"
-          onClick={() => openSearchIngredientModal()}
-        >
-          + Add ingredient
-        </button>
         {isSearchIngredientModalOpen && (
         <SearchIngredientModal
           isModalOpen={isSearchIngredientModalOpen}
@@ -217,7 +219,7 @@ const CreateCustomRecipeModal = ({
           className="create-custom-recipe-info"
         >
           <h2 className="create-custom-recipe-info-title">
-            {`100g of ${name} contains:`}
+            {`100g of ${name ? `"${name}"` : 'the recipe above'} contains:`}
           </h2>
           <p>
             {`Calories: ${calories}`}

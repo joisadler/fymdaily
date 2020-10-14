@@ -20,6 +20,22 @@ const EditIngredientModal = ({
 
   const [weight, setWeight] = useState(prevWeight);
 
+  const decreaseWeight = () => {
+    if (weight <= 10) {
+      setWeight(0);
+      return;
+    }
+    setWeight(weight - 10);
+  };
+
+  const increaseWeight = () => {
+    if (weight >= 990) {
+      setWeight(1000);
+      return;
+    }
+    setWeight(weight + 10);
+  };
+
   const onUpdateIngredient = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -51,62 +67,89 @@ const EditIngredientModal = ({
     <Modal
       isOpen={isModalOpen}
       onRequestClose={closeModal}
-      contentLabel="Edit food"
-      className="edit-custom-food"
+      contentLabel="Edit ingredient"
+      className="edit-ingredient-modal"
     >
       <button
-        className="edit-custom-food-close-button"
+        className="edit-ingredient-close-button"
         type="button"
         onClick={e => closeModal(e)}
         title="Close"
       >
         &times;
       </button>
-      <h2 className="edit-custom-food-header">
-        <bdi>
+      <header className="edit-ingredient-header">
+        <h2 className="edit-ingredient-title">
           {name}
-        </bdi>
-        <bdi>
-          {`${brand !== '' ? `, ${brand}` : ''}, `}
-        </bdi>
-      </h2>
+        </h2>
+        <h3 className="edit-ingredient-subtitle">
+          {brand}
+        </h3>
+      </header>
       <form
-        className="edit-custom-food-form"
+        id="edit-ingredient-form"
+        className="edit-ingredient-form"
         onSubmit={onUpdateIngredient}
       >
-        <input
-          type="number"
-          min="0"
-          max="1000"
-          step="any"
-          className="edit-custom-food-input edit-custom-food-calories-input"
-          aria-label="weight"
-          value={weight}
-          placeholder="Weight"
-          onChange={e => setWeight(+e.target.value)}
-          required
-        />
-        <div className="edit-custom-food-submit-button-container">
-          <button
-            type="submit"
-            className="edit-custom-food-submit-button"
+        <fieldset className="edit-ingredient-weight-inputs">
+          <legend
+            className="edit-ingredient-weight-legend"
           >
-            Save
-          </button>
-          <button
-            type="button"
-            aria-label="Delete eaten food"
-            className="edit-eaten-food-modal-delete-button"
-            onClick={onRemoveIngredient}
-            title={`Delete "${name}" from custom foods`}
-          >
-            <FontAwesomeIcon
-              icon={['fas', 'trash']}
-              className="edit-eaten-food-delete-button-icon"
+            Weight:
+          </legend>
+          <div>
+            <button
+              type="button"
+              className="edit-ingredient-weight-dec-button"
+              onClick={decreaseWeight}
+              title="Decrease weight"
+            >
+              -
+            </button>
+            <input
+              className="edit-ingredient-weight-input"
+              aria-label="weight"
+              type="number"
+              min="0"
+              max="1000"
+              step="any"
+              value={weight}
+              placeholder="Weight"
+              onChange={e => setWeight(+e.target.value)}
+              required
             />
-          </button>
-        </div>
+            <button
+              type="button"
+              className="add-ingredient-weight-inc-button"
+              onClick={increaseWeight}
+              title="Increase weight"
+            >
+              +
+            </button>
+          </div>
+        </fieldset>
       </form>
+      <div className="edit-ingredient-submit-button-container">
+        <button
+          type="submit"
+          form="edit-ingredient-form"
+          className="edit-custom-food-submit-button"
+        >
+          Save
+        </button>
+        <button
+          type="button"
+          aria-label="Delete eaten food"
+          className="edit-eaten-food-modal-delete-button"
+          onClick={onRemoveIngredient}
+          title={`Delete "${name}" from custom foods`}
+        >
+          <FontAwesomeIcon
+            icon={['fas', 'trash']}
+            className="edit-eaten-food-delete-button-icon"
+          />
+        </button>
+      </div>
     </Modal>
   );
 };

@@ -28,7 +28,7 @@
     border: none;
 
     &:focus {
-      outline: 1px solid green;
+      border: 1px solid green;
     }
   }
 
@@ -53,7 +53,7 @@
     font-size: $sm-text;
 
     &:focus {
-      outline: 1px solid green;
+      border: 1px solid green;
     }
   }
 

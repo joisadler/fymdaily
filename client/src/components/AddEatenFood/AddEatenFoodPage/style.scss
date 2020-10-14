@@ -15,9 +15,9 @@
     border-radius: 0;
     padding: $sm-distance;
     font-size: $sm-text;
-  
+
     &:focus {
-      outline: 1px solid green;
+      border: 1px solid green;
     }
   }
 }
