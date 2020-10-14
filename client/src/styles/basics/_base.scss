@@ -2,7 +2,8 @@
   box-sizing: border-box;
 
   &:focus {
-    outline: green;
+    // outline: green;
+    outline: none;
     border: 1px solid green;
   }
 }
