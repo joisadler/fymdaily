@@ -3,7 +3,10 @@ import { useDispatch } from 'react-redux';
 import { useAsyncCallback } from 'react-async-hook';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ConfirmModal from '../../ConfirmModal';
 import {
   updateCustomRecipes,
   deleteCustomRecipe,
@@ -137,7 +140,25 @@ const EditCustomRecipeModal = ({
     dispatch(deleteCustomRecipe(_id));
   });
 
-  const onDeleteRecipe = () => deleteRecipe.execute();
+  const createConfirmModal = ({ onClose }) => (
+    <ConfirmModal
+      onClose={onClose}
+      text="Are you sure you wish to delete"
+      name={name}
+      onYes={() => {
+        deleteRecipe.execute();
+        closeModal();
+      }}
+      yesButtonText="Delete"
+      noButtonText="Return"
+    />
+  );
+
+  const onDeleteRecipe = () => {
+    confirmAlert({
+      customUI: createConfirmModal,
+    });
+  };
 
   const onFormSubmit = (e) => {
     e.preventDefault();
