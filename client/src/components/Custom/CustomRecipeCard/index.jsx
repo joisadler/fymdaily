@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-// import EditCustomRecipeModal from '../EditCustomRecipeModal';
+import EditCustomRecipeModal from '../EditCustomRecipeModal';
 
 const CustomRecipeCard = ({ recipe }) => {
   const {
     _id,
     name,
+    ingredients,
   } = recipe;
   const calories = Math.round(+recipe.calories);
   const proteins = Math.round(+recipe.proteins);
@@ -48,19 +49,19 @@ const CustomRecipeCard = ({ recipe }) => {
           <br />
           {`Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
         </p>
-        {/* {isModalOpen && (
+        {isModalOpen && (
         <EditCustomRecipeModal
           isModalOpen={isModalOpen}
           closeModal={closeModal}
           _id={_id}
           prevName={name}
-          prevBrand={brand}
+          prevIngredients={ingredients}
           prevCalories={calories}
           prevProteins={proteins}
           prevFats={fats}
           prevCarbs={carbs}
         />
-        )} */}
+        )}
       </div>
     </li>
   );

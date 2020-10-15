@@ -3,14 +3,25 @@ import { useDispatch } from 'react-redux';
 import { useAsyncCallback } from 'react-async-hook';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
-import { addCustomRecipe } from '../../../actions/RecipeActions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  updateCustomRecipes,
+  deleteCustomRecipe,
+} from '../../../actions/RecipeActions';
 import { getRandomStr } from '../../../services/util.service';
 import SearchIngredientModal from '../SearchIngredientModal';
-import CreateCustomRecipeIngredientCard from '../CreateCustomRecipeIngredientCard';
+import CustomRecipeIngredientCard from '../CreateCustomRecipeIngredientCard';
 
-const CreateCustomRecipeModal = ({
+const EditCustomRecipeModal = ({
   isModalOpen,
   closeModal,
+  _id,
+  prevName,
+  prevIngredients,
+  prevCalories,
+  prevProteins,
+  prevFats,
+  prevCarbs,
 }) => {
   Modal.setAppElement('#root');
 
@@ -28,13 +39,12 @@ const CreateCustomRecipeModal = ({
     setIsSearchIngredientModalOpen(false);
   };
 
-  const [name, setName] = useState('');
-  const [ingredients, setIngredients] = useState([]);
-
-  const [calories, setCalories] = useState(0);
-  const [proteins, setProteins] = useState(0);
-  const [fats, setFats] = useState(0);
-  const [carbs, setCarbs] = useState(0);
+  const [name, setName] = useState(prevName);
+  const [ingredients, setIngredients] = useState(prevIngredients);
+  const [calories, setCalories] = useState(prevCalories);
+  const [proteins, setProteins] = useState(prevProteins);
+  const [fats, setFats] = useState(prevFats);
+  const [carbs, setCarbs] = useState(prevCarbs);
 
   const setInfo = (ings) => {
     const totalWeight = ings
@@ -110,8 +120,9 @@ const CreateCustomRecipeModal = ({
   };
 
   const dispatch = useDispatch();
-  const createRecipe = useAsyncCallback(async () => {
+  const editRecipe = useAsyncCallback(async () => {
     const recipe = {
+      _id,
       name,
       calories,
       proteins,
@@ -119,12 +130,18 @@ const CreateCustomRecipeModal = ({
       carbs,
       ingredients,
     };
-    dispatch(addCustomRecipe(recipe));
+    dispatch(updateCustomRecipes(recipe));
   });
+
+  const deleteRecipe = useAsyncCallback(async () => {
+    dispatch(deleteCustomRecipe(_id));
+  });
+
+  const onDeleteRecipe = () => deleteRecipe.execute();
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    createRecipe.execute();
+    editRecipe.execute();
     closeModal();
   };
 
@@ -132,27 +149,28 @@ const CreateCustomRecipeModal = ({
     <Modal
       isOpen={isModalOpen}
       onRequestClose={closeModal}
-      contentLabel="Create recipe"
-      className="create-custom-recipe-modal"
+      contentLabel="Edit recipe"
+      className="edit-custom-recipe-modal"
     >
       <button
-        className="create-custom-recipe-close-button"
+        className="edit-custom-recipe-close-button"
         type="button"
         onClick={e => closeModal(e)}
         title="Close"
       >
         &times;
       </button>
-      <h2 className="create-custom-recipe-header">
-        Create new recipe
+      <h2 className="edit-custom-recipe-header">
+        Edit recipe
       </h2>
       <form
-        className="create-custom-recipe-form"
+        className="edit-custom-recipe-form"
+        id="edit-custom-recipe-form"
         onSubmit={onFormSubmit}
       >
         <input
           type="text"
-          className="create-custom-recipe-input create-custom-recipe-name-input"
+          className="edit-custom-recipe-input edit-custom-recipe-name-input"
           aria-label="name"
           value={name}
           placeholder="Recipe name"
@@ -161,15 +179,15 @@ const CreateCustomRecipeModal = ({
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus
         />
-        <h3 className="create-custom-recipe-ingredients-title">
+        <h3 className="edit-custom-recipe-ingredients-title">
           Ingredients:
         </h3>
-        <ul className="create-custom-recipe-ingredients">
-          {ingredients.map((ing, i) => (
-            <CreateCustomRecipeIngredientCard
-              name={ing.name}
-              brand={ing.brand}
-              weight={ing.weight}
+        <ul className="edit-custom-recipe-ingredients">
+          {ingredients.map((ingr, i) => (
+            <CustomRecipeIngredientCard
+              name={ingr.name}
+              brand={ingr.brand}
+              weight={ingr.weight}
               index={i}
               key={getRandomStr()}
               updateIngredient={updateIngredient}
@@ -178,7 +196,7 @@ const CreateCustomRecipeModal = ({
           ))}
           <button
             type="button"
-            className="create-custom-recipe-add-ingredient-button"
+            className="edit-custom-recipe-add-ingredient-button"
             onClick={() => openSearchIngredientModal()}
           >
             + Add ingredient
@@ -192,9 +210,9 @@ const CreateCustomRecipeModal = ({
         />
         )}
         <div
-          className="create-custom-recipe-info"
+          className="edit-custom-recipe-info"
         >
-          <h2 className="create-custom-recipe-info-title">
+          <h2 className="edit-custom-recipe-info-title">
             {`100g of ${name ? `"${name}"` : 'the recipe above'} contains:`}
           </h2>
           <p>
@@ -203,22 +221,42 @@ const CreateCustomRecipeModal = ({
             {`Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
           </p>
         </div>
-        <div className="create-custom-recipe-submit-button-container">
-          <button
-            type="submit"
-            className="create-custom-recipe-submit-button"
-          >
-            Create
-          </button>
-        </div>
       </form>
+      <div className="edit-custom-recipe-options-container">
+        <button
+          type="submit"
+          form="edit-custom-recipe-form"
+          className="edit-custom-recipe-submit-button"
+        >
+          Save
+        </button>
+        <button
+          type="button"
+          aria-label={`Delete ${name}`}
+          className="edit-custom-recipe-delete-button"
+          onClick={onDeleteRecipe}
+          title={`Delete "${name}" from custom recipes`}
+        >
+          <FontAwesomeIcon
+            icon={['fas', 'trash']}
+            className="edit-custom-recipe-delete-button-icon"
+          />
+        </button>
+      </div>
     </Modal>
   );
 };
 
-CreateCustomRecipeModal.propTypes = {
+EditCustomRecipeModal.propTypes = {
   isModalOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
+  _id: PropTypes.string.isRequired,
+  prevName: PropTypes.string.isRequired,
+  prevIngredients: PropTypes.arrayOf(PropTypes.object).isRequired,
+  prevCalories: PropTypes.number.isRequired,
+  prevProteins: PropTypes.number.isRequired,
+  prevFats: PropTypes.number.isRequired,
+  prevCarbs: PropTypes.number.isRequired,
 };
 
-export default CreateCustomRecipeModal;
+export default EditCustomRecipeModal;

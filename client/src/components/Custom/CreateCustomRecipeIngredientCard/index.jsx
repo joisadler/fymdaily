@@ -34,7 +34,7 @@ const CreateCustomRecipeIngredientCard = ({
         className="create-custom-recipe-ingredient"
         onKeyDown={(e) => { handleKeyDown(e); }}
         role="button"
-        title={`Add "${name}" to eaten foods`}
+        title={`Edit "${name}"`}
         tabIndex={0}
         onClick={openModal}
       >

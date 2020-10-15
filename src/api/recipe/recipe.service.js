@@ -64,11 +64,19 @@ async function update(recipe) {
   const {
     _id,
     ingredients,
+    calories,
+    proteins,
+    fats,
+    carbs,
   } = recipe;
   try {
     await Recipe.findByIdAndUpdate({ _id }, {
       name,
       ingredients,
+      calories,
+      proteins,
+      fats,
+      carbs,
     });
     return recipe;
   } catch (err) {

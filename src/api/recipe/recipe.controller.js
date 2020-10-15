@@ -30,8 +30,8 @@ async function getRecipes(req, res) {
 // Update
 async function updateRecipe(req, res) {
   const recipe = req.body;
-  await recipeService.update(recipe);
-  res.send(recipe);
+  const updatedRecipe = await recipeService.update(recipe);
+  res.send(updatedRecipe);
 }
 
 // Delete
