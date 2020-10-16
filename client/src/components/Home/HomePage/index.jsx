@@ -15,6 +15,7 @@ const HomePage = () => {
   };
 
   const user = useLoadUser();
+  // console.log('user from Home Page:', user)
   const eatenFoods = useSelector(state => state.history.eatenFoods);
   const isLoading = useSelector(state => state.system.isLoading);
 

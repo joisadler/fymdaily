@@ -1,14 +1,14 @@
 import httpService from './http.service';
 
 // get todays history of the user
-export async function getHistoryEntry(userId) {
+export async function getHistoryEntry() {
   const date = new Date().toLocaleDateString('ru-RU');
-  const entry = await httpService.get(`history/${userId}?date=${date}`);
+  const entry = await httpService.get(`history/user-history?date=${date}`);
   return entry;
 }
 
-export async function getEatenFoods(userId) {
-  const history = await getHistoryEntry(userId);
+export async function getEatenFoods() {
+  const history = await getHistoryEntry();
   return history.eaten_foods;
 }
 

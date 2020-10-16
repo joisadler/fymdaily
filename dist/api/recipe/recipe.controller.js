@@ -114,7 +114,7 @@ function updateRecipe(_x7, _x8) {
 
 function _updateRecipe() {
   _updateRecipe = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(req, res) {
-    var recipe;
+    var recipe, updatedRecipe;
     return _regenerator["default"].wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
@@ -124,9 +124,10 @@ function _updateRecipe() {
             return _recipe["default"].update(recipe);
 
           case 3:
-            res.send(recipe);
+            updatedRecipe = _context4.sent;
+            res.send(updatedRecipe);
 
-          case 4:
+          case 5:
           case "end":
             return _context4.stop();
         }

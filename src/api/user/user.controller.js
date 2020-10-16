@@ -9,8 +9,10 @@ async function getUser(req, res) {
   if (!req.user) {
     return res.sendStatus(401);
   }
+  const userObj = req.user.toObject();
+  delete userObj.password;
   res.status(200)
-    .send(req.user);
+    .send(userObj);
 }
 
 async function getUsers(req, res) {

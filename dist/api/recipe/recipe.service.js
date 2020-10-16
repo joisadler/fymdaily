@@ -162,21 +162,25 @@ function update(_x4) {
 
 function _update() {
   _update = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(recipe) {
-    var name, _id, ingredients;
+    var name, _id, ingredients, calories, proteins, fats, carbs;
 
     return _regenerator["default"].wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
             name = recipe.name.trim();
-            _id = recipe._id, ingredients = recipe.ingredients;
+            _id = recipe._id, ingredients = recipe.ingredients, calories = recipe.calories, proteins = recipe.proteins, fats = recipe.fats, carbs = recipe.carbs;
             _context4.prev = 2;
             _context4.next = 5;
             return _recipe["default"].findByIdAndUpdate({
               _id: _id
             }, {
               name: name,
-              ingredients: ingredients
+              ingredients: ingredients,
+              calories: calories,
+              proteins: proteins,
+              fats: fats,
+              carbs: carbs
             });
 
           case 5:

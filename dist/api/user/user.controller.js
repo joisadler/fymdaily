@@ -18,6 +18,7 @@ function getUser(_x, _x2) {
 
 function _getUser() {
   _getUser = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
+    var userObj;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -30,9 +31,11 @@ function _getUser() {
             return _context.abrupt("return", res.sendStatus(401));
 
           case 2:
-            res.status(200).send(req.user);
+            userObj = req.user.toObject();
+            delete userObj.password;
+            res.status(200).send(userObj);
 
-          case 3:
+          case 5:
           case "end":
             return _context.stop();
         }

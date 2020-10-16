@@ -44,9 +44,9 @@ export function login(userCreds) {
     const { user, message } = res;
     if (!user) dispatch(setMessage(message));
     else {
+      history.push('/home');
       dispatch(_setUser(user));
       dispatch(setMessage(''));
-      history.push('/home');
     }
   };
 }
@@ -66,7 +66,7 @@ export function signup(userCreds) {
 
 export function logout() {
   return async (dispatch) => {
-    await userService.logout();
     dispatch(_setUser(null));
+    await userService.logout();
   };
 }

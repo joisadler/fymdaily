@@ -19,7 +19,7 @@ const isAuthenticated = (req, res, next) => {
 };
 
 router.get('/', isAuthenticated, getHistoryEntries);
-router.get('/:id', isAuthenticated, getHistoryEntry);
+router.get('/user-history', isAuthenticated, getHistoryEntry);
 router.post('/', isAuthenticated, createHistoryEntry);
 router.put('/info', isAuthenticated, updateUserInfo);
 router.post('/food', isAuthenticated, addEatenFood);

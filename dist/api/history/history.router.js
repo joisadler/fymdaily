@@ -15,7 +15,7 @@ var isAuthenticated = function isAuthenticated(req, res, next) {
 };
 
 router.get('/', isAuthenticated, _history.getHistoryEntries);
-router.get('/:id', isAuthenticated, _history.getHistoryEntry);
+router.get('/user-history', isAuthenticated, _history.getHistoryEntry);
 router.post('/', isAuthenticated, _history.createHistoryEntry);
 router.put('/info', isAuthenticated, _history.updateUserInfo);
 router.post('/food', isAuthenticated, _history.addEatenFood);

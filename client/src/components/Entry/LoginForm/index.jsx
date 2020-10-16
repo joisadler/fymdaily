@@ -20,8 +20,6 @@ const LoginForm = ({ setCurrentForm }) => {
     }
     const userCreds = { usernameOrEmail, password };
     doLogin(userCreds);
-    setUsernameOrEmail('');
-    setPassword('');
   };
 
   return (

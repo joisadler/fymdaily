@@ -48,7 +48,7 @@ function _getHistoryEntry() {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
-            return _history["default"].getById(req.params.id, req.query.date);
+            return _history["default"].getById(req.user._id, req.query.date);
 
           case 2:
             entry = _context2.sent;

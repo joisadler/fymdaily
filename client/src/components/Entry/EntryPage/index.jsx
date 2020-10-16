@@ -8,6 +8,7 @@ import Footer from '../../Footer';
 
 export default () => {
   const user = useSelector(state => state.user.loggedInUser);
+  // console.log('user from Entry Page:', user)
   const history = useHistory();
   if (JSON.stringify(user) !== '{}') {
     history.push('/home');
