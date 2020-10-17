@@ -1,5 +1,6 @@
 {
   "name": "fymdaily-client",
+  "homepage": "https://fymdaily.herokuapp.com",
   "version": "0.1.0",
   "private": true,
   "scripts": {
