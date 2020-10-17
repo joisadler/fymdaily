@@ -37,7 +37,7 @@
       "url": "https://itunes.apple.com/app/example-app1/id123456789"
     }
   ],
-  "scope": "/fymdaily.herokuapp.com",
+  "scope": "fymdaily.herokuapp.com",
   "screenshots": [
     {
       "src": "images/screenshots/homepage1.jpg",
@@ -87,6 +87,6 @@
   ],
   "short_name": "FYMdaily",
   "shortcuts": [],
-  "start_url": "/home",
+  "start_url": "fymdaily.herokuapp.com/home",
   "theme_color": "#000000"
 }
