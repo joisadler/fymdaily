@@ -1,6 +1,16 @@
 {
-  "short_name": "FYMdaily",
-  "name": "Fit Your Macros daily",
+  "background_color": "#ffffff",
+  "categories": [
+    "fitness",
+    "food",
+    "health",
+    "lifestyle",
+    "medical",
+    "utilities"
+  ],
+  "description": "FYMdaily - a simple and minimalistic calorie/macronutrient tracker.",
+  "dir": "auto",
+  "display": "fullscreen",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,9 +28,70 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
+  "lang": "en-US",
+  "name": "Fit Your Macros daily",
   "orientation":  "portrait",
+  "prefer_related_applications": false,
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "",
+      "id": ""
+    }, {
+      "platform": "itunes",
+      "url": "https://itunes.apple.com/app/example-app1/id123456789"
+    }
+  ],
+  "scope": "https://fymdaily.herokuapp.com/",
+  "screenshots": [
+    {
+      "src": "images/screenshots/homepage1.jpg",
+      "sizes": "2340x1080",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "images/screenshots/homepage2.jpg",
+      "sizes": "2340x1080",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "images/screenshots/eaten-foods.jpg",
+      "sizes": "2340x1080",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "images/screenshots/add-eaten-food.jpg",
+      "sizes": "2340x1080",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "images/screenshots/create-custom-food.jpg",
+      "sizes": "2340x1080",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "images/screenshots/custom-foods.jpg",
+      "sizes": "2340x1080",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "images/screenshots/create-custom-recipe.jpg",
+      "sizes": "2340x1080",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "images/screenshots/custom-recipes.jpg",
+      "sizes": "2340x1080",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "images/screenshots/user-info.jpg",
+      "sizes": "2340x1080",
+      "type": "image/jpeg"
+    }
+  ],
+  "short_name": "FYMdaily",
+  "shortcuts": [],
+  "start_url": "/home",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
 }
