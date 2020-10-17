@@ -89,6 +89,6 @@
   ],
   "short_name": "FYMdaily",
   "shortcuts": [],
-  "start_url": "https://fymdaily.herokuapp.com/home/",
+  "start_url": "https://fymdaily.herokuapp.com/",
   "theme_color": "#000000"
 }
