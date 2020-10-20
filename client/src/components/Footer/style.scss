@@ -1,6 +1,6 @@
 .main-footer {
-  height: calc(var(--vh, 1vh) * 15);
-  min-height: calc(var(--vh, 1vh) * 15);
+  height: calc(#{$vh} * 15);
+  min-height: calc(#{$vh} * 15);
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;

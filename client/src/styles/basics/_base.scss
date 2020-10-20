@@ -20,8 +20,8 @@
 html,
 body,
 #root {
-  height: calc(var(--vh, 1vh) * 100);
-  min-height: calc(var(--vh, 1vh) * 100);
+  height: calc(#{$vh} * 100);
+  min-height: calc(#{$vh} * 100);
   margin: 0;
   font-family: Montserrat, sans-serif;
   font-size: $root-font-size;
@@ -47,8 +47,8 @@ body,
 }
 
 .page {
-  height: calc(var(--vh, 1vh) * 85);
-  min-height: calc(var(--vh, 1vh) * 85);
+  height: calc(#{$vh} * 85);
+  min-height: calc(#{$vh} * 85);
   padding: var(--xl-distance) var(--xl-distance) 0 var(--xl-distance);
   display: flex;
   flex-flow: column nowrap;

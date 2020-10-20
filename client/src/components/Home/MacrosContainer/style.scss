@@ -1,5 +1,5 @@
 .macros-container {
-  max-height: calc(var(--vh, 1vh) * 30);
+  max-height: calc(#{$vh} * 30);
   width: 100%;
   display: flex;
   flex-direction: column;
