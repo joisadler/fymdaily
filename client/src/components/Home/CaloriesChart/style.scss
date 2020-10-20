@@ -1,7 +1,7 @@
 .calories-container {
   position: relative;
   width: 100%;
-  height: 40vh;
+  height: calc(var(--vh, 1vh) * 40);
 
   &:focus {
     outline: none;

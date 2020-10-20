@@ -48,7 +48,7 @@
   }
 
   &-header {
-    height: $xl-distance;
+    height: var(--xl-distance);
     margin-block-end: $sm-distance;
     display: flex;
     justify-content: center;
@@ -74,7 +74,7 @@
   }
 
   &-submit-button {
-    height: $xl-distance;
+    height: var(--xl-distance);
     width: 100%;
     margin-block-end: $m-distance;
     border: 1px solid black;

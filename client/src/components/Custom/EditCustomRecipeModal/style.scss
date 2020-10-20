@@ -33,7 +33,7 @@
   }
 
   &-header {
-    height: $xl-distance;
+    height: var(--xl-distance);
     margin-block-end: $sm-distance;
     display: flex;
     justify-content: center;
@@ -122,8 +122,8 @@
   }
 
   &-submit-button {
-    height: $xl-distance;
-    width: calc(100% - #{$sm-distance} - #{$input-height});
+    height: var(--xl-distance);
+    width: calc(100% - $sm-distance - $input-height);
     border: 1px solid black;
     font-size: $m-text;
     color: white;

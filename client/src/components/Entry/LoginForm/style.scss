@@ -4,7 +4,7 @@
   input[type=text],
   input[type=password] {
     width: 100%;
-    height: $xl-distance;
+    height: var(--xl-distance);
     padding: $m-distance;
     border: 1px solid #000;
     font-size: $m-text;
@@ -13,8 +13,8 @@
     // @media (min-width: $tablet) and (max-width: $desktop) {
     //   font-size: 2.5rem;
     //   height: 6rem;
-    //   padding: $l-distance;
-    //   margin-block-end: $l-distance;
+    //   padding: var(--l-distance);
+    //   margin-block-end: var(--l-distance);
     // }
 
     &:active,
@@ -31,8 +31,8 @@
     outline-offset: -1px;
 
     // @media (min-width: $tablet) and (max-width: $desktop) {
-    //   width: $l-distance;
-    //   height: $l-distance;
+    //   width: var(--l-distance);
+    //   height: var(--l-distance);
     //   margin: 0 1rem 0 0;
     // }
   }
@@ -52,7 +52,7 @@
   font-size: $sm-text;
 
   // @media (min-width: $tablet) and (max-width: $desktop) {
-  //   margin-block-end: $l-distance;
+  //   margin-block-end: var(--l-distance);
   //   font-size: $l-text;
   // }
 }
@@ -67,7 +67,7 @@
 }
 
 .login-button {
-  height: $xl-distance;
+  height: var(--xl-distance);
   width: 100%;
   border: 1px solid black;
   font-size: $m-text;

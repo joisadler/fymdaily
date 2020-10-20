@@ -11,16 +11,16 @@ $tablet: 414px;
 $desktop: 1279px;
 
 // Sizes
-$input-height: 1.6rem;
-$sm-distance: 0.5rem;
-$m-distance: 1rem;
-$l-distance: 1.6rem;
-$xl-distance: 2rem;
+$m-distance: var(--m-distance);
+$input-height: var(--input-height);
+$sm-distance: var(--sm-distance);
+$l-distance: var(--l-distance);
+$xl-distance: var(--xl-distance);
 
 // Root font-size
 $min-font-size: 16px;
 $max-font-size: 18px;
-$scaler: 2.5vmax;
+$scaler: calc(var(--vh, 1vh) * 2.5);
 $root-font-size: clamp($min-font-size, $scaler, $max-font-size);
 
 // Typography

@@ -1,3 +1,12 @@
+:root {
+  // --vh property itself defined dynamically by JavaScript
+  --m-distance: var(--vh, 1vh) * 2.5;
+  --input-height: calc(var(--m-distance) * 1.6);
+  --sm-distance: calc(var(--m-distance) * 0.5);
+  --l-distance: calc(var(--m-distance) * 1.6);
+  --xl-distance: calc(var(--m-distance) * 2);
+}
+
 * {
   box-sizing: border-box;
 
@@ -40,7 +49,7 @@ body,
 .page {
   height: calc(var(--vh, 1vh) * 85);
   min-height: calc(var(--vh, 1vh) * 85);
-  padding: $xl-distance $xl-distance 0 $xl-distance;
+  padding: var(--xl-distance) var(--xl-distance) 0 var(--xl-distance);
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;

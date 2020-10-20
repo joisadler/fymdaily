@@ -18,8 +18,8 @@
     text-align: center;
 
     // @media (min-width: $tablet) and (max-width: $desktop) {
-    //   margin-block-start: $l-distance;
-    //   margin-block-end: $l-distance;
+    //   margin-block-start: var(--l-distance);
+    //   margin-block-end: var(--l-distance);
     // }
   }
 

@@ -103,8 +103,8 @@
   }
 
   &-submit-button {
-    height: $xl-distance;
-    width: calc(5rem + #{$sm-distance * 2} + #{$input-height * 2});
+    height: var(--xl-distance);
+    width: calc(5rem + $sm-distance * 2 + $input-height * 2);
     border: 1px solid black;
     font-size: $m-text;
     color: white;

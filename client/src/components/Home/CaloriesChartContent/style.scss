@@ -43,8 +43,8 @@
 }
 
 .alternative-calories-chart-content-number {
-  margin-block-start: $l-distance;
-  margin-block-end: $l-distance;
+  margin-block-start: var(--l-distance);
+  margin-block-end: var(--l-distance);
   font-size: 9vmin;
 
   @media (min-width: $tablet) {
