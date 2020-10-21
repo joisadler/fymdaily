@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useAsyncCallback } from 'react-async-hook';
 import { useDispatch } from 'react-redux';
 import Modal from 'react-modal';
@@ -22,6 +22,16 @@ const EditEatenFoodModal = ({
   previousWeight,
 }) => {
   Modal.setAppElement('#root');
+
+  const [isRefVisible, setIsRefVisible] = useState(false);
+  const inputRef = useRef(null);
+  useEffect(() => {
+    if (!isRefVisible) {
+      return;
+    }
+    inputRef.current.focus();
+  }, [isRefVisible]);
+
   const [weight, setWeight] = useState(previousWeight);
 
   const decreaseWeight = () => {
@@ -154,6 +164,8 @@ const EditEatenFoodModal = ({
               step="any"
               value={weight}
               onChange={e => setWeight(e.target.value)}
+              ref={(el) => { inputRef.current = el; setIsRefVisible(!!el); }}
+              required
             />
             <button
               type="button"

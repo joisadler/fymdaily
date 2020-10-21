@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAsyncCallback } from 'react-async-hook';
 import Modal from 'react-modal';
@@ -21,6 +21,16 @@ const EditCustomFoodModal = ({
   prevCarbs,
 }) => {
   Modal.setAppElement('#root');
+
+  const [isRefVisible, setIsRefVisible] = useState(false);
+  const inputRef = useRef(null);
+  useEffect(() => {
+    if (!isRefVisible) {
+      return;
+    }
+    inputRef.current.focus();
+    inputRef.current.select();
+  }, [isRefVisible]);
 
   const [name, setName] = useState(prevName);
   const [brand, setBrand] = useState(prevBrand);
@@ -102,6 +112,7 @@ const EditCustomFoodModal = ({
           value={name}
           placeholder="Name"
           onChange={e => setName(e.target.value)}
+          ref={(el) => { inputRef.current = el; setIsRefVisible(!!el); }}
           required
         />
         <input

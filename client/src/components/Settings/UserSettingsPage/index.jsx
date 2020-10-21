@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable max-len */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAsyncCallback } from 'react-async-hook';
 import { updateUser } from '../../../actions/UserActions';
@@ -47,6 +47,15 @@ const UserSettingsPage = () => {
     currentPhysicalActivityLevel,
     currentGoal,
   ]);
+
+  const [isRefVisible, setIsRefVisible] = useState(false);
+  const inputRef = useRef(null);
+  useEffect(() => {
+    if (!isRefVisible) {
+      return;
+    }
+    inputRef.current.focus();
+  }, [isRefVisible]);
 
   const set = (name) => {
     switch (name) {
@@ -149,6 +158,7 @@ const UserSettingsPage = () => {
               value={bodyWeight}
               data-name="bodyWeight"
               onChange={e => handleChange(e.target)}
+              ref={(el) => { inputRef.current = el; setIsRefVisible(!!el); }}
               min="0"
               max="500"
               step="any"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -16,6 +16,15 @@ const EditIngredientModal = ({
   addIngredient,
 }) => {
   Modal.setAppElement('#root');
+
+  const [isRefVisible, setIsRefVisible] = useState(false);
+  const inputRef = useRef(null);
+  useEffect(() => {
+    if (!isRefVisible) {
+      return;
+    }
+    inputRef.current.focus();
+  }, [isRefVisible]);
 
   const [weight, setWeight] = useState(100);
 
@@ -104,6 +113,7 @@ const EditIngredientModal = ({
               value={weight}
               placeholder="Weight"
               onChange={e => setWeight(+e.target.value)}
+              ref={(el) => { inputRef.current = el; setIsRefVisible(!!el); }}
               required
             />
             <button

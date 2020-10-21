@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,6 +17,15 @@ const EditIngredientModal = ({
   removeIngredient,
 }) => {
   Modal.setAppElement('#root');
+
+  const [isRefVisible, setIsRefVisible] = useState(false);
+  const inputRef = useRef(null);
+  useEffect(() => {
+    if (!isRefVisible) {
+      return;
+    }
+    inputRef.current.focus();
+  }, [isRefVisible]);
 
   const [weight, setWeight] = useState(prevWeight);
 
@@ -116,6 +125,7 @@ const EditIngredientModal = ({
               value={weight}
               placeholder="Weight"
               onChange={e => setWeight(+e.target.value)}
+              ref={(el) => { inputRef.current = el; setIsRefVisible(!!el); }}
               required
             />
             <button
