@@ -133,7 +133,7 @@ const EditIngredientModal = ({
         <button
           type="submit"
           form="edit-ingredient-form"
-          className="edit-custom-food-submit-button"
+          className="edit-ingredient-submit-button"
         >
           Save
         </button>

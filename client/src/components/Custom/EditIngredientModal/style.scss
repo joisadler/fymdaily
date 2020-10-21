@@ -104,12 +104,12 @@
   }
 
   &-submit-button-container {
-    width: calc(5rem + $sm-distance * 2 + $input-height * 2);
+    width: calc(5rem + (#{$sm-distance} * 2) + (#{$input-height} * 2));
   }
 
   &-submit-button {
     height: var(--xl-distance);
-    width: calc(5rem + $sm-distance + $input-height);
+    width: calc(5rem + #{$sm-distance} + #{$input-height});
     border: 1px solid black;
     font-size: $m-text;
     color: white;
