@@ -1,5 +1,5 @@
 :root {
-  // --vh and --initial-height properties defined dynamically by JavaScript
+  // --vh property defined dynamically by JavaScript
   --m-distance: calc(var(--vh, 1vh) * 2.5);
   --input-height: calc(var(--m-distance) * 1.6);
   --sm-distance: calc(var(--m-distance) * 0.5);
@@ -48,7 +48,7 @@ body,
 
 .page {
   height: calc(#{$vh} * 85);
-  min-height: calc(#{$initial-height} * 0.85);
+  min-height: calc(#{$vh} * 85);
   padding: var(--xl-distance) var(--xl-distance) 0 var(--xl-distance);
   display: flex;
   flex-flow: column nowrap;

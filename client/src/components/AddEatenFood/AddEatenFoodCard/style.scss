@@ -1,13 +1,8 @@
 .add-eaten-food-card {
   &-container {
     width: 100%;
-    height: calc((100% / 4) + 1px);
-    min-height: calc((100% / 4) + 1px);
-
-    @media (min-height: 481px) {
-      height: calc((100% / 6) + 1px);
-      min-height: calc((100% / 6) + 1px);
-    }
+    height: calc((100% / 6) + 1px);
+    min-height: calc((100% / 6) + 1px);
 
     &:not(:last-child) {
       border-block-end: 1px solid black;
