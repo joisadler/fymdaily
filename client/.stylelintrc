@@ -10,5 +10,5 @@
     }],
     "value-keyword-case": null
   },
-  "ignoreFiles": ["**/*.js", "build"]
+  "ignoreFiles": ["**/*.js", "build/static/css/*.*", "public/*.html"]
 }
