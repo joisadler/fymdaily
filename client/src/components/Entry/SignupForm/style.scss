@@ -11,12 +11,21 @@
     font-size: $m-text;
     margin-block-end: $m-distance;
 
-    // @media (min-width: $tablet) and (max-width: $desktop) {
-    //   font-size: 2.5rem;
-    //   height: 6rem;
-    //   padding: var(--l-distance);
-    //   margin-block-end: var(--l-distance);
-    // }
+    @media (min-width: $tablet) {
+      font-size: $l-text;
+    }
+
+    @media (min-width: $desktop) {
+      font-size: $m-text;
+    }
+
+    @media (min-width: $l-desktop) {
+      font-size: $l-text;
+    }
+
+    @media (min-width: $xl-desktop) {
+      font-size: $l-text * 1.5;
+    }
 
     &:active,
     &:focus {
@@ -24,27 +33,23 @@
     }
   }
 
-  input[type=checkbox] {
-    width: $m-distance;
-    height: $m-distance;
-    margin: 0 $sm-distance 0 0;
-    outline: 1px solid green;
-    outline-offset: -1px;
+  // input[type=checkbox] {
+  //   width: $m-distance;
+  //   height: $m-distance;
+  //   margin: 0 $sm-distance 0 0;
+  //   outline: 1px solid green;
+  //   outline-offset: -1px;
 
-    // @media (min-width: $tablet) and (max-width: $desktop) {
-    //   width: var(--l-distance);
-    //   height: var(--l-distance);
-    //   margin: 0 1rem 0 0;
-    // }
-  }
+  //   @media (min-width: $tablet) and (max-width: $desktop) {
+  //     width: var(--l-distance);
+  //     height: var(--l-distance);
+  //     margin: 0 1rem 0 0;
+  //   }
+  // }
 
-  label {
-    font-size: $sm-text;
-
-    // @media (min-width: $tablet) and (max-width: $desktop) {
-    //   font-size: $l-text;
-    // }
-  }
+  // label {
+  //   font-size: $sm-text;
+  // }
 }
 
 .signup-message {
@@ -52,10 +57,21 @@
   color: red;
   font-size: $sm-text;
 
-  // @media (min-width: $tablet) and (max-width: $desktop) {
-  //   margin-block-end: var(--l-distance);
-  //   font-size: $l-text;
-  // }
+  @media (min-width: $tablet) {
+    font-size: $m-text;
+  }
+
+  @media (min-width: $desktop) {
+    font-size: $sm-text;
+  }
+
+  @media (min-width: $l-desktop) {
+    font-size: $m-text;
+  }
+
+  @media (min-width: $xl-desktop) {
+    font-size: $l-text * 1.2;
+  }
 }
 
 .form-options-section {
@@ -79,10 +95,21 @@
   background-color: green;
   cursor: pointer;
 
-  // @media (min-width: $tablet) and (max-width: $desktop) {
-  //   height: 6rem;
-  //   font-size: 3rem;
-  // }
+  @media (min-width: $tablet) {
+    font-size: $l-text;
+  }
+
+  @media (min-width: $desktop) {
+    font-size: $m-text;
+  }
+
+  @media (min-width: $l-desktop) {
+    font-size: $l-text;
+  }
+
+  @media (min-width: $xl-desktop) {
+    font-size: $l-text * 1.5;
+  }
 }
 
 .other-option-section {
@@ -96,9 +123,21 @@
   font-size: $sm-text;
   text-align: center;
 
-  // @media (min-width: $tablet) and (max-width: $desktop) {
-  //   font-size: $l-text;
-  // }
+  @media (min-width: $tablet) {
+    font-size: $m-text;
+  }
+
+  @media (min-width: $desktop) {
+    font-size: $sm-text;
+  }
+
+  @media (min-width: $l-desktop) {
+    font-size: $m-text;
+  }
+
+  @media (min-width: $xl-desktop) {
+    font-size: $l-text * 1.5;
+  }
 }
 
 .login-option {
@@ -110,10 +149,21 @@
   color: green;
   cursor: pointer;
 
-  // @media (min-width: $tablet) and (max-width: $desktop) {
-  //   margin-block-start: $m-distance;
-  //   font-size: 3rem;
-  // }
+  @media (min-width: $tablet) {
+    font-size: $l-text;
+  }
+
+  @media (min-width: $desktop) {
+    font-size: $m-text;
+  }
+
+  @media (min-width: $l-desktop) {
+    font-size: $l-text;
+  }
+
+  @media (min-width: $xl-desktop) {
+    font-size: $l-text * 1.5;
+  }
 
   &:focus {
     border: 1px solid green;

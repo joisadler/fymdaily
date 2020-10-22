@@ -1,18 +1,35 @@
 .app-description {
   font-size: $m-text * 1.2;
+  line-height: $m-line-height;
   margin-block-end: $m-distance;
+
+  @media (min-width: $tablet) {
+    font-size: $l-text;
+    line-height: $l-line-height;
+    margin-block-end: $l-distance;
+  }
+
+  @media (min-width: $desktop) {
+    font-size: $m-text;
+    line-height: $m-line-height;
+    margin-block-end: $m-distance;
+  }
+
+  @media (min-width: $l-desktop) {
+    font-size: $l-text;
+    line-height: $l-line-height;
+    margin-block-end: $l-distance;
+  }
+
+  @media (min-width: $xl-desktop) {
+    font-size: $l-text * 2;
+    line-height: calc(#{$l-line-height} * 2);
+    margin-block-end: calc(#{$l-distance} * 2);
+  }
 
   em {
     font-weight: 700;
   }
-
-  // @media (min-width: $tablet) {
-  //   font-size: 3rem;
-  // }
-
-  // @media (min-width: $desktop) {
-  //   font-size: 1.6rem;
-  // }
 }
 
 .form-container {

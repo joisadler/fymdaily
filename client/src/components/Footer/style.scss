@@ -8,26 +8,37 @@
   width: 100%;
   font-size: $sm-text * 0.8;
 
-  // @media (min-width: $tablet) and (max-width: $desktop) {
-  //   font-size: $l-text;
-  // }
+  @media (min-width: $tablet) {
+    font-size: $m-text;
+  }
+
+  @media (min-width: $desktop) {
+    font-size: $sm-text * 0.8;
+  }
+
+  @media (min-width: $l-desktop) {
+    font-size: $sm-text;
+  }
+
+  @media (min-width: $xl-desktop) {
+    font-size: $l-text;
+  }
 
   p {
     margin-block-start: $sm-distance;
     margin-block-end: $sm-distance;
     text-align: center;
 
-    // @media (min-width: $tablet) and (max-width: $desktop) {
-    //   margin-block-start: var(--l-distance);
-    //   margin-block-end: var(--l-distance);
-    // }
+    @media (min-width: $tablet) and (max-width: $desktop - 1) {
+      margin-block-start: $l-distance;
+    }
   }
 
   img {
     height: $m-distance;
 
-    // @media (min-width: $tablet) and (max-width: $desktop) {
-    //   height: 2.4rem;
-    // }
+    @media (min-width: $tablet) and (max-width: $desktop - 1) {
+      height: 2.4rem;
+    }
   }
 }
