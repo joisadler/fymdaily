@@ -26,8 +26,13 @@ body,
   font-family: Montserrat, sans-serif;
   font-size: $root-font-size;
 
+  @media (orientation: portrait) and (max-height: 480px), // mobile devices with short screen height like iPhone 4
+    (orientation: landscape) and (max-width: 480px) {
+    font-size: calc(#{$root-font-size} * 0.75);
+  }
+
   @media (min-width: $tablet) {
-    font-size: calc(#{$root-font-size} * 1.5);
+    font-size: calc(#{$root-font-size} * 1.4);
   }
 
   @media (min-width: $desktop) {
@@ -35,7 +40,7 @@ body,
   }
 
   @media (min-width: $l-desktop) {
-    font-size: calc(#{$root-font-size} * 1.5);
+    font-size: calc(#{$root-font-size} * 1.4);
   }
 
   @media (min-width: $xl-desktop) {
