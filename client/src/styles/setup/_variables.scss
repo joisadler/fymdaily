@@ -23,8 +23,8 @@ $xl-distance: var(--xl-distance);
 // Root font-size
 $min-font-size: 16px;
 $max-font-size: 18px;
-$scaler: calc(#{$vh} * 2.5);
-$root-font-size: clamp($min-font-size, $scaler, $max-font-size);
+$scaler: #{$vh} * 2.5;
+$root-font-size: clamp($min-font-size, #{$scaler}, $max-font-size);
 
 // Typography
 $xl-text: 10rem;
