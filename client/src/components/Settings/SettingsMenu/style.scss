@@ -16,7 +16,6 @@
   &-enter,
   &-appear {
     transform: scaleY(0);
-    // transition: transform 0.3s;
   }
 
   /* This is where we can add the transition */
@@ -24,10 +23,6 @@
   &-appear-done {
     transform: scaleY(1);
   }
-  // /* This fires as soon as isShown is false */
-  // &-exit {
-  //   transform: scaleY(0);
-  // }
 
   /* fires as element leaves the DOM */
   &-exit-active {
@@ -47,6 +42,22 @@
     margin-inline-end: $sm-distance;
     font-size: $l-text;
     font-weight: 700;
+
+    @media (min-width: $tablet) {
+      font-size: $l-text * 1.5;
+    }
+
+    @media (min-width: $desktop) {
+      font-size: $l-text;
+    }
+
+    @media (min-width: $l-desktop) {
+      font-size: $l-text * 1.5;
+    }
+
+    @media (min-width: $xl-desktop) {
+      font-size: $l-text * 3;
+    }
   }
 
   &-logout-button {
@@ -81,5 +92,21 @@
     color: #000;
     text-transform: uppercase;
     text-decoration: none;
+
+    @media (min-width: $tablet) {
+      font-size: $l-text;
+    }
+
+    @media (min-width: $desktop) {
+      font-size: $m-text;
+    }
+
+    @media (min-width: $l-desktop) {
+      font-size: $l-text;
+    }
+
+    @media (min-width: $xl-desktop) {
+      font-size: $l-text * 2;
+    }
   }
 }

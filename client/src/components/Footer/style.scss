@@ -28,17 +28,9 @@
     margin-block-start: $sm-distance;
     margin-block-end: $sm-distance;
     text-align: center;
-
-    @media (min-width: $tablet) and (max-width: $desktop - 1) {
-      margin-block-start: $l-distance;
-    }
   }
 
   img {
     height: $m-distance;
-
-    @media (min-width: $tablet) and (max-width: $desktop - 1) {
-      height: 2.4rem;
-    }
   }
 }
