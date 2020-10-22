@@ -3,8 +3,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 70vw;
-    height: 70vw;
+    width: 70vmin;
+    height: 70vmin;
     padding-inline-start: $m-distance;
     padding-inline-end: $input-height;
     border: 1px solid black;
@@ -17,6 +17,16 @@
     opacity: 1;
     outline: none;
     transform: translate(-50%, -50%);
+
+    @media (min-width: $tablet) {
+      width: 50vmin;
+      height: 50vmin;
+    }
+
+    @media (min-width: $desktop) {
+      width: 40vmin;
+      height: 40vmin;
+    }
   }
 
   &-close-button {
@@ -83,6 +93,7 @@
     height: $input-height;
     margin-inline-start: $sm-distance;
     margin-inline-end: $sm-distance;
+    font-size: $sm-text;
 
     &:focus {
       border: 1px solid green;
@@ -96,6 +107,7 @@
     padding: 0;
     border: 1px solid black;
     background-color: #fff;
+    font-size: $sm-text;
     cursor: pointer;
 
     &:focus {

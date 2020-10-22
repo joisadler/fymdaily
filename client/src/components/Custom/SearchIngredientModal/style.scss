@@ -11,12 +11,14 @@
     border-radius: 0;
     display: flex;
     flex-flow: column nowrap;
-    // justify-content: space-evenly;
-    // align-items: center;
     background-color: #fff;
     opacity: 1;
     outline: none;
     transform: translate(-50%, -50%);
+
+    @media (hover: hover) and (min-width: $desktop) {
+      width: calc((100vw / 3) * 0.9);
+    }
   }
 
   &-close-button {
@@ -28,6 +30,7 @@
     height: $input-height;
     background-color: #fff;
     border: none;
+    font-size: $sm-text;
 
     &:focus {
       border: 1px solid green;

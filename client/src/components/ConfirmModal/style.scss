@@ -2,8 +2,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 70vw;
-  height: 70vw;
+  width: 70vmin;
+  height: 70vmin;
   padding-inline-start: $m-distance;
   padding-inline-end: $m-distance;
   border: 1px solid black;
@@ -17,9 +17,15 @@
   outline: none;
   transform: translate(-50%, -50%);
 
-  // @media (min-width: desktop) {
+  @media (min-width: $tablet) {
+    width: 50vmin;
+    height: 50vmin;
+  }
 
-  // }
+  @media (min-width: $desktop) {
+    width: 40vmin;
+    height: 40vmin;
+  }
 
   &-header {
     margin-block-end: $sm-distance;

@@ -17,9 +17,15 @@
   outline: none;
   transform: translate(-50%, -50%);
 
-  // @media (min-width: desktop) {
+  @media (min-width: $tablet) {
+    width: 60vmin;
+    height: 60vmin;
+  }
 
-  // }
+  @media (min-width: $desktop) {
+    width: 50vmin;
+    height: 50vmin;
+  }
 
   &-close-button {
     position: absolute;
@@ -30,6 +36,7 @@
     height: $input-height;
     background-color: #fff;
     border: none;
+    font-size: $sm-text;
 
     &:focus {
       border: 1px solid green;
