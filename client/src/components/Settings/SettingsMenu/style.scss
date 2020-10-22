@@ -42,22 +42,6 @@
     margin-inline-end: $sm-distance;
     font-size: $l-text;
     font-weight: 700;
-
-    @media (min-width: $tablet) {
-      font-size: $l-text * 1.5;
-    }
-
-    @media (min-width: $desktop) {
-      font-size: $l-text;
-    }
-
-    @media (min-width: $l-desktop) {
-      font-size: $l-text * 1.5;
-    }
-
-    @media (min-width: $xl-desktop) {
-      font-size: $l-text * 3;
-    }
   }
 
   &-logout-button {
@@ -92,21 +76,5 @@
     color: #000;
     text-transform: uppercase;
     text-decoration: none;
-
-    @media (min-width: $tablet) {
-      font-size: $l-text;
-    }
-
-    @media (min-width: $desktop) {
-      font-size: $m-text;
-    }
-
-    @media (min-width: $l-desktop) {
-      font-size: $l-text;
-    }
-
-    @media (min-width: $xl-desktop) {
-      font-size: $l-text * 2;
-    }
   }
 }

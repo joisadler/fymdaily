@@ -24,6 +24,22 @@ body,
   margin: 0;
   font-family: Montserrat, sans-serif;
   font-size: $root-font-size;
+
+  @media (min-width: $tablet) {
+    font-size: calc(#{$root-font-size} * 1.5);
+  }
+
+  @media (min-width: $desktop) {
+    font-size: $root-font-size;
+  }
+
+  @media (min-width: $l-desktop) {
+    font-size: calc(#{$root-font-size} * 1.5);
+  }
+
+  @media (min-width: $xl-desktop) {
+    font-size: calc(#{$root-font-size} * 2.5);
+  }
 }
 
 .App {
