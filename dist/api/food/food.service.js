@@ -15,6 +15,8 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 
 var _food = _interopRequireDefault(require("../../models/food"));
 
+var _user = _interopRequireDefault(require("../../models/user"));
+
 var _fatsecret = _interopRequireDefault(require("../../services/fatsecret.service"));
 
 // Create
@@ -109,9 +111,11 @@ function _query() {
   _query = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(createdBy) {
     var name,
         custom,
+        showOnlyFoodsCreatedByUser,
+        nameQuery,
         queryParams,
         start,
-        foodsCreatedByUser,
+        createdFoods,
         regex,
         nameIsNotValidForFatsecretApi,
         foodsFromFatSecretAPI,
@@ -123,50 +127,57 @@ function _query() {
           case 0:
             name = _args3.length > 1 && _args3[1] !== undefined ? _args3[1] : '';
             custom = _args3.length > 2 && _args3[2] !== undefined ? _args3[2] : false;
-            _context3.prev = 2;
-            queryParams = {
-              createdBy: createdBy,
-              name: new RegExp("".concat(name.trim()), 'i')
+            showOnlyFoodsCreatedByUser = _args3.length > 3 ? _args3[3] : undefined;
+            _context3.prev = 3;
+            nameQuery = new RegExp("".concat(name.trim()), 'i');
+            queryParams = showOnlyFoodsCreatedByUser === 'true' ? {
+              name: nameQuery,
+              createdBy: createdBy
+            } : {
+              name: nameQuery
             };
+            console.log('showOnlyFoodsCreatedByUser: ', showOnlyFoodsCreatedByUser);
+            console.log('queryParams: ', queryParams);
             start = new Date();
-            _context3.next = 7;
+            _context3.next = 11;
             return _food["default"].find(queryParams);
 
-          case 7:
-            foodsCreatedByUser = _context3.sent;
+          case 11:
+            createdFoods = _context3.sent;
+            console.log('createdFoods: ', createdFoods);
             console.log('Request to MongoDB for foods took:', new Date() - start, 'ms');
             regex = /^[A-Za-z0-9]+$/; // name contains only english letters or numbers
 
             nameIsNotValidForFatsecretApi = !regex.test(name);
 
             if (!(custom || name === '' || nameIsNotValidForFatsecretApi)) {
-              _context3.next = 13;
+              _context3.next = 18;
               break;
             }
 
-            return _context3.abrupt("return", (0, _toConsumableArray2["default"])(foodsCreatedByUser));
+            return _context3.abrupt("return", (0, _toConsumableArray2["default"])(createdFoods));
 
-          case 13:
-            _context3.next = 15;
+          case 18:
+            _context3.next = 20;
             return _fatsecret["default"].query(name);
 
-          case 15:
+          case 20:
             foodsFromFatSecretAPI = _context3.sent;
-            foods = [].concat((0, _toConsumableArray2["default"])(foodsCreatedByUser), (0, _toConsumableArray2["default"])(foodsFromFatSecretAPI));
+            foods = [].concat((0, _toConsumableArray2["default"])(createdFoods), (0, _toConsumableArray2["default"])(foodsFromFatSecretAPI));
             return _context3.abrupt("return", foods);
 
-          case 20:
-            _context3.prev = 20;
-            _context3.t0 = _context3["catch"](2);
+          case 25:
+            _context3.prev = 25;
+            _context3.t0 = _context3["catch"](3);
             console.log('ERROR: cannot find food');
             throw _context3.t0;
 
-          case 24:
+          case 29:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[2, 20]]);
+    }, _callee3, null, [[3, 25]]);
   }));
   return _query.apply(this, arguments);
 }

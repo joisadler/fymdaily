@@ -28,9 +28,9 @@ $root-font-size: clamp($min-font-size, #{$scaler}, $max-font-size);
 
 // Typography
 $xl-text: 10rem;
-$l-text: 1.6rem;
-$m-text: 1rem;
-$sm-text: 0.8rem;
+$l-text: 1.5rem;
+$m-text: 0.8rem;
+$sm-text: 0.7rem;
 $l-line-height: $l-text * 1.5;
 $m-line-height: $m-text * 1.5;
 $sm-line-height: $sm-text * 1.5;

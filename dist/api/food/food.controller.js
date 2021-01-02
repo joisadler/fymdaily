@@ -91,7 +91,7 @@ function _getFoods() {
           case 0:
             createdBy = req.user._id;
             _context3.next = 3;
-            return _food["default"].query(createdBy, req.query.name, req.query.custom);
+            return _food["default"].query(createdBy, req.query.name, req.query.custom, req.query.showOnlyFoodsCreatedByUser);
 
           case 3:
             foods = _context3.sent;

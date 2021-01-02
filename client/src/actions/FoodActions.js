@@ -36,13 +36,13 @@ export function updateFood(updatedFood) {
   };
 }
 
-export function loadFoods(text, pathname) {
+export function loadFoods(text, pathname, showOnlyFoodsCreatedByUser) {
   return async (dispatch) => {
     try {
       dispatch(loading());
       const foods = pathname === '/custom'
-        ? await getCustomFoods(text)
-        : await getFoods(text);
+        ? await getCustomFoods(text, showOnlyFoodsCreatedByUser)
+        : await getFoods(text, showOnlyFoodsCreatedByUser);
       dispatch(_setFoods(foods));
     } catch (err) {
       console.log('FoodActions: err in loadCustomFoods', err);

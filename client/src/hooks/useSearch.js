@@ -10,22 +10,25 @@ export default (itemsType) => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const [inputText, setInputText] = useState('');
+  const [showOnlyFoodsCreatedByUser, setShowOnlyFoodsCreatedByUser] = useState(false);
 
   useEffect(() => {
     if (itemsType === 'foods') {
-      dispatch(loadFoods(inputText, pathname));
+      dispatch(loadFoods(inputText, pathname, showOnlyFoodsCreatedByUser));
     }
     if (itemsType === 'recipes') {
       dispatch(loadRecipes(inputText));
     } else {
-      dispatch(loadFoods(inputText, pathname));
+      dispatch(loadFoods(inputText, pathname, showOnlyFoodsCreatedByUser));
       dispatch(loadRecipes(inputText));
     }
-  }, [inputText, dispatch, pathname, itemsType]);
+  }, [inputText, dispatch, pathname, itemsType, showOnlyFoodsCreatedByUser]);
 
   return {
     inputText,
     setInputText,
+    showOnlyFoodsCreatedByUser,
+    setShowOnlyFoodsCreatedByUser,
     foods,
     recipes,
   };

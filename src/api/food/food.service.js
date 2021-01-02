@@ -1,4 +1,5 @@
 import Food from '../../models/food';
+import User from '../../models/user';
 import fatsecretService from '../../services/fatsecret.service';
 
 // Create
@@ -40,22 +41,28 @@ async function getById(_id) {
 }
 
 // List
-async function query(createdBy, name = '', custom = false) {
+async function query(
+  createdBy,
+  name = '',
+  custom = false,
+  showOnlyFoodsCreatedByUser,
+) {
   try {
-    const queryParams = {
-      createdBy,
-      name: new RegExp(`${name.trim()}`, 'i'),
-    };
+    const nameQuery = new RegExp(`${name.trim()}`, 'i');
+    const queryParams = showOnlyFoodsCreatedByUser === 'true' ?
+      { name: nameQuery, createdBy } : { name: nameQuery };
+
     const start = new Date();
-    const foodsCreatedByUser = await Food.find(queryParams);
+    const createdFoods = await Food.find(queryParams);
     console.log('Request to MongoDB for foods took:', new Date() - start, 'ms');
+
     const regex = /^[A-Za-z0-9]+$/; // name contains only english letters or numbers
     const nameIsNotValidForFatsecretApi = !regex.test(name);
     if (custom || name === '' || nameIsNotValidForFatsecretApi) {
-      return [...foodsCreatedByUser];
+      return [...createdFoods];
     }
     const foodsFromFatSecretAPI = await fatsecretService.query(name);
-    const foods = [...foodsCreatedByUser, ...foodsFromFatSecretAPI];
+    const foods = [...createdFoods, ...foodsFromFatSecretAPI];
     return foods;
   } catch (err) {
     console.log('ERROR: cannot find food');

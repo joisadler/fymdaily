@@ -24,6 +24,7 @@ async function getFoods(req, res) {
     createdBy,
     req.query.name,
     req.query.custom,
+    req.query.showOnlyFoodsCreatedByUser,
   );
   res.send(foods);
 }

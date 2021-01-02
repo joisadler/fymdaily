@@ -3,8 +3,8 @@ import history from '../history';
 
 const BASE_URL = process.env.NODE_ENV === 'production'
   ? '/api/'
-  // : '//localhost:4000/api/';
-  : '//192.168.0.5:4000/api/'; // local network IP
+  : '//localhost:4000/api/';
+  // : '//192.168.0.104:4000/api/'; // local network IP
 
 const axios = Axios.create({
   withCredentials: true,

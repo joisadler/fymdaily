@@ -12,17 +12,24 @@ const AddEatenFoodPage = () => {
     inputText,
     setInputText,
     foods,
+    showOnlyFoodsCreatedByUser,
+    setShowOnlyFoodsCreatedByUser,
   } = useSearch('food');
 
   const isLoading = useSelector(state => state.system.isLoading);
 
   const searchInput = useRef(null);
   useEffect(() => {
-    searchInput.current.focus();
+    // searchInput.current.focus();
   }, []);
 
   const handleSearchInput = ({ value }) => {
     setInputText(value);
+  };
+
+  const handleShowOnlyFoodsCreatedByUserChange = ({ checked }) => {
+    console.log('checked: ', checked)
+    setShowOnlyFoodsCreatedByUser(checked);
   };
 
   return (
@@ -41,6 +48,22 @@ const AddEatenFoodPage = () => {
             inputRef={searchInput}
             onChange={(e) => { handleSearchInput(e.target); }}
           />
+          <div className="show-only-foods-created-by-me-container">
+            <input
+              type="checkbox"
+              className="show-only-foods-created-by-me-checkbox"
+              name="showOnlyFoodsCreatedByUser"
+              checked={showOnlyFoodsCreatedByUser}
+              id="showOnlyFoodsCreatedByUser"
+              onChange={(e) => handleShowOnlyFoodsCreatedByUserChange(e.target)}
+            />
+            <label
+              className="show-only-foods-created-by-me-label"
+              htmlFor="showOnlyFoodsCreatedByUser"
+            >
+              Show only foods created by me
+            </label>
+          </div>
         </header>
         <ul className="add-eaten-food-cards">
           {isLoading

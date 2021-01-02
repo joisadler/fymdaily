@@ -1,7 +1,6 @@
 .custom-page {
   &-header {
     width: 100%;
-    margin-block-end: $sm-distance;
   }
 
   &-items-type {
@@ -35,6 +34,7 @@
   &-search {
     width: 100%;
     height: $input-height;
+    margin-block-end: $sm-distance;
     border: 1px solid black;
     border-radius: 0;
     padding: $sm-distance;
@@ -44,4 +44,29 @@
       border: 1px solid green;
     }
   }
+}
+
+.show-only-foods-created-by-me-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.show-only-foods-created-by-me-checkbox {
+  width: $m-distance;
+  height: $m-distance;
+  margin: 0 $sm-distance 0 0;
+  // outline: 1px solid green;
+  outline-offset: -1px;
+
+  @media (min-width: $tablet) and (max-width: $desktop) {
+    width: var(--l-distance);
+    height: var(--l-distance);
+    margin: 0 1rem 0 0;
+  }
+}
+
+.show-only-foods-created-by-me-label {
+  font-size: $sm-text;
+  vertical-align: middle;
 }
