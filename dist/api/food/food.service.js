@@ -136,48 +136,45 @@ function _query() {
             } : {
               name: nameQuery
             };
-            console.log('showOnlyFoodsCreatedByUser: ', showOnlyFoodsCreatedByUser);
-            console.log('queryParams: ', queryParams);
             start = new Date();
-            _context3.next = 11;
+            _context3.next = 9;
             return _food["default"].find(queryParams);
 
-          case 11:
+          case 9:
             createdFoods = _context3.sent;
-            console.log('createdFoods: ', createdFoods);
             console.log('Request to MongoDB for foods took:', new Date() - start, 'ms');
             regex = /^[A-Za-z0-9]+$/; // name contains only english letters or numbers
 
             nameIsNotValidForFatsecretApi = !regex.test(name);
 
-            if (!(custom || name === '' || nameIsNotValidForFatsecretApi)) {
-              _context3.next = 18;
+            if (!(custom || name === '' || showOnlyFoodsCreatedByUser === 'true' || nameIsNotValidForFatsecretApi)) {
+              _context3.next = 15;
               break;
             }
 
             return _context3.abrupt("return", (0, _toConsumableArray2["default"])(createdFoods));
 
-          case 18:
-            _context3.next = 20;
+          case 15:
+            _context3.next = 17;
             return _fatsecret["default"].query(name);
 
-          case 20:
+          case 17:
             foodsFromFatSecretAPI = _context3.sent;
             foods = [].concat((0, _toConsumableArray2["default"])(createdFoods), (0, _toConsumableArray2["default"])(foodsFromFatSecretAPI));
             return _context3.abrupt("return", foods);
 
-          case 25:
-            _context3.prev = 25;
+          case 22:
+            _context3.prev = 22;
             _context3.t0 = _context3["catch"](3);
             console.log('ERROR: cannot find food');
             throw _context3.t0;
 
-          case 29:
+          case 26:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[3, 25]]);
+    }, _callee3, null, [[3, 22]]);
   }));
   return _query.apply(this, arguments);
 }

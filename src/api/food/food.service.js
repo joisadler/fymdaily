@@ -58,7 +58,7 @@ async function query(
 
     const regex = /^[A-Za-z0-9]+$/; // name contains only english letters or numbers
     const nameIsNotValidForFatsecretApi = !regex.test(name);
-    if (custom || name === '' || nameIsNotValidForFatsecretApi) {
+    if (custom || name === '' || showOnlyFoodsCreatedByUser === 'true' || nameIsNotValidForFatsecretApi) {
       return [...createdFoods];
     }
     const foodsFromFatSecretAPI = await fatsecretService.query(name);
