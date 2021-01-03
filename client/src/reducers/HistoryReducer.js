@@ -2,7 +2,7 @@ const initialState = {
   eatenFoods: null,
 };
 
-export default function (state = initialState, action = {}) {
+export default (state = initialState, action = {}) => {
   switch (action.type) {
     case 'SET_EATEN_FOODS':
       return { ...state, eatenFoods: action.eatenFoods };
@@ -11,4 +11,4 @@ export default function (state = initialState, action = {}) {
     default:
       return state;
   }
-}
+};

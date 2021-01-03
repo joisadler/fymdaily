@@ -16,8 +16,8 @@ const HomePage = () => {
 
   const user = useLoadUser();
   // console.log('user from Home Page:', user)
-  const eatenFoods = useSelector(state => state.history.eatenFoods);
-  const isLoading = useSelector(state => state.system.isLoading);
+  const eatenFoods = useSelector((state) => state.history.eatenFoods);
+  const isLoading = useSelector((state) => state.system.isLoading);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -29,17 +29,18 @@ const HomePage = () => {
   return (
     <>
       <main className="page">
-        {isLoading ? <Loader />
-          : (
-            <>
-              <CaloriesChart
-                numbers={numbers}
-                isAlternateContentShown={isAlternateContentShown}
-                toggleAlternateContent={toggleAlternateContent}
-              />
-              <MacrosContainer numbers={numbers} />
-            </>
-          )}
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <CaloriesChart
+              numbers={numbers}
+              isAlternateContentShown={isAlternateContentShown}
+              toggleAlternateContent={toggleAlternateContent}
+            />
+            <MacrosContainer numbers={numbers} />
+          </>
+        )}
       </main>
       <Navbar />
     </>

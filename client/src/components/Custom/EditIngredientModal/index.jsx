@@ -82,18 +82,14 @@ const EditIngredientModal = ({
       <button
         className="edit-ingredient-close-button"
         type="button"
-        onClick={e => closeModal(e)}
+        onClick={(e) => closeModal(e)}
         title="Close"
       >
         &times;
       </button>
       <header className="edit-ingredient-header">
-        <h2 className="edit-ingredient-title">
-          {name}
-        </h2>
-        <h3 className="edit-ingredient-subtitle">
-          {brand}
-        </h3>
+        <h2 className="edit-ingredient-title">{name}</h2>
+        <h3 className="edit-ingredient-subtitle">{brand}</h3>
       </header>
       <form
         id="edit-ingredient-form"
@@ -101,11 +97,7 @@ const EditIngredientModal = ({
         onSubmit={onUpdateIngredient}
       >
         <fieldset className="edit-ingredient-weight-inputs">
-          <legend
-            className="edit-ingredient-weight-legend"
-          >
-            Weight:
-          </legend>
+          <legend className="edit-ingredient-weight-legend">Weight:</legend>
           <div>
             <button
               type="button"
@@ -124,8 +116,11 @@ const EditIngredientModal = ({
               step="any"
               value={weight}
               placeholder="Weight"
-              onChange={e => setWeight(+e.target.value)}
-              ref={(el) => { inputRef.current = el; setIsRefVisible(!!el); }}
+              onChange={(e) => setWeight(+e.target.value)}
+              ref={(el) => {
+                inputRef.current = el;
+                setIsRefVisible(!!el);
+              }}
               required
             />
             <button

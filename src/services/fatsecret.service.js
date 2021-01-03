@@ -15,7 +15,7 @@ const _searchFoods = async (params) => {
       return [];
     }
     if (!Array.isArray(foods)) return [foods.food_id];
-    return foods.map(f => f.food_id);
+    return foods.map((f) => f.food_id);
   } catch (err) {
     console.log('ERROR: can not search foods');
     console.error(err);
@@ -35,12 +35,16 @@ const _getInfo = async (params) => {
 
 async function query(search_expression = '', max_results = 10) {
   try {
-    var start1 = new Date();
+    const start1 = new Date();
     const foodIDs = await _searchFoods({
       search_expression,
       max_results,
     });
-    console.log('Request to Fatsecret API for food IDs took:', new Date() - start1, 'ms');
+    console.log(
+      'Request to Fatsecret API for food IDs took:',
+      new Date() - start1,
+      'ms'
+    );
     if (!foodIDs || foodIDs === []) return {};
     const foodPromises = foodIDs.map(async (food_id) => {
       const info = await _getInfo({ food_id });
@@ -50,8 +54,10 @@ async function query(search_expression = '', max_results = 10) {
         : info.food.servings.serving;
       const name = info.food.food_name;
       const brand = info.food.brand_name || '';
-      let calories = (nutriments.calories * 100) / nutriments.metric_serving_amount;
-      let proteins = (nutriments.protein * 100) / nutriments.metric_serving_amount;
+      let calories =
+        (nutriments.calories * 100) / nutriments.metric_serving_amount;
+      let proteins =
+        (nutriments.protein * 100) / nutriments.metric_serving_amount;
       let fats = (nutriments.fat * 100) / nutriments.metric_serving_amount;
       let carbs = (nutriments.sugar * 100) / nutriments.metric_serving_amount;
       if (nutriments.metric_serving_unit === 'oz') {
@@ -60,10 +66,7 @@ async function query(search_expression = '', max_results = 10) {
         fats /= 29.574;
         carbs /= 29.574;
       }
-      if (isNaN(calories)
-        || isNaN(proteins)
-        || isNaN(fats)
-        || isNaN(carbs)) {
+      if (isNaN(calories) || isNaN(proteins) || isNaN(fats) || isNaN(carbs)) {
         return;
       }
       const food = {
@@ -78,8 +81,12 @@ async function query(search_expression = '', max_results = 10) {
     });
     const start2 = new Date();
     const foods = await Promise.all(foodPromises);
-    console.log('Request to Fatsecret API for foods info took:', new Date() - start2, 'ms');
-    return foods.filter(food => food);
+    console.log(
+      'Request to Fatsecret API for foods info took:',
+      new Date() - start2,
+      'ms'
+    );
+    return foods.filter((food) => food);
   } catch (err) {
     console.log('ERROR: can not query');
     throw err;

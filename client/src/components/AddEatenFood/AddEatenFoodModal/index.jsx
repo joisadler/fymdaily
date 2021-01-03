@@ -73,32 +73,20 @@ const AddEatenFoodModal = ({
       <button
         className="add-eaten-food-modal-close-button"
         type="button"
-        onClick={e => closeModal(e)}
+        onClick={(e) => closeModal(e)}
         title="Close"
       >
         &times;
       </button>
       <header className="add-eaten-food-modal-header">
-        <h2 className="add-eaten-food-modal-title">
-          {name}
-        </h2>
-        <h3 className="add-eaten-food-modal-subtitle">
-          {brand}
-        </h3>
+        <h2 className="add-eaten-food-modal-title">{name}</h2>
+        <h3 className="add-eaten-food-modal-subtitle">{brand}</h3>
       </header>
       <div className="add-eaten-food-modal-info">
-        <p>
-          {`Calories: ${(calories * weight) / 100}`}
-        </p>
-        <p>
-          {`Proteins: ${(proteins * weight) / 100}`}
-        </p>
-        <p>
-          {`Fats: ${(fats * weight) / 100}`}
-        </p>
-        <p>
-          {`Carbs: ${(carbs * weight) / 100}`}
-        </p>
+        <p>{`Calories: ${(calories * weight) / 100}`}</p>
+        <p>{`Proteins: ${(proteins * weight) / 100}`}</p>
+        <p>{`Fats: ${(fats * weight) / 100}`}</p>
+        <p>{`Carbs: ${(carbs * weight) / 100}`}</p>
       </div>
       <form
         id="add-eaten-food-modal-form"
@@ -106,9 +94,7 @@ const AddEatenFoodModal = ({
         onSubmit={onFormSubmit}
       >
         <fieldset className="add-eaten-food-modal-weight-inputs">
-          <legend
-            className="add-eaten-food-modal-weight-legend"
-          >
+          <legend className="add-eaten-food-modal-weight-legend">
             Weight:
           </legend>
           <div>
@@ -128,8 +114,11 @@ const AddEatenFoodModal = ({
               max="1000"
               step="any"
               value={weight}
-              onChange={e => setWeight(e.target.value)}
-              ref={(el) => { inputRef.current = el; setIsRefVisible(!!el); }}
+              onChange={(e) => setWeight(e.target.value)}
+              ref={(el) => {
+                inputRef.current = el;
+                setIsRefVisible(!!el);
+              }}
               required
             />
             <button

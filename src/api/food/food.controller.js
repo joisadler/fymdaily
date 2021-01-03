@@ -1,7 +1,7 @@
 import foodService from './food.service';
 
 // Create
-async function addFood(req, res) {
+export const addFood = async (req, res) => {
   const createdBy = req.user._id;
   const food = {
     createdBy,
@@ -9,45 +9,37 @@ async function addFood(req, res) {
   };
   const newFood = await foodService.add(food);
   res.send(newFood);
-}
+};
 
 // Read
-async function getFood(req, res) {
+export const getFood = async (req, res) => {
   const food = await foodService.getById(req.params.id);
   res.send(food);
-}
+};
 
 // List
-async function getFoods(req, res) {
+export const getFoods = async (req, res) => {
   const createdBy = req.user._id;
   const foods = await foodService.query(
     createdBy,
     req.query.name,
     req.query.custom,
-    req.query.showOnlyFoodsCreatedByUser,
+    req.query.showOnlyFoodsCreatedByUser
   );
   res.send(foods);
-}
+};
 
 // Update
-async function updateFood(req, res) {
+export const updateFood = async (req, res) => {
   const food = req.body;
   await foodService.update(food);
   res.send(food);
-}
+};
 
 // Delete
-async function deleteFood(req, res) {
+export const deleteFood = async (req, res) => {
   await foodService.remove(req.params.id);
   return res.send({
     message: 'Food has been successfully deleted!',
   });
-}
-
-module.exports = {
-  getFood,
-  getFoods,
-  addFood,
-  updateFood,
-  deleteFood,
 };

@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 import EditCustomRecipeModal from '../EditCustomRecipeModal';
 
 const CustomRecipeCard = ({ recipe }) => {
-  const {
-    _id,
-    name,
-    ingredients,
-  } = recipe;
+  const { _id, name, ingredients } = recipe;
   const calories = Math.round(+recipe.calories);
   const proteins = Math.round(+recipe.proteins);
   const fats = Math.round(+recipe.fats);
@@ -36,31 +32,31 @@ const CustomRecipeCard = ({ recipe }) => {
       <div
         className="custom-recipe-card"
         onClick={openModal}
-        onKeyDown={(e) => { handleKeyDown(e); }}
+        onKeyDown={(e) => {
+          handleKeyDown(e);
+        }}
         role="button"
         title={`Edit "${name}"`}
         tabIndex={0}
       >
-        <h2 className="custom-recipe-card-title">
-          {`${name}`}
-        </h2>
+        <h2 className="custom-recipe-card-title">{`${name}`}</h2>
         <p className="custom-recipe-card-info">
           {`Calories: ${calories}`}
           <br />
           {`Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
         </p>
         {isModalOpen && (
-        <EditCustomRecipeModal
-          isModalOpen={isModalOpen}
-          closeModal={closeModal}
-          _id={_id}
-          prevName={name}
-          prevIngredients={ingredients}
-          prevCalories={calories}
-          prevProteins={proteins}
-          prevFats={fats}
-          prevCarbs={carbs}
-        />
+          <EditCustomRecipeModal
+            isModalOpen={isModalOpen}
+            closeModal={closeModal}
+            _id={_id}
+            prevName={name}
+            prevIngredients={ingredients}
+            prevCalories={calories}
+            prevProteins={proteins}
+            prevFats={fats}
+            prevCarbs={carbs}
+          />
         )}
       </div>
     </li>

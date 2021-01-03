@@ -7,8 +7,8 @@ import { logout } from '../../../actions/UserActions';
 import Footer from '../../Footer';
 
 const SettingsMenu = () => {
-  const isShown = useSelector(state => state.settingsMenu.isShown);
-  const user = useSelector(state => state.user.loggedInUser);
+  const isShown = useSelector((state) => state.settingsMenu.isShown);
+  const user = useSelector((state) => state.user.loggedInUser);
   const { username } = user;
   const dispatch = useDispatch();
   const history = useHistory();
@@ -34,9 +34,7 @@ const SettingsMenu = () => {
         classNames="settings-menu"
         unmountOnExit
       >
-        <aside
-          className="settings-menu"
-        >
+        <aside className="settings-menu">
           <header className="settings-menu-header">
             <h2 className="settings-menu-title">{username}</h2>
             <button

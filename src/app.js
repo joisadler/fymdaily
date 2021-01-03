@@ -43,36 +43,42 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(flash());
 app.use(cookieParser());
-app.use(cookieSession({
-  name: 'session',
-  keys: ['key1', 'key2'],
-  maxAge: 365 * 24 * 60 * 60 * 1000,
-}));
+app.use(
+  cookieSession({
+    name: 'session',
+    keys: ['key1', 'key2'],
+    maxAge: 365 * 24 * 60 * 60 * 1000,
+  })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
 initPassport(passport);
 
-app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ['*'],
-      styleSrc: ["'self'", 'http://*', "'unsafe-inline'"],
-      scriptSrc: ["'self'", 'http://*', "'unsafe-inline'", "'unsafe-eval'"],
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ['*'],
+        styleSrc: ["'self'", 'http://*', "'unsafe-inline'"],
+        scriptSrc: ["'self'", 'http://*', "'unsafe-inline'", "'unsafe-eval'"],
+      },
     },
-  },
-}));
+  })
+);
 
-app.use(cors({
-  origin: [
-    'http://127.0.0.1:8080',
-    'http://localhost:8080',
-    'http://127.0.0.1:3000',
-    'http://localhost:3000',
-    'http://192.168.0.5:3000',
-  ],
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: [
+      'http://127.0.0.1:8080',
+      'http://localhost:8080',
+      'http://127.0.0.1:3000',
+      'http://localhost:3000',
+      'http://192.168.0.5:3000',
+    ],
+    credentials: true,
+  })
+);
 
 app.use(compression());
 

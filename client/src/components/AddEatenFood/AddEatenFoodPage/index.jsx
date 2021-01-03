@@ -16,7 +16,7 @@ const AddEatenFoodPage = () => {
     setShowOnlyFoodsCreatedByUser,
   } = useSearch('food');
 
-  const isLoading = useSelector(state => state.system.isLoading);
+  const isLoading = useSelector((state) => state.system.isLoading);
 
   const searchInput = useRef(null);
   useEffect(() => {
@@ -28,7 +28,7 @@ const AddEatenFoodPage = () => {
   };
 
   const handleShowOnlyFoodsCreatedByUserChange = ({ checked }) => {
-    console.log('checked: ', checked)
+    console.log('checked: ', checked);
     setShowOnlyFoodsCreatedByUser(checked);
   };
 
@@ -46,7 +46,9 @@ const AddEatenFoodPage = () => {
             aria-label="Search food"
             value={inputText}
             inputRef={searchInput}
-            onChange={(e) => { handleSearchInput(e.target); }}
+            onChange={(e) => {
+              handleSearchInput(e.target);
+            }}
           />
           <div className="show-only-foods-created-by-me-container">
             <input
@@ -61,21 +63,23 @@ const AddEatenFoodPage = () => {
               className="show-only-foods-created-by-me-label"
               htmlFor="showOnlyFoodsCreatedByUser"
             >
-              Show only foods created by me
+              Created by me
             </label>
           </div>
         </header>
         <ul className="add-eaten-food-cards">
-          {isLoading
-            ? <Loader />
-            : foods
+          {isLoading ? (
+            <Loader />
+          ) : (
+            foods
               .sort((a, b) => a.name.localeCompare(b.name))
-              .map(food => (
+              .map((food) => (
                 <AddEatenFoodCard
                   key={food._id ? food._id : getRandomStr() + food.name}
                   food={food}
                 />
-              ))}
+              ))
+          )}
         </ul>
       </main>
       <Navbar />

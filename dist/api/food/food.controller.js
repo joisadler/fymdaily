@@ -2,6 +2,11 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.deleteFood = exports.updateFood = exports.getFoods = exports.getFood = exports.addFood = void 0;
+
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
@@ -15,13 +20,8 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 // Create
-function addFood(_x, _x2) {
-  return _addFood.apply(this, arguments);
-} // Read
-
-
-function _addFood() {
-  _addFood = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
+var addFood = /*#__PURE__*/function () {
+  var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
     var createdBy, food, newFood;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
@@ -45,16 +45,17 @@ function _addFood() {
       }
     }, _callee);
   }));
-  return _addFood.apply(this, arguments);
-}
 
-function getFood(_x3, _x4) {
-  return _getFood.apply(this, arguments);
-} // List
+  return function addFood(_x, _x2) {
+    return _ref.apply(this, arguments);
+  };
+}(); // Read
 
 
-function _getFood() {
-  _getFood = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(req, res) {
+exports.addFood = addFood;
+
+var getFood = /*#__PURE__*/function () {
+  var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(req, res) {
     var food;
     return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) {
@@ -74,16 +75,17 @@ function _getFood() {
       }
     }, _callee2);
   }));
-  return _getFood.apply(this, arguments);
-}
 
-function getFoods(_x5, _x6) {
-  return _getFoods.apply(this, arguments);
-} // Update
+  return function getFood(_x3, _x4) {
+    return _ref2.apply(this, arguments);
+  };
+}(); // List
 
 
-function _getFoods() {
-  _getFoods = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(req, res) {
+exports.getFood = getFood;
+
+var getFoods = /*#__PURE__*/function () {
+  var _ref3 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(req, res) {
     var createdBy, foods;
     return _regenerator["default"].wrap(function _callee3$(_context3) {
       while (1) {
@@ -104,16 +106,17 @@ function _getFoods() {
       }
     }, _callee3);
   }));
-  return _getFoods.apply(this, arguments);
-}
 
-function updateFood(_x7, _x8) {
-  return _updateFood.apply(this, arguments);
-} // Delete
+  return function getFoods(_x5, _x6) {
+    return _ref3.apply(this, arguments);
+  };
+}(); // Update
 
 
-function _updateFood() {
-  _updateFood = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(req, res) {
+exports.getFoods = getFoods;
+
+var updateFood = /*#__PURE__*/function () {
+  var _ref4 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee4(req, res) {
     var food;
     return _regenerator["default"].wrap(function _callee4$(_context4) {
       while (1) {
@@ -133,15 +136,17 @@ function _updateFood() {
       }
     }, _callee4);
   }));
-  return _updateFood.apply(this, arguments);
-}
 
-function deleteFood(_x9, _x10) {
-  return _deleteFood.apply(this, arguments);
-}
+  return function updateFood(_x7, _x8) {
+    return _ref4.apply(this, arguments);
+  };
+}(); // Delete
 
-function _deleteFood() {
-  _deleteFood = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee5(req, res) {
+
+exports.updateFood = updateFood;
+
+var deleteFood = /*#__PURE__*/function () {
+  var _ref5 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee5(req, res) {
     return _regenerator["default"].wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
@@ -161,13 +166,17 @@ function _deleteFood() {
       }
     }, _callee5);
   }));
-  return _deleteFood.apply(this, arguments);
-}
 
-module.exports = {
-  getFood: getFood,
-  getFoods: getFoods,
-  addFood: addFood,
-  updateFood: updateFood,
-  deleteFood: deleteFood
-};
+  return function deleteFood(_x9, _x10) {
+    return _ref5.apply(this, arguments);
+  };
+}(); // module.exports = {
+//   getFood,
+//   getFoods,
+//   addFood,
+//   updateFood,
+//   deleteFood,
+// };
+
+
+exports.deleteFood = deleteFood;

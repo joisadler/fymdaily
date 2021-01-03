@@ -8,9 +8,9 @@ import MessageActions from '../../../actions/MessageActions';
 const LoginForm = ({ setCurrentForm }) => {
   const [usernameOrEmail, setUsernameOrEmail] = useState('');
   const [password, setPassword] = useState('');
-  const message = useSelector(state => state.message.message);
+  const message = useSelector((state) => state.message.message);
   const dispatch = useDispatch();
-  const setMessage = msg => dispatch(MessageActions.setMessage(msg));
+  const setMessage = (msg) => dispatch(MessageActions.setMessage(msg));
   const doLogin = useAuth(login);
 
   const handleSubmit = (e) => {
@@ -24,13 +24,15 @@ const LoginForm = ({ setCurrentForm }) => {
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>
-      <p className="login-message" style={{ color: 'red' }}>{message}</p>
+      <p className="login-message" style={{ color: 'red' }}>
+        {message}
+      </p>
       <fieldset className="credentials">
         <input
           type="text"
           name="usernameOrEmail"
           value={usernameOrEmail}
-          onChange={e => setUsernameOrEmail(e.target.value)}
+          onChange={(e) => setUsernameOrEmail(e.target.value)}
           onFocus={() => setMessage('')}
           aria-label="Username or Email"
           placeholder="Username or Email"
@@ -40,7 +42,7 @@ const LoginForm = ({ setCurrentForm }) => {
           type="password"
           name="password"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           onFocus={() => setMessage('')}
           aria-label="Password"
           placeholder="Password"
@@ -48,7 +50,9 @@ const LoginForm = ({ setCurrentForm }) => {
       </fieldset>
       <section className="form-options-section">
         <section className="form-submit-section">
-          <button type="submit" className="login-button">Log In</button>
+          <button type="submit" className="login-button">
+            Log In
+          </button>
         </section>
         <section className="other-option-section">
           Don&rsquo;t have an account?
@@ -56,7 +60,10 @@ const LoginForm = ({ setCurrentForm }) => {
           <button
             className="signup-option"
             type="button"
-            onClick={() => { setCurrentForm('signup'); setMessage(''); }}
+            onClick={() => {
+              setCurrentForm('signup');
+              setMessage('');
+            }}
           >
             Sign Up
           </button>

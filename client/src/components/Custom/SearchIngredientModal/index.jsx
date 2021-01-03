@@ -8,11 +8,7 @@ import { getFoods } from '../../../services/food.service';
 import Loader from '../../Loader';
 import SearchIngredientCard from '../SearchIngredientCard';
 
-const SearchIngredientModal = ({
-  isModalOpen,
-  closeModal,
-  addIngredient,
-}) => {
+const SearchIngredientModal = ({ isModalOpen, closeModal, addIngredient }) => {
   const [inputText, setInputText] = useState('');
   const foods = useAsync(getFoods, [inputText]);
 
@@ -30,15 +26,13 @@ const SearchIngredientModal = ({
       <button
         className="search-ingredient-close-button"
         type="button"
-        onClick={e => closeModal(e)}
+        onClick={(e) => closeModal(e)}
         title="Close"
       >
         &times;
       </button>
       <header className="options-container">
-        <h2 className="search-ingredient-header">
-          Search Ingredient
-        </h2>
+        <h2 className="search-ingredient-header">Search Ingredient</h2>
         <DebounceInput
           minLength={0}
           type="search"
@@ -47,24 +41,25 @@ const SearchIngredientModal = ({
           placeholder="Search ingredient"
           aria-label="Search ingredient"
           value={inputText}
-          onChange={(e) => { handleSearchInput(e.target); }}
+          onChange={(e) => {
+            handleSearchInput(e.target);
+          }}
           autoFocus
         />
       </header>
       <ul className="search-ingredient-cards">
         {foods.loading && <Loader />}
-        {foods.result && (
+        {foods.result &&
           foods.result
             .sort((a, b) => a.name.localeCompare(b.name))
-            .map(food => (
+            .map((food) => (
               <SearchIngredientCard
                 key={food._id ? food._id : getRandomStr() + food.name}
                 food={food}
                 addIngredient={addIngredient}
                 closeSearchModal={closeModal}
               />
-            ))
-        )}
+            ))}
       </ul>
     </Modal>
   );

@@ -8,10 +8,7 @@ import { getRandomStr } from '../../../services/util.service';
 import SearchIngredientModal from '../SearchIngredientModal';
 import CreateCustomRecipeIngredientCard from '../CreateCustomRecipeIngredientCard';
 
-const CreateCustomRecipeModal = ({
-  isModalOpen,
-  closeModal,
-}) => {
+const CreateCustomRecipeModal = ({ isModalOpen, closeModal }) => {
   Modal.setAppElement('#root');
 
   const [
@@ -37,20 +34,30 @@ const CreateCustomRecipeModal = ({
   const [carbs, setCarbs] = useState(0);
 
   const setInfo = (ings) => {
-    const totalWeight = ings
-      .reduce((acc, currentIngr) => currentIngr.weight + acc, 0);
-    const totalCalories = ings
-      .reduce((acc, currentIngr) => currentIngr.calories + acc, 0);
-    const totalProteins = ings
-      .reduce((acc, currentIngr) => currentIngr.proteins + acc, 0);
-    const totalFats = ings
-      .reduce((acc, currentIngr) => currentIngr.fats + acc, 0);
-    const totalCarbs = ings
-      .reduce((acc, currentIngr) => currentIngr.carbs + acc, 0);
-    const recipeCalories = Math
-      .round((totalCalories * 1000) / totalWeight) / 10;
-    const recipeProteins = Math
-      .round((totalProteins * 1000) / totalWeight) / 10;
+    const totalWeight = ings.reduce(
+      (acc, currentIngr) => currentIngr.weight + acc,
+      0
+    );
+    const totalCalories = ings.reduce(
+      (acc, currentIngr) => currentIngr.calories + acc,
+      0
+    );
+    const totalProteins = ings.reduce(
+      (acc, currentIngr) => currentIngr.proteins + acc,
+      0
+    );
+    const totalFats = ings.reduce(
+      (acc, currentIngr) => currentIngr.fats + acc,
+      0
+    );
+    const totalCarbs = ings.reduce(
+      (acc, currentIngr) => currentIngr.carbs + acc,
+      0
+    );
+    const recipeCalories =
+      Math.round((totalCalories * 1000) / totalWeight) / 10;
+    const recipeProteins =
+      Math.round((totalProteins * 1000) / totalWeight) / 10;
     const recipeFats = Math.round((totalFats * 1000) / totalWeight) / 10;
     const recipeCarbs = Math.round((totalCarbs * 1000) / totalWeight) / 10;
     setCalories(Number.isNaN(recipeCalories) ? 0 : recipeCalories);
@@ -70,7 +77,7 @@ const CreateCustomRecipeModal = ({
     ingredientCalories,
     ingredientProteins,
     ingredientFats,
-    ingredientCarbs,
+    ingredientCarbs
   ) => {
     const ingredient = {
       name: ingredientName,
@@ -86,10 +93,7 @@ const CreateCustomRecipeModal = ({
     setInfo(updatedIngredients);
   };
 
-  const updateIngredient = (
-    ingredientWeight,
-    ingredientIndex,
-  ) => {
+  const updateIngredient = (ingredientWeight, ingredientIndex) => {
     const updatedIngredients = ingredients.map((ingr, i) => {
       if (i === ingredientIndex) {
         return { ...ingr, weight: ingredientWeight };
@@ -100,11 +104,10 @@ const CreateCustomRecipeModal = ({
     setInfo(updatedIngredients);
   };
 
-  const removeIngredient = (
-    ingredientIndex,
-  ) => {
-    const updatedIngredients = ingredients
-      .filter((ingr, i) => i !== ingredientIndex);
+  const removeIngredient = (ingredientIndex) => {
+    const updatedIngredients = ingredients.filter(
+      (ingr, i) => i !== ingredientIndex
+    );
     setIngredients(updatedIngredients);
     setInfo(updatedIngredients);
   };
@@ -138,32 +141,25 @@ const CreateCustomRecipeModal = ({
       <button
         className="create-custom-recipe-close-button"
         type="button"
-        onClick={e => closeModal(e)}
+        onClick={(e) => closeModal(e)}
         title="Close"
       >
         &times;
       </button>
-      <h2 className="create-custom-recipe-header">
-        Create new recipe
-      </h2>
-      <form
-        className="create-custom-recipe-form"
-        onSubmit={onFormSubmit}
-      >
+      <h2 className="create-custom-recipe-header">Create new recipe</h2>
+      <form className="create-custom-recipe-form" onSubmit={onFormSubmit}>
         <input
           type="text"
           className="create-custom-recipe-input create-custom-recipe-name-input"
           aria-label="name"
           value={name}
           placeholder="Recipe name"
-          onChange={e => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
           required
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus
         />
-        <h3 className="create-custom-recipe-ingredients-title">
-          Ingredients:
-        </h3>
+        <h3 className="create-custom-recipe-ingredients-title">Ingredients:</h3>
         <ul className="create-custom-recipe-ingredients">
           {ingredients.map((ing, i) => (
             <CreateCustomRecipeIngredientCard
@@ -185,15 +181,13 @@ const CreateCustomRecipeModal = ({
           </button>
         </ul>
         {isSearchIngredientModalOpen && (
-        <SearchIngredientModal
-          isModalOpen={isSearchIngredientModalOpen}
-          closeModal={closeSearchIngredientModal}
-          addIngredient={addIngredient}
-        />
+          <SearchIngredientModal
+            isModalOpen={isSearchIngredientModalOpen}
+            closeModal={closeSearchIngredientModal}
+            addIngredient={addIngredient}
+          />
         )}
-        <div
-          className="create-custom-recipe-info"
-        >
+        <div className="create-custom-recipe-info">
           <h2 className="create-custom-recipe-info-title">
             {`100g of ${name ? `"${name}"` : 'the recipe above'} contains:`}
           </h2>
@@ -204,10 +198,7 @@ const CreateCustomRecipeModal = ({
           </p>
         </div>
         <div className="create-custom-recipe-submit-button-container">
-          <button
-            type="submit"
-            className="create-custom-recipe-submit-button"
-          >
+          <button type="submit" className="create-custom-recipe-submit-button">
             Create
           </button>
         </div>

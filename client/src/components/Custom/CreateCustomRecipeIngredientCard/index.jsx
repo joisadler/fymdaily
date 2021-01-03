@@ -32,19 +32,17 @@ const CreateCustomRecipeIngredientCard = ({
     <li className="create-custom-recipe-ingredient-container">
       <div
         className="create-custom-recipe-ingredient"
-        onKeyDown={(e) => { handleKeyDown(e); }}
+        onKeyDown={(e) => {
+          handleKeyDown(e);
+        }}
         role="button"
         title={`Edit "${name}"`}
         tabIndex={0}
         onClick={openModal}
       >
         {`${index + 1}. `}
-        <bdi>
-          {name}
-        </bdi>
-        <bdi>
-          {`${brand !== '' ? `, ${brand}` : ''}, `}
-        </bdi>
+        <bdi>{name}</bdi>
+        <bdi>{`${brand !== '' ? `, ${brand}` : ''}, `}</bdi>
         {`${weight}g`}
       </div>
       {isModalOpen && (

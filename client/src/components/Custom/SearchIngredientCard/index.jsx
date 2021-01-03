@@ -2,15 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import AddIngredientModal from '../AddIngredientModal';
 
-const SearchIngredientCard = ({
-  food,
-  addIngredient,
-  closeSearchModal,
-}) => {
-  const {
-    name,
-    brand,
-  } = food;
+const SearchIngredientCard = ({ food, addIngredient, closeSearchModal }) => {
+  const { name, brand } = food;
   const calories = Math.round(+food.calories);
   const proteins = Math.round(+food.proteins);
   const fats = Math.round(+food.fats);
@@ -39,7 +32,9 @@ const SearchIngredientCard = ({
       <div
         className="search-ingredient-card"
         onClick={openModal}
-        onKeyDown={(e) => { handleKeyDown(e); }}
+        onKeyDown={(e) => {
+          handleKeyDown(e);
+        }}
         role="button"
         title={`Add "${name}" to eaten foods`}
         tabIndex={0}
@@ -53,18 +48,18 @@ const SearchIngredientCard = ({
           {`Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
         </p>
         {isModalOpen && (
-        <AddIngredientModal
-          isModalOpen={isModalOpen}
-          closeModal={closeModal}
-          closeSearchModal={closeSearchModal}
-          name={name}
-          brand={brand}
-          calories={calories}
-          proteins={proteins}
-          fats={fats}
-          carbs={carbs}
-          addIngredient={addIngredient}
-        />
+          <AddIngredientModal
+            isModalOpen={isModalOpen}
+            closeModal={closeModal}
+            closeSearchModal={closeSearchModal}
+            name={name}
+            brand={brand}
+            calories={calories}
+            proteins={proteins}
+            fats={fats}
+            carbs={carbs}
+            addIngredient={addIngredient}
+          />
         )}
       </div>
     </li>

@@ -12,15 +12,11 @@ const ConfirmModal = ({
 }) => (
   <div className="confirm-modal">
     <header className="confirm-modal-header">
-      <h2 className="confirm-modal-title">
-        {text}
-      </h2>
+      <h2 className="confirm-modal-title">{text}</h2>
       <h3 className="confirm-modal-item-name">
         <p>
           {name}
-          <span>
-            ?
-          </span>
+          <span>?</span>
         </p>
       </h3>
     </header>

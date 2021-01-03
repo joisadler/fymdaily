@@ -14,7 +14,7 @@ const UserSettingsPage = () => {
   const currentBodyWeight = user.bodyWeight || '';
   const currentGender = user.gender || 'male';
   const currentHipCircumference = user.hipCircumference || '';
-  const currrentWaistCircumference = user.waistCircumference || '';
+  const currentWaistCircumference = user.waistCircumference || '';
   const currentNeckCircumference = user.neckCircumference || '';
   const currentPhysicalActivityLevel = user.physicalActivityLevel || 'moderate';
   const currentGoal = user.goal || 'normalWeightLoss';
@@ -22,10 +22,18 @@ const UserSettingsPage = () => {
   const [height, setHeight] = useState(currentHeight);
   const [bodyWeight, setBodyWeight] = useState(currentBodyWeight);
   const [gender, setGender] = useState(currentGender);
-  const [hipCircumference, setHipCircumference] = useState(currentHipCircumference);
-  const [waistCircumference, setWaistCircumference] = useState(currrentWaistCircumference);
-  const [neckCircumference, setNeckCircumference] = useState(currentNeckCircumference);
-  const [physicalActivityLevel, setPhysicalActivityLevel] = useState(currentPhysicalActivityLevel);
+  const [hipCircumference, setHipCircumference] = useState(
+    currentHipCircumference
+  );
+  const [waistCircumference, setWaistCircumference] = useState(
+    currentWaistCircumference
+  );
+  const [neckCircumference, setNeckCircumference] = useState(
+    currentNeckCircumference
+  );
+  const [physicalActivityLevel, setPhysicalActivityLevel] = useState(
+    currentPhysicalActivityLevel
+  );
   const [goal, setGoal] = useState(currentGoal);
 
   useEffect(() => {
@@ -33,7 +41,7 @@ const UserSettingsPage = () => {
     setBodyWeight(currentBodyWeight);
     setGender(currentGender);
     setHipCircumference(currentHipCircumference);
-    setWaistCircumference(currrentWaistCircumference);
+    setWaistCircumference(currentWaistCircumference);
     setNeckCircumference(currentNeckCircumference);
     setPhysicalActivityLevel(currentPhysicalActivityLevel);
     setGoal(currentGoal);
@@ -42,7 +50,7 @@ const UserSettingsPage = () => {
     currentBodyWeight,
     currentGender,
     currentHipCircumference,
-    currrentWaistCircumference,
+    currentWaistCircumference,
     currentNeckCircumference,
     currentPhysicalActivityLevel,
     currentGoal,
@@ -110,18 +118,15 @@ const UserSettingsPage = () => {
       <main className="page">
         <header>
           <h1 className="page-title">
-            { isUserInfoSet ? `Hey, ${username}!` : `Welcome, ${username}!`}
+            {isUserInfoSet ? `Hey, ${username}!` : `Welcome, ${username}!`}
           </h1>
           <h2 className="user-settings-page-subtitle">
-            { isUserInfoSet
+            {isUserInfoSet
               ? 'We advise you to update this data at least once a month (this is important for the correct work with your weight):'
               : 'Please enter the following data (this is necessary for the application to work correctly):'}
           </h2>
         </header>
-        <form
-          className="user-settings-form"
-          onSubmit={onSaveUserSettings}
-        >
+        <form className="user-settings-form" onSubmit={onSaveUserSettings}>
           <div className="user-settings-input-container">
             <label
               htmlFor="user-settings-height-input"
@@ -136,7 +141,7 @@ const UserSettingsPage = () => {
               placeholder="Number in cm"
               value={height}
               data-name="height"
-              onChange={e => handleChange(e.target)}
+              onChange={(e) => handleChange(e.target)}
               min="0"
               max="300"
               step="any"
@@ -157,8 +162,11 @@ const UserSettingsPage = () => {
               placeholder="Number in kg"
               value={bodyWeight}
               data-name="bodyWeight"
-              onChange={e => handleChange(e.target)}
-              ref={(el) => { inputRef.current = el; setIsRefVisible(!!el); }}
+              onChange={(e) => handleChange(e.target)}
+              ref={(el) => {
+                inputRef.current = el;
+                setIsRefVisible(!!el);
+              }}
               min="0"
               max="500"
               step="any"
@@ -177,7 +185,7 @@ const UserSettingsPage = () => {
               className="user-settings-input"
               value={gender}
               data-name="gender"
-              onChange={e => handleChange(e.target)}
+              onChange={(e) => handleChange(e.target)}
               required
             >
               <option value="male">Male</option>
@@ -185,7 +193,7 @@ const UserSettingsPage = () => {
             </select>
           </div>
           <div className="user-settings-input-container">
-            { gender === 'female' && (
+            {gender === 'female' && (
               <>
                 <label
                   htmlFor="user-settings-hip-circumference-input"
@@ -200,7 +208,7 @@ const UserSettingsPage = () => {
                   placeholder="Number in cm"
                   value={hipCircumference}
                   data-name="hipCircumference"
-                  onChange={e => handleChange(e.target)}
+                  onChange={(e) => handleChange(e.target)}
                   min="0"
                   max="500"
                   step="any"
@@ -223,7 +231,7 @@ const UserSettingsPage = () => {
               placeholder="Number in cm"
               value={waistCircumference}
               data-name="waistCircumference"
-              onChange={e => handleChange(e.target)}
+              onChange={(e) => handleChange(e.target)}
               min="0"
               max="300"
               step="any"
@@ -244,7 +252,7 @@ const UserSettingsPage = () => {
               placeholder="Number in cm"
               value={neckCircumference}
               data-name="neckCircumference"
-              onChange={e => handleChange(e.target)}
+              onChange={(e) => handleChange(e.target)}
               min="0"
               max="100"
               step="any"
@@ -263,7 +271,7 @@ const UserSettingsPage = () => {
               className="user-settings-input"
               value={physicalActivityLevel}
               data-name="physicalActivityLevel"
-              onChange={e => handleChange(e.target)}
+              onChange={(e) => handleChange(e.target)}
               required
             >
               <option value="veryLight">Very Light</option>
@@ -285,7 +293,7 @@ const UserSettingsPage = () => {
               className="user-settings-input"
               value={goal}
               data-name="goal"
-              onChange={e => handleChange(e.target)}
+              onChange={(e) => handleChange(e.target)}
               required
             >
               <option value="fastWeightLoss">Fast Weight Loss</option>
@@ -294,10 +302,7 @@ const UserSettingsPage = () => {
               <option value="massGain">Mass Gain</option>
             </select>
           </div>
-          <button
-            type="submit"
-            className="user-settings-save-button"
-          >
+          <button type="submit" className="user-settings-save-button">
             Save
           </button>
         </form>

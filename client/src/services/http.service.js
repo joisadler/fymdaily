@@ -1,10 +1,9 @@
 import Axios from 'axios';
 import history from '../history';
 
-const BASE_URL = process.env.NODE_ENV === 'production'
-  ? '/api/'
-  : '//localhost:4000/api/';
-  // : '//192.168.0.104:4000/api/'; // local network IP
+const BASE_URL =
+  process.env.NODE_ENV === 'production' ? '/api/' : '//localhost:4000/api/';
+// : '//192.168.0.104:4000/api/'; // local network IP
 
 const axios = Axios.create({
   withCredentials: true,
@@ -20,7 +19,11 @@ async function ajax(endpoint, method = 'get', data = null) {
     return res.data;
   } catch (err) {
     // eslint-disable-next-line max-len
-    console.log(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: ${JSON.stringify(data)}`);
+    console.log(
+      `Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: ${JSON.stringify(
+        data
+      )}`
+    );
     console.dir(err);
     if (err.response && err.response.status === 401) {
       history.push('/');

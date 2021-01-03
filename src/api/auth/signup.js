@@ -10,12 +10,7 @@ export default (passport) => {
       if (info) return res.send(info);
       req.logIn(user, (error) => {
         if (error) return next(error);
-        const {
-          GMAIL_USER,
-          GMAIL_PASS,
-          GMAIL_HOST,
-          GMAIL_PORT,
-        } = process.env;
+        const { GMAIL_USER, GMAIL_PASS, GMAIL_HOST, GMAIL_PORT } = process.env;
         const { username, email } = user;
         const smtpTrans = nodemailer.createTransport({
           host: GMAIL_HOST,

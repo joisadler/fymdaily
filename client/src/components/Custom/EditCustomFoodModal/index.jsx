@@ -6,7 +6,10 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import { updateCustomFoods, deleteCustomFood } from '../../../actions/FoodActions';
+import {
+  updateCustomFoods,
+  deleteCustomFood,
+} from '../../../actions/FoodActions';
 import ConfirmModal from '../../ConfirmModal';
 
 const EditCustomFoodModal = ({
@@ -93,26 +96,24 @@ const EditCustomFoodModal = ({
       <button
         className="edit-custom-food-close-button"
         type="button"
-        onClick={e => closeModal(e)}
+        onClick={(e) => closeModal(e)}
         title="Close"
       >
         &times;
       </button>
-      <h2 className="edit-custom-food-header">
-        Edit food
-      </h2>
-      <form
-        className="edit-custom-food-form"
-        onSubmit={onFormSubmit}
-      >
+      <h2 className="edit-custom-food-header">Edit food</h2>
+      <form className="edit-custom-food-form" onSubmit={onFormSubmit}>
         <input
           type="text"
           className="edit-custom-food-input edit-custom-food-name-input"
           aria-label="name"
           value={name}
           placeholder="Name"
-          onChange={e => setName(e.target.value)}
-          ref={(el) => { inputRef.current = el; setIsRefVisible(!!el); }}
+          onChange={(e) => setName(e.target.value)}
+          ref={(el) => {
+            inputRef.current = el;
+            setIsRefVisible(!!el);
+          }}
           required
         />
         <input
@@ -121,7 +122,7 @@ const EditCustomFoodModal = ({
           aria-label="brand"
           value={brand}
           placeholder="Brand"
-          onChange={e => setBrand(e.target.value)}
+          onChange={(e) => setBrand(e.target.value)}
           required
         />
         <input
@@ -133,7 +134,7 @@ const EditCustomFoodModal = ({
           aria-label="calories"
           value={calories}
           placeholder="Calories"
-          onChange={e => setCalories(e.target.value)}
+          onChange={(e) => setCalories(e.target.value)}
           required
         />
         <input
@@ -145,7 +146,7 @@ const EditCustomFoodModal = ({
           aria-label="proteins"
           value={proteins}
           placeholder="Proteins"
-          onChange={e => setProteins(e.target.value)}
+          onChange={(e) => setProteins(e.target.value)}
           required
         />
         <input
@@ -157,7 +158,7 @@ const EditCustomFoodModal = ({
           aria-label="fats"
           value={fats}
           placeholder="Fats"
-          onChange={e => setFats(e.target.value)}
+          onChange={(e) => setFats(e.target.value)}
           required
         />
         <input
@@ -169,14 +170,11 @@ const EditCustomFoodModal = ({
           aria-label="carbs"
           value={carbs}
           placeholder="Carbs"
-          onChange={e => setCarbs(e.target.value)}
+          onChange={(e) => setCarbs(e.target.value)}
           required
         />
         <div className="edit-custom-food-submit-button-container">
-          <button
-            type="submit"
-            className="edit-custom-food-submit-button"
-          >
+          <button type="submit" className="edit-custom-food-submit-button">
             Save
           </button>
           <button

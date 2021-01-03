@@ -63,7 +63,6 @@ const buttonsData = {
       icon: ['fas', 'cog'],
       key: 3,
     },
-
   ],
   '/eaten-food': [
     {

@@ -1,24 +1,34 @@
 {
   "parser": "@babel/eslint-parser",
-  "extends": "airbnb/base",
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["prettier", "import"],
   "env": {
     "es6": true,
     "node": true,
     "jest": true,
-    "browser": true,
     "mongo": true
   },
   "rules": {
     "no-restricted-globals": 0,
     "no-console": 0,
     "no-underscore-dangle": 0,
-    "no-param-reassign": 0,
     "consistent-return": 0,
+    "no-param-reassign": 0,
     "camelcase": 0,
     "max-len": [
-      "error",
+      "warn",
       {
-        "ignoreComments": true
+        "ignoreComments": true,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "prettier/prettier": [
+      "error", {
+        "singleQuote": true,
+        "semi": true
       }
     ]
   }

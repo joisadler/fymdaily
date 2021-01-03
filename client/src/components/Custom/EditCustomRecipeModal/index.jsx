@@ -50,20 +50,30 @@ const EditCustomRecipeModal = ({
   const [carbs, setCarbs] = useState(prevCarbs);
 
   const setInfo = (ings) => {
-    const totalWeight = ings
-      .reduce((acc, currentIngr) => currentIngr.weight + acc, 0);
-    const totalCalories = ings
-      .reduce((acc, currentIngr) => currentIngr.calories + acc, 0);
-    const totalProteins = ings
-      .reduce((acc, currentIngr) => currentIngr.proteins + acc, 0);
-    const totalFats = ings
-      .reduce((acc, currentIngr) => currentIngr.fats + acc, 0);
-    const totalCarbs = ings
-      .reduce((acc, currentIngr) => currentIngr.carbs + acc, 0);
-    const recipeCalories = Math
-      .round((totalCalories * 1000) / totalWeight) / 10;
-    const recipeProteins = Math
-      .round((totalProteins * 1000) / totalWeight) / 10;
+    const totalWeight = ings.reduce(
+      (acc, currentIngr) => currentIngr.weight + acc,
+      0
+    );
+    const totalCalories = ings.reduce(
+      (acc, currentIngr) => currentIngr.calories + acc,
+      0
+    );
+    const totalProteins = ings.reduce(
+      (acc, currentIngr) => currentIngr.proteins + acc,
+      0
+    );
+    const totalFats = ings.reduce(
+      (acc, currentIngr) => currentIngr.fats + acc,
+      0
+    );
+    const totalCarbs = ings.reduce(
+      (acc, currentIngr) => currentIngr.carbs + acc,
+      0
+    );
+    const recipeCalories =
+      Math.round((totalCalories * 1000) / totalWeight) / 10;
+    const recipeProteins =
+      Math.round((totalProteins * 1000) / totalWeight) / 10;
     const recipeFats = Math.round((totalFats * 1000) / totalWeight) / 10;
     const recipeCarbs = Math.round((totalCarbs * 1000) / totalWeight) / 10;
     setCalories(Number.isNaN(recipeCalories) ? 0 : recipeCalories);
@@ -83,7 +93,7 @@ const EditCustomRecipeModal = ({
     ingredientCalories,
     ingredientProteins,
     ingredientFats,
-    ingredientCarbs,
+    ingredientCarbs
   ) => {
     const ingredient = {
       name: ingredientName,
@@ -99,10 +109,7 @@ const EditCustomRecipeModal = ({
     setInfo(updatedIngredients);
   };
 
-  const updateIngredient = (
-    ingredientWeight,
-    ingredientIndex,
-  ) => {
+  const updateIngredient = (ingredientWeight, ingredientIndex) => {
     const updatedIngredients = ingredients.map((ingr, i) => {
       if (i === ingredientIndex) {
         return { ...ingr, weight: ingredientWeight };
@@ -113,11 +120,10 @@ const EditCustomRecipeModal = ({
     setInfo(updatedIngredients);
   };
 
-  const removeIngredient = (
-    ingredientIndex,
-  ) => {
-    const updatedIngredients = ingredients
-      .filter((ingr, i) => i !== ingredientIndex);
+  const removeIngredient = (ingredientIndex) => {
+    const updatedIngredients = ingredients.filter(
+      (ingr, i) => i !== ingredientIndex
+    );
     setIngredients(updatedIngredients);
     setInfo(updatedIngredients);
   };
@@ -176,14 +182,12 @@ const EditCustomRecipeModal = ({
       <button
         className="edit-custom-recipe-close-button"
         type="button"
-        onClick={e => closeModal(e)}
+        onClick={(e) => closeModal(e)}
         title="Close"
       >
         &times;
       </button>
-      <h2 className="edit-custom-recipe-header">
-        Edit recipe
-      </h2>
+      <h2 className="edit-custom-recipe-header">Edit recipe</h2>
       <form
         className="edit-custom-recipe-form"
         id="edit-custom-recipe-form"
@@ -195,14 +199,12 @@ const EditCustomRecipeModal = ({
           aria-label="name"
           value={name}
           placeholder="Recipe name"
-          onChange={e => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
           required
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus
         />
-        <h3 className="edit-custom-recipe-ingredients-title">
-          Ingredients:
-        </h3>
+        <h3 className="edit-custom-recipe-ingredients-title">Ingredients:</h3>
         <ul className="edit-custom-recipe-ingredients">
           {ingredients.map((ingr, i) => (
             <CustomRecipeIngredientCard
@@ -224,15 +226,13 @@ const EditCustomRecipeModal = ({
           </button>
         </ul>
         {isSearchIngredientModalOpen && (
-        <SearchIngredientModal
-          isModalOpen={isSearchIngredientModalOpen}
-          closeModal={closeSearchIngredientModal}
-          addIngredient={addIngredient}
-        />
+          <SearchIngredientModal
+            isModalOpen={isSearchIngredientModalOpen}
+            closeModal={closeSearchIngredientModal}
+            addIngredient={addIngredient}
+          />
         )}
-        <div
-          className="edit-custom-recipe-info"
-        >
+        <div className="edit-custom-recipe-info">
           <h2 className="edit-custom-recipe-info-title">
             {`100g of ${name ? `"${name}"` : 'the recipe above'} contains:`}
           </h2>

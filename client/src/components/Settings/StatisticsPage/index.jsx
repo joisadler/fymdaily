@@ -3,9 +3,7 @@ import Navbar from '../../Navigation/Navbar';
 
 const StatisticsPage = () => (
   <>
-    <main className="page">
-      Statistics Page
-    </main>
+    <main className="page">Statistics Page</main>
     <Navbar />
   </>
 );

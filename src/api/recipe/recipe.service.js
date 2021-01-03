@@ -4,23 +4,18 @@ import Recipe from '../../models/recipe';
 async function add(recipe) {
   try {
     const name = recipe.name.trim();
-    const {
-      createdBy,
-      calories,
-      proteins,
-      fats,
-      carbs,
-      ingredients,
-    } = recipe;
-    const newRecipe = (await Recipe.findOrCreate({
-      createdBy,
-      name,
-      calories,
-      proteins,
-      fats,
-      carbs,
-      ingredients,
-    })).doc;
+    const { createdBy, calories, proteins, fats, carbs, ingredients } = recipe;
+    const newRecipe = (
+      await Recipe.findOrCreate({
+        createdBy,
+        name,
+        calories,
+        proteins,
+        fats,
+        carbs,
+        ingredients,
+      })
+    ).doc;
     return newRecipe;
   } catch (err) {
     console.error(err);
@@ -48,7 +43,11 @@ async function query(createdBy, name = '') {
     const start = new Date();
     const recipes = await Recipe.find(queryParams);
     // eslint-disable-next-line max-len
-    console.log('Request to MongoDB for recipes took:', new Date() - start, 'ms');
+    console.log(
+      'Request to MongoDB for recipes took:',
+      new Date() - start,
+      'ms'
+    );
     if (name === '') {
       return [...recipes];
     }
@@ -61,23 +60,19 @@ async function query(createdBy, name = '') {
 // Update
 async function update(recipe) {
   const name = recipe.name.trim();
-  const {
-    _id,
-    ingredients,
-    calories,
-    proteins,
-    fats,
-    carbs,
-  } = recipe;
+  const { _id, ingredients, calories, proteins, fats, carbs } = recipe;
   try {
-    await Recipe.findByIdAndUpdate({ _id }, {
-      name,
-      ingredients,
-      calories,
-      proteins,
-      fats,
-      carbs,
-    });
+    await Recipe.findByIdAndUpdate(
+      { _id },
+      {
+        name,
+        ingredients,
+        calories,
+        proteins,
+        fats,
+        carbs,
+      }
+    );
     return recipe;
   } catch (err) {
     console.error(err);

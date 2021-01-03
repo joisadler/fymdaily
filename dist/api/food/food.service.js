@@ -15,8 +15,6 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 
 var _food = _interopRequireDefault(require("../../models/food"));
 
-var _user = _interopRequireDefault(require("../../models/user"));
-
 var _fatsecret = _interopRequireDefault(require("../../services/fatsecret.service"));
 
 // Create

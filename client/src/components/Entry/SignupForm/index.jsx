@@ -10,9 +10,9 @@ const SignupForm = ({ setCurrentForm }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const message = useSelector(state => state.message.message);
+  const message = useSelector((state) => state.message.message);
   const dispatch = useDispatch();
-  const setMessage = msg => dispatch(MessageActions.setMessage(msg));
+  const setMessage = (msg) => dispatch(MessageActions.setMessage(msg));
 
   const doSignup = useAuth(signup);
 
@@ -22,7 +22,9 @@ const SignupForm = ({ setCurrentForm }) => {
       return setMessage('All fields are required!');
     }
     if (password !== confirmPassword) {
-      return setMessage('Your password and confirmation password do not match!');
+      return setMessage(
+        'Your password and confirmation password do not match!'
+      );
     }
     const userCreds = {
       username,
@@ -39,13 +41,15 @@ const SignupForm = ({ setCurrentForm }) => {
 
   return (
     <form className="signup-form" onSubmit={handleSubmit}>
-      <p className="signup-message" style={{ color: 'red' }}>{message}</p>
+      <p className="signup-message" style={{ color: 'red' }}>
+        {message}
+      </p>
       <fieldset className="credentials">
         <input
           type="text"
           name="username"
           value={username}
-          onChange={e => setUsername(e.target.value)}
+          onChange={(e) => setUsername(e.target.value)}
           onFocus={() => setMessage('')}
           aria-label="Username"
           placeholder="Username"
@@ -54,7 +58,7 @@ const SignupForm = ({ setCurrentForm }) => {
           type="email"
           name="email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           onFocus={() => setMessage('')}
           aria-label="Email"
           placeholder="Email"
@@ -63,7 +67,7 @@ const SignupForm = ({ setCurrentForm }) => {
           type="password"
           name="password"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           onFocus={() => setMessage('')}
           aria-label="Password"
           placeholder="Password"
@@ -72,7 +76,7 @@ const SignupForm = ({ setCurrentForm }) => {
           type="password"
           name="confirmPassword"
           value={confirmPassword}
-          onChange={e => setConfirmPassword(e.target.value)}
+          onChange={(e) => setConfirmPassword(e.target.value)}
           onFocus={() => setMessage('')}
           aria-label="Confirm Password"
           placeholder="Confirm Password"
@@ -80,7 +84,9 @@ const SignupForm = ({ setCurrentForm }) => {
       </fieldset>
       <section className="form-options-section">
         <section className="form-submit-section">
-          <button type="submit" className="signup-button">Sign Up</button>
+          <button type="submit" className="signup-button">
+            Sign Up
+          </button>
         </section>
         <section className="other-option-section">
           Already have an account?
@@ -88,7 +94,10 @@ const SignupForm = ({ setCurrentForm }) => {
           <button
             className="login-option"
             type="button"
-            onClick={() => { setCurrentForm('login'); setMessage(''); }}
+            onClick={() => {
+              setCurrentForm('login');
+              setMessage('');
+            }}
           >
             Log In
           </button>

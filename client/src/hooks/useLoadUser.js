@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadUser } from '../actions/UserActions';
 
 export default () => {
-  const user = useSelector(state => state.user.loggedInUser);
+  const user = useSelector((state) => state.user.loggedInUser);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadUser());

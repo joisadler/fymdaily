@@ -21,16 +21,13 @@ const MacrosLine = ({ numbers, nutrient }) => {
           type="dark"
           effect="float"
         >
-          <h2 className="tooltip-title">
-            {`${Nutrient}s`}
-          </h2>
+          <h2 className="tooltip-title">{`${Nutrient}s`}</h2>
           <p className="tooltip-text">
             {`${percent}% of daily ${nutrient} need`}
           </p>
         </ReactTooltip>
         <div className={`percent-container ${nutrient}-percent-container`}>
-          {percent}
-          %
+          {percent}%
         </div>
         <div
           className={`macros-progress-bar-inner ${nutrient}-progress-bar-inner`}

@@ -7,7 +7,7 @@ import SignupForm from '../SignupForm';
 import Footer from '../../Footer';
 
 export default () => {
-  const user = useSelector(state => state.user.loggedInUser);
+  const user = useSelector((state) => state.user.loggedInUser);
   // console.log('user from Entry Page:', user)
   const history = useHistory();
   if (JSON.stringify(user) !== '{}') {
@@ -21,14 +21,15 @@ export default () => {
       <main className="page">
         <h1 className="app-description">
           <em>FYMdaily</em>
-          &nbsp;– simple and minimalistic calorie/macronutrient tracker. Sign up today and start Fit Your Macros daily!
+          &nbsp;– simple and minimalistic calorie/macronutrient tracker. Sign up
+          today and start Fit Your Macros daily!
         </h1>
         <div className="form-container">
-          {
-            currentForm === 'login'
-              ? <LoginForm setCurrentForm={setCurrentForm} />
-              : <SignupForm setCurrentForm={setCurrentForm} />
-          }
+          {currentForm === 'login' ? (
+            <LoginForm setCurrentForm={setCurrentForm} />
+          ) : (
+            <SignupForm setCurrentForm={setCurrentForm} />
+          )}
         </div>
       </main>
       <Footer />

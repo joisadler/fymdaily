@@ -16,26 +16,28 @@ const CaloriesChart = ({
     percentageOfEmptyCaloriesInDailyCalorieNeed,
   } = numbers;
   const data = {
-    labels: ['Proteins', 'Fats', 'Carbs', 'Empty Calories', 'Still need to consume'],
-    datasets: [{
-      data: [
-        percentageOfProteinsInDailyCalorieNeed,
-        percentageOfFatsInDailyCalorieNeed,
-        percentageOfCarbsInDailyCalorieNeed,
-        percentageOfEmptyCaloriesInDailyCalorieNeed,
-        percentageOfCaloriesRemainderInDailyCalorieNeed,
-      ],
+    labels: [
+      'Proteins',
+      'Fats',
+      'Carbs',
+      'Empty Calories',
+      'Still need to consume',
+    ],
+    datasets: [
+      {
+        data: [
+          percentageOfProteinsInDailyCalorieNeed,
+          percentageOfFatsInDailyCalorieNeed,
+          percentageOfCarbsInDailyCalorieNeed,
+          percentageOfEmptyCaloriesInDailyCalorieNeed,
+          percentageOfCaloriesRemainderInDailyCalorieNeed,
+        ],
 
-      backgroundColor: [
-        '#109618',
-        '#ff9900',
-        '#990099',
-        '#fff',
-        '#f2f2f2',
-      ],
-      borderColor: '#000',
-      borderWidth: 1,
-    }],
+        backgroundColor: ['#109618', '#ff9900', '#990099', '#fff', '#f2f2f2'],
+        borderColor: '#000',
+        borderWidth: 1,
+      },
+    ],
   };
 
   const options = {
@@ -58,7 +60,7 @@ const CaloriesChart = ({
           const dataset = _data.datasets[0];
           const { total } = Object.values(dataset._meta)[0];
           const percent = Math.round(
-            (dataset.data[tooltipItem.index] / total) * 100,
+            (dataset.data[tooltipItem.index] / total) * 100
           );
           return `${percent}% of total calorie intake`;
         },
@@ -72,10 +74,7 @@ const CaloriesChart = ({
   const setSize = () => {
     if (chartRef.current) {
       const newInnerSize = Number(
-        window
-          .getComputedStyle(chartRef.current)
-          .height
-          .slice(0, -2),
+        window.getComputedStyle(chartRef.current).height.slice(0, -2)
       );
       setInnerSize(newInnerSize);
     }
@@ -91,7 +90,7 @@ const CaloriesChart = ({
 
   const handleKeyDown = (e) => {
     const code = e.charCode || e.keyCode;
-    if ((code === 32) || (code === 13)) {
+    if (code === 32 || code === 13) {
       toggleAlternateContent();
     }
   };
@@ -101,16 +100,14 @@ const CaloriesChart = ({
       className="calories-container"
       ref={chartRef}
       onClick={toggleAlternateContent}
-      onKeyDown={(e) => { handleKeyDown(e); }}
+      onKeyDown={(e) => {
+        handleKeyDown(e);
+      }}
       role="switch"
       aria-checked="false"
       tabIndex={0}
     >
-      <Doughnut
-        className="calories-chart"
-        data={data}
-        options={options}
-      />
+      <Doughnut className="calories-chart" data={data} options={options} />
       <div
         className="calories-chart-inner"
         style={{

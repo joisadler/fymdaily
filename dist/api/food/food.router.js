@@ -6,6 +6,13 @@ var _express = _interopRequireDefault(require("express"));
 
 var _food = require("./food.controller");
 
+// import {
+//   getFood,
+//   getFoods,
+//   addFood,
+//   updateFood,
+//   deleteFood,
+// } from './food.controller';
 var router = _express["default"].Router();
 
 var isAuthenticated = function isAuthenticated(req, res, next) {

@@ -1,63 +1,53 @@
 import historyService from './history.service';
 
-async function createHistoryEntry(req, res) {
+export const createHistoryEntry = async (req, res) => {
   const entry = await historyService.create(req.body);
   res.send(entry);
-}
+};
 
-async function getHistoryEntry(req, res) {
+export const getHistoryEntry = async (req, res) => {
   const entry = await historyService.getById(req.user._id, req.query.date);
   res.send(entry);
-}
+};
 
-async function getHistoryEntries(req, res) {
+export const getHistoryEntries = async (req, res) => {
   const createdBy = req.user._id;
   const entries = await historyService.query(createdBy);
   res.send(entries);
-}
+};
 
-async function addEatenFood(req, res) {
+export const addEatenFood = async (req, res) => {
   const entry = await historyService.addFood(
     req.user._id,
     req.body.date,
-    req.body.food,
+    req.body.food
   );
   res.send(entry);
-}
+};
 
-async function updateUserInfo(req, res) {
+export const updateUserInfo = async (req, res) => {
   const entry = await historyService.updateInfo(
     req.user._id,
     req.body.date,
-    req.body.info,
+    req.body.info
   );
   res.send(entry);
-}
+};
 
-async function updateEatenFood(req, res) {
+export const updateEatenFood = async (req, res) => {
   const entry = await historyService.updateFood(
     req.user._id,
     req.body.date,
-    req.body.food,
+    req.body.food
   );
   res.send(entry);
-}
+};
 
-async function deleteEatenFood(req, res) {
+export const deleteEatenFood = async (req, res) => {
   const entry = await historyService.deleteFood(
     req.user._id,
     req.body.date,
-    req.body.food,
+    req.body.food
   );
   res.send(entry);
-}
-
-module.exports = {
-  createHistoryEntry,
-  getHistoryEntry,
-  getHistoryEntries,
-  addEatenFood,
-  updateUserInfo,
-  updateEatenFood,
-  deleteEatenFood,
 };

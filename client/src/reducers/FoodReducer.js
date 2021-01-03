@@ -2,7 +2,7 @@ const initialState = {
   foods: [],
 };
 
-export default function (state = initialState, action = {}) {
+export default (state = initialState, action = {}) => {
   switch (action.type) {
     case 'SET_FOODS':
       return { ...state, foods: action.foods };
@@ -11,18 +11,16 @@ export default function (state = initialState, action = {}) {
     case 'UPDATE_CUSTOM_FOOD':
       return {
         ...state,
-        foods: state.foods.map(food => (
-          food._id === action.updatedFood._id
-            ? action.updatedFood
-            : food
-        )),
+        foods: state.foods.map((food) =>
+          food._id === action.updatedFood._id ? action.updatedFood : food
+        ),
       };
-      case 'DELETE_CUSTOM_FOOD':
+    case 'DELETE_CUSTOM_FOOD':
       return {
         ...state,
-        foods: state.foods.filter(food => food._id !== action.foodId),
+        foods: state.foods.filter((food) => food._id !== action.foodId),
       };
     default:
       return state;
   }
-}
+};

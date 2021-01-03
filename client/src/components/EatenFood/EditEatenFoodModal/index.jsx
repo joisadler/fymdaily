@@ -6,7 +6,10 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import { updateEatenFoods, deleteEatenFood } from '../../../actions/HistoryActions';
+import {
+  updateEatenFoods,
+  deleteEatenFood,
+} from '../../../actions/HistoryActions';
 import ConfirmModal from '../../ConfirmModal';
 
 const EditEatenFoodModal = ({
@@ -108,32 +111,20 @@ const EditEatenFoodModal = ({
       <button
         className="edit-eaten-food-modal-close-button"
         type="button"
-        onClick={e => closeModal(e)}
+        onClick={(e) => closeModal(e)}
         title="Close"
       >
         &times;
       </button>
       <header className="edit-eaten-food-modal-header">
-        <h2 className="edit-eaten-food-modal-title">
-          {name}
-        </h2>
-        <h3 className="edit-eaten-food-modal-subtitle">
-          {brand}
-        </h3>
+        <h2 className="edit-eaten-food-modal-title">{name}</h2>
+        <h3 className="edit-eaten-food-modal-subtitle">{brand}</h3>
       </header>
       <div className="edit-eaten-food-modal-info">
-        <p>
-          {`Calories: ${(calories * weight) / 100}`}
-        </p>
-        <p>
-          {`Proteins: ${(proteins * weight) / 100}`}
-        </p>
-        <p>
-          {`Fats: ${(fats * weight) / 100}`}
-        </p>
-        <p>
-          {`Carbs: ${(carbs * weight) / 100}`}
-        </p>
+        <p>{`Calories: ${(calories * weight) / 100}`}</p>
+        <p>{`Proteins: ${(proteins * weight) / 100}`}</p>
+        <p>{`Fats: ${(fats * weight) / 100}`}</p>
+        <p>{`Carbs: ${(carbs * weight) / 100}`}</p>
       </div>
       <form
         id="edit-eaten-food-modal-form"
@@ -141,9 +132,7 @@ const EditEatenFoodModal = ({
         onSubmit={onFormSubmit}
       >
         <fieldset className="edit-eaten-food-modal-weight-inputs">
-          <legend
-            className="edit-eaten-food-modal-weight-legend"
-          >
+          <legend className="edit-eaten-food-modal-weight-legend">
             Weight:
           </legend>
           <div>
@@ -163,8 +152,11 @@ const EditEatenFoodModal = ({
               max="1000"
               step="any"
               value={weight}
-              onChange={e => setWeight(e.target.value)}
-              ref={(el) => { inputRef.current = el; setIsRefVisible(!!el); }}
+              onChange={(e) => setWeight(e.target.value)}
+              ref={(el) => {
+                inputRef.current = el;
+                setIsRefVisible(!!el);
+              }}
               required
             />
             <button

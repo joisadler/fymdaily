@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      { (currentPath !== '/') && <SettingsMenu />}
+      {currentPath !== '/' && <SettingsMenu />}
       <Switch>
         <Route exact path="/" component={EntryPage} />
         <Route path="/home" component={HomePage} />

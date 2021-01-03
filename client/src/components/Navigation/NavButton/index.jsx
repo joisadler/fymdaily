@@ -7,11 +7,7 @@ import MenuActions from '../../../actions/SettingsMenuActions';
 import CreateCustomFoodModal from '../../Custom/CreateCustomFoodModal';
 import CreateCustomRecipeModal from '../../Custom/CreateCustomRecipeModal';
 
-const NavButton = ({
-  to,
-  icon,
-  labelText,
-}) => {
+const NavButton = ({ to, icon, labelText }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 

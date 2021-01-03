@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 import EditCustomFoodModal from '../EditCustomFoodModal';
 
 const CustomFoodCard = ({ food }) => {
-  const {
-    _id,
-    name,
-    brand,
-  } = food;
+  const { _id, name, brand } = food;
   const calories = Math.round(+food.calories);
   const proteins = Math.round(+food.proteins);
   const fats = Math.round(+food.fats);
@@ -36,7 +32,9 @@ const CustomFoodCard = ({ food }) => {
       <div
         className="custom-food-card"
         onClick={openModal}
-        onKeyDown={(e) => { handleKeyDown(e); }}
+        onKeyDown={(e) => {
+          handleKeyDown(e);
+        }}
         role="button"
         title={`Edit "${name}"`}
         tabIndex={0}
@@ -50,17 +48,17 @@ const CustomFoodCard = ({ food }) => {
           {`Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
         </p>
         {isModalOpen && (
-        <EditCustomFoodModal
-          isModalOpen={isModalOpen}
-          closeModal={closeModal}
-          _id={_id}
-          prevName={name}
-          prevBrand={brand}
-          prevCalories={calories}
-          prevProteins={proteins}
-          prevFats={fats}
-          prevCarbs={carbs}
-        />
+          <EditCustomFoodModal
+            isModalOpen={isModalOpen}
+            closeModal={closeModal}
+            _id={_id}
+            prevName={name}
+            prevBrand={brand}
+            prevCalories={calories}
+            prevProteins={proteins}
+            prevFats={fats}
+            prevCarbs={carbs}
+          />
         )}
       </div>
     </li>
